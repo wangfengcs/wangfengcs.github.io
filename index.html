@@ -349,6 +349,142 @@
   
 
   <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://wangfengcs.github.io/2017/07/19/关联规则/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangfengcs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/touxiang2.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2017/07/19/关联规则/" itemprop="url">关联规则</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-19T09:19:16+08:00">
+                2017-07-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/19/关联规则/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://wangfengcs.github.io/2017/07/19/关联规则/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="关联规则"><a href="#关联规则" class="headerlink" title="关联规则"></a><strong>关联规则</strong></h2><p>　　关联规则就是有关联的规则，形式可以定义为：两个 <strong>不相交</strong> 的非空集合X、Y，如果有X-&gt;Y，就说X-&gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度(confidence)来描述。<br>　　支持度的定义：$$support(X–&gt;Y) = \frac{|X \cap Y|}{N}$$集合X与集合Y中的项在一条记录中同时出现的次数/数据记录的个数。<br>　　自信度的定义：$$confidence(X-&gt;Y)=\frac{|X \cap Y|}{|X|}$$表示集合X与集合Y中的项在一条记录中同时出现的次数/集合X出现的个数。<br>　　上述所讲的支持度和自信度都是相对的支持度和自信度，不是绝对支持度，绝对支持度为：$$abs_support=N<em>support,　N为数据记录数$$　　支持度和自信度越高，说明规则越强，关联规则挖掘就是挖掘出满足一定强度的规则。<br><em>*项集</em></em>：属性名称集合。比如，{a,b},{c},{a,d}<br>如果一个项集同时满足最小支持度阈值和最小置信度阈值，则认为这个项集的关联规则是有趣的。</p>
+<p><strong>频繁项集</strong>：满足最小支持度的项集。</p>
+<p>如果一个项集{a,b}是频繁的，那么它的所有子集{a}也是频繁的。<br>如果一个项集{a,b}是不频繁的，那么它的所有超集{a,b,c}也是不频繁的。</p>
+<h4 id="Apriori是找频繁项集的算法"><a href="#Apriori是找频繁项集的算法" class="headerlink" title="Apriori是找频繁项集的算法"></a><strong>Apriori是找频繁项集的算法</strong></h4><p>　　Apriori算法：使用候选项集找频繁项集。Apriori算法是一种最有影响的挖掘布尔关联规则频繁项集的算法。其核心是基于两阶段频集思想的递推算法。该关联规则在分类上属于单维、单层、布尔关联规则。</p>
+<ol>
+<li>统计一个元素项集出现的频数，找出不小于最小支持度的项集，得到 频繁1-项集。令k=2</li>
+<li>根据第k-1步生成的 频繁(k-1)-项集 生成 侯选k-项集，然后对数据库进行搜索，得到 侯选k-项集 的支持度，与最小支持度进行比较，从而找到 频繁k-项集，删除 侯选k-项集 中 不频繁k-项集。</li>
+<li>如果没有 频繁k-项集 生成，则停止，返回 频繁(k-1)-项集 作为 最大频繁项集；<br>否则，k = k+1，返回步骤2</li>
+</ol>
+<p><strong>优点</strong>：<br>简单，易理解，没有复杂的理论推导<br><strong>缺点</strong>：</p>
+<ol>
+<li>每一步产生侯选项集时循环产生的组合过多，没有排除不应该参与组合的元素</li>
+<li>每次计算项集的支持度时，都会对数据库的全部记录进行扫描比较，I/O开销大</li>
+<li>采用唯一支持度，算法的适应面窄</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
     <link itemprop="mainEntityOfPage" href="http://wangfengcs.github.io/2017/07/16/U盘快捷方式病毒处理方法/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -426,12 +562,14 @@
 
       
         
-          
-            <p>当U盘文件变成快捷方式时，使用下面的代码解决：<br><br>@echo off<br>echo============================================<br>echo.<br>echo  U盘隐藏文件夹恢复<br>echo.<br>echo============================================<br><br>pause<br><br>rem echo 列出目录<br><br>dir /a:d /b &gt;yxkmp4dir.txt<br><br>rem echo 列出目录外的所有文件<br><br>rem dir /a:s /a:-d /b<br><br>for /f “tokens=* delims= “ %%i in (yxkmp4dir.txt) do call :ss “%%i”</p>
-<p><br>del yxkmp4dir.txt<br><br>echo.<br><br>echo 全部修复完成,谢谢你的使用!<br><br>echo.<br><br>pause<br><br>goto :eof<br><br>:ss<br><br>set var=%1<br><br>echo 正在修复文件夹 %var%  …<br><br>attrib -s -h -r  %var%</p>
-<p>goto :eof<br><br>将文件后缀改为bat,双击运行</p>
-
-          
+          <p>当U盘文件变成快捷方式时，使用下面的代码解决：<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/16/U盘快捷方式病毒处理方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -550,18 +688,14 @@
 
       
         
-          
-            <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-          
+          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br>
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/04/hello-world/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -639,7 +773,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">2</span>
+                <span class="site-state-item-count">3</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -647,6 +781,15 @@
 
           
 
+          
+            
+            
+            <div class="site-state-item site-state-tags">
+              <a href="/tags/index.html">
+                <span class="site-state-item-count">1</span>
+                <span class="site-state-item-name">标签</span>
+              </a>
+            </div>
           
 
         </nav>
