@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangfengcs.github.io/"/>
-  <updated>2017-07-19T10:27:36.901Z</updated>
+  <updated>2017-07-19T13:37:22.296Z</updated>
   <id>http://wangfengcs.github.io/</id>
   
   <author>
@@ -14,6 +14,48 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Mathjax语法总结</title>
+    <link href="http://wangfengcs.github.io/2017/07/19/Mathjax%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/"/>
+    <id>http://wangfengcs.github.io/2017/07/19/Mathjax语法总结/</id>
+    <published>2017-07-19T10:32:55.000Z</published>
+    <updated>2017-07-19T13:37:22.296Z</updated>
+    
+    <content type="html"><![CDATA[<a id="more"></a>
+<p>　　hexo写markdown中<em>与*一样，表示斜体或粗体，但mathjax中</em>表示下标，因此：<br>　　mathjax中换行\，在markdown中写成\\<br>　　mathjax中下标<em>，在markdown改写成\</em><br>　　mathjax中下标{，在markdown改写成\{<br>　　mathjax中下标}，在markdown改写成\}<br>在markdown的表格中插入|，可以输入 <strong>\&#124;</strong> 代替</p>
+<p><strong>公式右键-Show Math As-Tex Commands可以查看编辑</strong></p>
+<p>###1. 行中公式inline &amp; 独立公式displayed</p>
+<p>####行中公式 inline<br>This is an example for $x_mu+ y_mu$.<br><strong>mathjax写法</strong><br>This is an example for \$x_mu+ y_mu\\$.</p>
+<p>####独立公式 displayed<br>$$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}$$<br>mathjax写法<br>\$\$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}\$\$</p>
+<p>###2. 表格<br>一种表格的生成方式：<br>|col1　|col2　|col3　|<br>|:——-|:——–|:——–|<br>内容行<br>|col1　|col2　|col3　|<br>|:——-|:——–|:——–|<br>|内容|内容|内容|</p>
+<p>###3. 希腊字母<br>|名称 |大写 |Tex |小写 |Tex |<br>|:——|:——|:—–|:——-|:——|<br>|alpha|$A$|A|$\alpha$|\alpha|<br>|beta|$B$|B|$\beta$|\beta|<br>gamma|$\Gamma$|\Gamma|$\gamma$|\gamma<br>delta|$\Delta$|\Delta|$\delta$|\delta<br>epsilon|$E$|E|$\epsilon$|\epsilon<br>zeta|$Z$|Z|$\zeta$|\zeta<br>eta|$H$|H|$\eta$|\eta<br>theta|$\Theta$|\Theta|$\theta$|\theta<br>iota|$I$|I|$\iota$|\iota<br>kappa|$K$|K|$\kappa$|\kappa<br>lambda|$\Lambda$|\Lambda|$\lambda$|\lambda<br>mu|$M$|M|$\mu$|\mu<br>nu|$N$|N|$\nu$|\nu<br>xi|$\Xi$|\Xi|$\xi$|\xi<br>omicron|$O$|O|$\omicron$|\omicron<br>pi|$\Pi$|\Pi|$\pi$|\pi<br>rho|$P$|P|$\rho$|\rho<br>sigma|$\Sigma$|\Sigma|$\sigma$|\sigma<br>tau|$T$|T|$\tau$|\tau<br>upsilon|$\Upsilon$|\Upsilon|$\upsilon$|\upsilon<br>phi|$\Phi$|\Phi|$\phi$|\phi<br>chi|$X$|X|$\chi$|\chi<br>psi|$\Psi$|\Psi|$\psi$|\psilon<br>omega|$\Omega$|\Omega|$\omega$|\omega</p>
+<p>###运算符和数据符号<br>名称|显示|写法<br>:–|:–|:–<br>加|$+$|+<br>减|$-$|-<br>乘|$\times \cdot \ast$|\times \cdot \ast<br>除|$\div$|\div<br>分数|$\frac{a}{b}$或${a}\over{b}$|\frac{a}{b}或{a}\over{b}<br>上标|$a^b$|a^b<br>下标|$x_y$|x_y<br>开二次方|$\sqrt x$|\sqrt x<br>开x次方|$\sqrt[x]{y}$|\sqrt[x] {y}<br>比较运算符|$\lt \gt \leq \geq \neq \approx \equiv$|\lt \gt \leq \geq \neq \approx \equiv<br>排列|$\binom{n+1}{2k}$|\binom{n+1}{2k}<br>小括号|$()$|()<br>中括号    |$[]$    |[]<br>大括号    |${}$    |\{\}<br>上取整    |$\lceil\rceil$|\lceil \rceil<br>下取整    |$\lfloor \rfloor$|\lfloor \rfloor<br>逻辑运算符|$\land \lor \lnot \forall \exists$|\land \lor \lnot \forall \exists<br>偏导1|    $\frac{\partial{f(x)}}{\partial{x}}$    |\frac{\partial{f(x)}}{\partial{x}}<br>偏导2|    $\nabla_xf(x)$    |\nabla<em>xf(x)<br>集合1|    $\cup \cap \in$|\cup \cap \in<br>集合2|    $\bigcup \bigcap$    |\bigcup \bigcap<br>估计|    $\hat f(x)$|\hat f(x)<br>三角函数1|    $sin(x)$    |sin(x)<br>三角函数2    |$arctan(x)arctan(x)$|    arctan(x)<br>极限    |$lim</em>{1\rightarrow+\infty}\frac{1}{n(n+1)}$|lim_{1\rightarrow+\infty}\frac{1}{n(n+1)}<br>未调整括号大小|    ${3+\frac{7x+5}{1+y^2}}$    |{3+\frac{7x+5}{1+y^2}}<br>调整括号大小    |$\left{3+\frac{7x+5}{1+y^2}\right}$|    \left{3+\frac{7x+5}{1+y^2}\right}<br>求和    |$\sum_1^n$|\sum_1^n<br>积分1    |$\int_1^\infty$    |\int_1^\infty<br>积分2|    $\int_0^{+\infty}x^ne^{-x}dx$    |\int<em>0\^{+\infty}x\^ne\^{-x}dx<br>共轭转置    |$U^{\dagger}U=UU^{\dagger}=I$    |U\^{\dagger}U=UU^{\dagger}=I<br>连乘    |$\prod$|\prod<br>双积分|    $\iint$    |\iint<br>装饰符1    |$\overline A \underline B$|\overline A \underline B<br>装饰符2|$\widetilde C \widehat D$|\widetilde C \widehat D<br>装饰符3|    $\fbox E$|\fbox E<br>装饰符4|$\overleftarrow F \underrightarrow G$|\overleftarrow F \underrightarrow G<br>装饰符5|    $\overleftrightarrow H \underleftrightarrow I$|\overleftrightarrow H \underleftrightarrow I<br>装饰符6|    $\overbrace{(n-2)+\underbrace{(n-1)+n}}$    |\overbrace{(n-2)+\underbrace{(n-1)+n}}<br>装饰符7    |$\underbrace{a\cdot a\cdots a}</em>{b\text{times}}$    |\underbrace{a\cdot a\cdots a}_{b\text{times}}<br>装饰符8|$\acute{I} \check{J} \grave{K}$|\acute{I} \check{J} \grave{K}</p>
+<p>###字体<br>名称|显示    |写法    |注意<br>:—|:—|:–|:–<br>黑板粗体1|$\mathbb{AaBb12} AaBb12    $|\mathbb{AaBb12} AaBb12 |<br>黑板粗体2|$\Bbb{AaBb12} AaBb12$|    \Bbb{AaBb12} AaBb12    |好像只有大写字母有变化<br>黑体|    $\mathbf{AaBb12}$|\mathbf{AaBb12}<br>希腊字母黑体|$\boldsymbol{\mu sigma}    $|\boldsymbol{\mu sigma}<br>罗马字体    |$\mathrm{AaBb12}    $    |\mathrm{AaBb12}<br>手写体|$\mathscr{AaBb12}$|\mathscr{AaBb12}<br>Fraktur字体|$\mathfrak{AaBb12}$|\mathfrak{AaBb12}</p>
+<p>###分类表达式<br>$f(x)= \begin{cases}         n=1, if\ x\ is\ even\         n=2, if\ x\ is\ odd\         n=3, if\ x\ is\ 0         \end{cases}$</p>
+<p>###表格<br>$\begin{array}{c|cccc} n &amp; \text{Left} &amp; \text{Center} &amp; \text{Right} &amp; \text{last} \ \hline 1 &amp; 0.24 &amp; 1 &amp; 125 &amp; 235 \ 2 &amp; 0.24 &amp; 1 &amp; 125 &amp; 235 \ 3 &amp; 0.24 &amp; 1 &amp; 125 &amp; 235 \ \end{array}$</p>
+<p>###矩阵<br>$\begin{pmatrix}   1 &amp; a_1 &amp; a_1^2 &amp; \cdots &amp; a_1^n\   1 &amp; a_2 &amp; a_2^2 &amp; \cdots &amp; a_2^n \   \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \   1 &amp; a_n &amp; a_n^2 &amp; \cdots &amp; a_n^n \   \end{pmatrix}$</p>
+<p>###推导1<br>$\begin{align} E&amp;=\sum_{n=1}^{N}exp{-t<em>nf</em>{m-1}(\mathbf{x_n})-\frac12t_n\alpha_my_m(\mathbf{x<em>n})}\ &amp; =\sum</em>{n=1}^{N}w_n^{(m)}exp\left{-\frac12t_n\alpha_my_m(\mathbf{x_n})\right} \end{align}$</p>
+<p>###推导2<br>$\begin{align} \sqrt{37} &amp; = \sqrt{\frac{73^2-1}{12^2}} \  &amp; = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \  &amp; = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \  &amp; = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \  &amp; \approx \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right) \end{align}$</p>
+<p>###Reference</p>
+<ol>
+<li><a href="http://blog.leanote.com/post/freewalk/Markdown-语法手册" target="_blank" rel="external">http://blog.leanote.com/post/freewalk/Markdown-语法手册</a></li>
+<li><a href="https://zhengyangcs.github.io/2016/08/17/mathjax/" target="_blank" rel="external">https://zhengyangcs.github.io/2016/08/17/mathjax/</a></li>
+<li><a href="http://blog.csdn.net/wx11055/article/details/52694682" target="_blank" rel="external">http://blog.csdn.net/wx11055/article/details/52694682</a></li>
+</ol>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
+&lt;p&gt;　　hexo写markdown中&lt;em&gt;与*一样，表示斜体或粗体，但mathjax中&lt;/em&gt;表示下标，因此：&lt;br&gt;　　mathjax中换行\，在markdown中写成\\&lt;br&gt;　　mathjax中下标&lt;em&gt;，在markdown改写
+    
+    </summary>
+    
+    
+      <category term="工具书" scheme="http://wangfengcs.github.io/tags/%E5%B7%A5%E5%85%B7%E4%B9%A6/"/>
+    
+  </entry>
   
   <entry>
     <title>关联规则</title>
