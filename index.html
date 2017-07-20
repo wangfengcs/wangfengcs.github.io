@@ -448,7 +448,13 @@
 
       
         
-          <p>　　hexo写markdown中<em>与*一样，表示斜体或粗体，但mathjax中</em>表示下标，因此：<br>　　mathjax中换行\，在markdown中写成\\<br>　　mathjax中下标<em>，在markdown改写成\</em><br>　　mathjax中下标{，在markdown改写成\{<br>　　mathjax中下标}，在markdown改写成\}<br>在markdown的表格中插入|，可以输入 <strong>\&#124;</strong> 代替<br>
+          
+          hexo写markdown中_与*一样，表示斜体或粗体，但mathjax中_表示下标，因此：
+　　mathjax中换行\，在markdown中写成\\
+　　mathjax中下标_，在markdown改写成_
+　　mathjax中下标{，在markdown改写成\{
+　　mathjax中下标}，在ma
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/19/Mathjax语法总结/#more" rel="contents">
@@ -596,7 +602,12 @@
 
       
         
-          <h2 id="关联规则"><a href="#关联规则" class="headerlink" title="关联规则"></a><strong>关联规则</strong></h2><p>　　关联规则就是有关联的规则，形式可以定义为：两个 <strong>不相交</strong> 的非空集合X、Y，如果有X-&gt;Y，就说X-&gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度(confidence)来描述。<br>
+          
+          关联规则
+关联规则就是有关联的规则，形式可以定义为：两个 不相交 的非空集合X、Y，如果有X-&gt;Y，就说X-&gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度(confidence)来描述。
+&lt;!--more--&gt;
+　　支持度的定义：$$support(X–
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/19/关联规则/#more" rel="contents">
@@ -745,34 +756,21 @@
       
         
           
-            <p>当U盘文件变成快捷方式时，使用下面的代码解决:&lt;!--more--&gt;<br>
+          当U盘文件变成快捷方式时，使用下面的代码解决:&lt;!--more--&gt;
 @echo off
-echo============================================<br>
-echo.<br>
-echo  U盘隐藏文件夹恢复<br>
-echo.<br>
-echo============================================<br>
-pause<br>
-rem echo 列出目录
-dir /a:d /b &gt;yxkmp4dir.txt<br>
-rem echo 列出目录外的所有文件<br>
-rem dir /a:s /a:-d /b<br>
-for /f &quot;tokens=* delims= &quot; %%i in (yxkmp4dir.txt) do call :ss &quot;%%i&quot;</p>
-<p>del yxkmp4dir.txt<br>
-echo.<br>
-echo 全部修复完成,谢谢你的使用!<br>
-echo.<br>
-pause<br>
-goto :eof<br>
-:ss<br>
-set var=%1<br>
-echo 正在修复文件夹 %var%  ...<br>
-attrib -s -h -r  %var%</p>
-<p>goto :eof<br>
-将文件后缀改为bat,双击运行<br>
-除此之外，可以通过在文件夹选项中，选择显示全部隐藏文件，可以显示被隐藏的文件。</p>
-
-          
+echo============================================
+echo.
+echo  U盘隐藏文件夹恢复
+echo.
+echo==================
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/07/16/U盘快捷方式病毒处理方法/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -913,7 +911,9 @@ attrib -s -h -r  %var%</p>
 
       
         
-          <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br>
+          
+          Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in 
+          ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/03/04/hello-world/#more" rel="contents">

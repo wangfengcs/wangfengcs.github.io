@@ -22,11 +22,45 @@
     <published>2017-07-19T10:32:55.000Z</published>
     <updated>2017-07-20T00:37:13.229Z</updated>
     
-    <content type="html"><![CDATA[<p>　　hexo写markdown中<em>与*一样，表示斜体或粗体，但mathjax中</em>表示下标，因此：<br>　　mathjax中换行\，在markdown中写成\\<br>　　mathjax中下标<em>，在markdown改写成\</em><br>　　mathjax中下标{，在markdown改写成\{<br>　　mathjax中下标}，在markdown改写成\}<br>在markdown的表格中插入|，可以输入 <strong>\&#124;</strong> 代替<br><a id="more"></a><br><strong>公式右键-Show Math As-Tex Commands可以查看编辑</strong></p>
-<h3 id="1-行中公式inline-amp-独立公式displayed"><a href="#1-行中公式inline-amp-独立公式displayed" class="headerlink" title="1. 行中公式inline &amp; 独立公式displayed"></a>1. 行中公式inline &amp; 独立公式displayed</h3><h4 id="行中公式-inline"><a href="#行中公式-inline" class="headerlink" title="行中公式 inline"></a>行中公式 inline</h4><p>This is an example for $x_mu+ y_mu$.<br><strong>mathjax写法</strong><br>This is an example for \$x_mu+ y_mu\$.</p>
-<h4 id="独立公式-displayed"><a href="#独立公式-displayed" class="headerlink" title="独立公式 displayed"></a>独立公式 displayed</h4><script type="math/tex; mode=display">J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}</script><p>mathjax写法<br>$$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}$$</p>
-<h3 id="2-表格"><a href="#2-表格" class="headerlink" title="2. 表格"></a>2. 表格</h3><p>一种表格的生成方式：<br>|col1　|col2　|col3　|<br>|:———-|:————|:————|<br>内容行<br>|col1　|col2　|col3　|<br>|:———-|:————|:————|<br>|内容|内容|内容|</p>
-<h3 id="3-希腊字母"><a href="#3-希腊字母" class="headerlink" title="3. 希腊字母"></a>3. 希腊字母</h3><div class="table-container">
+    <content type="html"><![CDATA[<p>hexo写markdown中_与*一样，表示斜体或粗体，但mathjax中_表示下标，因此：<br>
+　　mathjax中换行\，在markdown中写成\\<br>
+　　mathjax中下标_，在markdown改写成_<br>
+　　mathjax中下标{，在markdown改写成\{<br>
+　　mathjax中下标}，在markdown改写成\}<br>
+在markdown的表格中插入|，可以输入 <strong>&amp;#124;</strong> 代替<br>
+&lt;!--more--&gt;<br>
+<strong>公式右键-Show Math As-Tex Commands可以查看编辑</strong></p>
+<h3>1. 行中公式inline &amp; 独立公式displayed</h3>
+<h4>行中公式 inline</h4>
+<p>This is an example for $x_mu+ y_mu$.<br>
+<strong>mathjax写法</strong>
+This is an example for \$x_mu+ y_mu\$.</p>
+<h4>独立公式 displayed</h4>
+<p>$$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}$$
+mathjax写法
+$$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}$$</p>
+<h3>2. 表格</h3>
+<p>一种表格的生成方式：<br>
+|col1　|col2　|col3　|<br>
+|:-------|:--------|:--------|<br>
+内容行</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">col1</th>
+<th style="text-align:left">col2</th>
+<th style="text-align:left">col3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">内容</td>
+<td style="text-align:left">内容</td>
+<td style="text-align:left">内容</td>
+</tr>
+</tbody>
+</table>
+<h3>3. 希腊字母</h3>
 <table>
 <thead>
 <tr>
@@ -208,8 +242,7 @@
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="运算符和数据符号"><a href="#运算符和数据符号" class="headerlink" title="运算符和数据符号"></a>运算符和数据符号</h3><div class="table-container">
+<h3>运算符和数据符号</h3>
 <table>
 <thead>
 <tr>
@@ -367,12 +400,12 @@
 <tr>
 <td style="text-align:left">积分2</td>
 <td style="text-align:left">$\int_0^{+\infty}x^ne^{-x}dx$</td>
-<td style="text-align:left">\int_0\^{+\infty}x\^ne\^{-x}dx</td>
+<td style="text-align:left">\int_0^{+\infty}x^ne^{-x}dx</td>
 </tr>
 <tr>
 <td style="text-align:left">共轭转置</td>
 <td style="text-align:left">$U^{\dagger}U=UU^{\dagger}=I$</td>
-<td style="text-align:left">U\^{\dagger}U=UU^{\dagger}=I</td>
+<td style="text-align:left">U^{\dagger}U=UU^{\dagger}=I</td>
 </tr>
 <tr>
 <td style="text-align:left">连乘</td>
@@ -426,8 +459,7 @@
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><div class="table-container">
+<h3>字体</h3>
 <table>
 <thead>
 <tr>
@@ -440,7 +472,7 @@
 <tbody>
 <tr>
 <td style="text-align:left">黑板粗体1</td>
-<td style="text-align:left">$\mathbb{AaBb12} AaBb12    $</td>
+<td style="text-align:left">$\mathbb{AaBb12} AaBb12	$</td>
 <td style="text-align:left">\mathbb{AaBb12} AaBb12</td>
 <td style="text-align:left"></td>
 </tr>
@@ -458,13 +490,13 @@
 </tr>
 <tr>
 <td style="text-align:left">希腊字母黑体</td>
-<td style="text-align:left">$\boldsymbol{\mu sigma}    $</td>
+<td style="text-align:left">$\boldsymbol{\mu sigma}	$</td>
 <td style="text-align:left">\boldsymbol{\mu sigma}</td>
 <td style="text-align:left"></td>
 </tr>
 <tr>
 <td style="text-align:left">罗马字体</td>
-<td style="text-align:left">$\mathrm{AaBb12}    $</td>
+<td style="text-align:left">$\mathrm{AaBb12}	$</td>
 <td style="text-align:left">\mathrm{AaBb12}</td>
 <td style="text-align:left"></td>
 </tr>
@@ -482,25 +514,36 @@
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="分类表达式"><a href="#分类表达式" class="headerlink" title="分类表达式"></a>分类表达式</h3><script type="math/tex; mode=display">f(x)= \begin{cases} n=1, if\ x\ is\ even\\\\
-          n=2, if\ x\ is\ odd\\\\
-          n=3, if\ x\ is\ 0
-          \end{cases}</script><h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><script type="math/tex; mode=display">\begin{array}{c|cccc} n & \text{Left} & \text{Center} & \text{Right} & \text{last}\\\\    \hline 1 & 0.24 & 1 & 125 & 235 \\\\
-   2 & 0.24 & 1 & 125 & 235 \\\\  
-    3 & 0.24 & 1 & 125 & 235 \\\\  
-     \end{array}</script><h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><script type="math/tex; mode=display">\begin{pmatrix}   1 & a_1 & a_1^2 & \cdots & a_1^n \\\\    1 & a_2 & a_2^2 & \cdots & a_2^n \\\\     \vdots & \vdots & \vdots & \ddots & \vdots \\\\     1 & a_n & a_n^2 & \cdots & a_n^n      \end{pmatrix}</script><h3 id="推导1"><a href="#推导1" class="headerlink" title="推导1"></a>推导1</h3><p>$\begin{align}E&amp;=\sum<em>{n=1}^{N}exp{-t_nf</em>{m-1}(\mathbf{x<em>n})-\frac12t_n\alpha_my_m(\mathbf{x_n})}\\ &amp; =\sum</em>{n=1}^{N}w_n^{(m)}exp\left\{-\frac12t_n\alpha_my_m(\mathbf{x_n})\right\} \end{align}$</p>
-<h3 id="推导2"><a href="#推导2" class="headerlink" title="推导2"></a>推导2</h3><p>$\begin{align} \sqrt{37} &amp; = \sqrt{\frac{73^2-1}{12^2}} \\  &amp; = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\  &amp; = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\  &amp; = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \\  &amp; \approx \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right) \end{align}$</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ol>
-<li><a href="http://blog.leanote.com/post/freewalk/Markdown-语法手册" target="_blank" rel="external">http://blog.leanote.com/post/freewalk/Markdown-语法手册</a></li>
-<li><a href="https://zhengyangcs.github.io/2016/08/17/mathjax/" target="_blank" rel="external">https://zhengyangcs.github.io/2016/08/17/mathjax/</a></li>
-<li><a href="http://blog.csdn.net/wx11055/article/details/52694682" target="_blank" rel="external">http://blog.csdn.net/wx11055/article/details/52694682</a></li>
+<h3>分类表达式</h3>
+<p>$$f(x)= \begin{cases} n=1, if\ x\ is\ even\\
+n=2, if\ x\ is\ odd\\
+n=3, if\ x\ is\ 0
+\end{cases}$$</p>
+<h3>表格</h3>
+<p>$$\begin{array}{c|cccc} n &amp; \text{Left} &amp; \text{Center} &amp; \text{Right} &amp; \text{last}\\    \hline 1 &amp; 0.24 &amp; 1 &amp; 125 &amp; 235 \\
+2 &amp; 0.24 &amp; 1 &amp; 125 &amp; 235 \\<br>
+3 &amp; 0.24 &amp; 1 &amp; 125 &amp; 235 \\<br>
+\end{array}$$</p>
+<h3>矩阵</h3>
+<p>$$\begin{pmatrix}   1 &amp; a_1 &amp; a_1^2 &amp; \cdots &amp; a_1^n \\    1 &amp; a_2 &amp; a_2^2 &amp; \cdots &amp; a_2^n \\     \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\     1 &amp; a_n &amp; a_n^2 &amp; \cdots &amp; a_n^n      \end{pmatrix}$$</p>
+<h3>推导1</h3>
+<p>$\begin{align}E&amp;=\sum_{n=1}^{N}exp{-t_nf_{m-1}(\mathbf{x_n})-\frac12t_n\alpha_my_m(\mathbf{x_n})}\\ &amp; =\sum_{n=1}^{N}w_n^{(m)}exp\left\{-\frac12t_n\alpha_my_m(\mathbf{x_n})\right\} \end{align}$</p>
+<h3>推导2</h3>
+<p>$\begin{align} \sqrt{37} &amp; = \sqrt{\frac{73^2-1}{12^2}} \\  &amp; = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\  &amp; = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\  &amp; = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \\  &amp; \approx \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right) \end{align}$</p>
+<h3>Reference</h3>
+<ol>
+<li>http://blog.leanote.com/post/freewalk/Markdown-语法手册</li>
+<li>https://zhengyangcs.github.io/2016/08/17/mathjax/</li>
+<li>http://blog.csdn.net/wx11055/article/details/52694682</li>
 </ol>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;　　hexo写markdown中&lt;em&gt;与*一样，表示斜体或粗体，但mathjax中&lt;/em&gt;表示下标，因此：&lt;br&gt;　　mathjax中换行\，在markdown中写成\\&lt;br&gt;　　mathjax中下标&lt;em&gt;，在markdown改写成\&lt;/em&gt;&lt;br&gt;　　mathjax中下标{，在markdown改写成\{&lt;br&gt;　　mathjax中下标}，在markdown改写成\}&lt;br&gt;在markdown的表格中插入|，可以输入 &lt;strong&gt;\&amp;#124;&lt;/strong&gt; 代替&lt;br&gt;
+      &lt;p&gt;hexo写markdown中_与*一样，表示斜体或粗体，但mathjax中_表示下标，因此：&lt;br&gt;
+　　mathjax中换行\，在markdown中写成\\&lt;br&gt;
+　　mathjax中下标_，在markdown改写成_&lt;br&gt;
+　　mathjax中下标{，在markdo
     
     </summary>
     
@@ -518,16 +561,28 @@
     <published>2017-07-19T01:19:16.000Z</published>
     <updated>2017-07-20T00:37:08.976Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="关联规则"><a href="#关联规则" class="headerlink" title="关联规则"></a><strong>关联规则</strong></h2><p>　　关联规则就是有关联的规则，形式可以定义为：两个 <strong>不相交</strong> 的非空集合X、Y，如果有X-&gt;Y，就说X-&gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度(confidence)来描述。<br><a id="more"></a><br>　　支持度的定义：<script type="math/tex">support(X–>Y) = \frac{|X \cap Y|}{N}</script>集合X与集合Y中的项在一条记录中同时出现的次数/数据记录的个数。<br>　　自信度的定义：<script type="math/tex">confidence(X->Y)=\frac{|X \cap Y|}{|X|}</script>表示集合X与集合Y中的项在一条记录中同时出现的次数/集合X出现的个数。<br>　　上述所讲的支持度和自信度都是相对的支持度和自信度，不是绝对支持度，绝对支持度为：<script type="math/tex">abs\_support=N*support,　N为数据记录数</script>　　支持度和自信度越高，说明规则越强，关联规则挖掘就是挖掘出满足一定强度的规则。<br><strong>项集</strong>：属性名称集合。比如，{a,b},{c},{a,d}<br>如果一个项集同时满足最小支持度阈值和最小置信度阈值，则认为这个项集的关联规则是有趣的。</p>
+    <content type="html"><![CDATA[<h2><strong>关联规则</strong></h2>
+<p>关联规则就是有关联的规则，形式可以定义为：两个 <strong>不相交</strong> 的非空集合X、Y，如果有X-&gt;Y，就说X-&gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度(confidence)来描述。<br>
+&lt;!--more--&gt;<br>
+　　支持度的定义：$$support(X–&gt;Y) = \frac{|X \cap Y|}{N}$$集合X与集合Y中的项在一条记录中同时出现的次数/数据记录的个数。<br>
+　　自信度的定义：$$confidence(X-&gt;Y)=\frac{|X \cap Y|}{|X|}$$表示集合X与集合Y中的项在一条记录中同时出现的次数/集合X出现的个数。<br>
+　　上述所讲的支持度和自信度都是相对的支持度和自信度，不是绝对支持度，绝对支持度为：$$abs_support=N*support,　N为数据记录数$$　　支持度和自信度越高，说明规则越强，关联规则挖掘就是挖掘出满足一定强度的规则。<br>
+<strong>项集</strong>：属性名称集合。比如，{a,b},{c},{a,d}
+如果一个项集同时满足最小支持度阈值和最小置信度阈值，则认为这个项集的关联规则是有趣的。</p>
 <p><strong>频繁项集</strong>：满足最小支持度的项集。</p>
-<p>如果一个项集{a,b}是频繁的，那么它的所有子集{a}也是频繁的。<br>如果一个项集{a,b}是不频繁的，那么它的所有超集{a,b,c}也是不频繁的。</p>
-<h4 id="Apriori是找频繁项集的算法"><a href="#Apriori是找频繁项集的算法" class="headerlink" title="Apriori是找频繁项集的算法"></a><strong>Apriori是找频繁项集的算法</strong></h4><p>　　Apriori算法：使用候选项集找频繁项集。Apriori算法是一种最有影响的挖掘布尔关联规则频繁项集的算法。其核心是基于两阶段频集思想的递推算法。该关联规则在分类上属于单维、单层、布尔关联规则。</p>
+<p>如果一个项集{a,b}是频繁的，那么它的所有子集{a}也是频繁的。
+如果一个项集{a,b}是不频繁的，那么它的所有超集{a,b,c}也是不频繁的。</p>
+<h4><strong>Apriori是找频繁项集的算法</strong></h4>
+<p>Apriori算法：使用候选项集找频繁项集。Apriori算法是一种最有影响的挖掘布尔关联规则频繁项集的算法。其核心是基于两阶段频集思想的递推算法。该关联规则在分类上属于单维、单层、布尔关联规则。</p>
 <ol>
 <li>统计一个元素项集出现的频数，找出不小于最小支持度的项集，得到 频繁1-项集。令k=2</li>
 <li>根据第k-1步生成的 频繁(k-1)-项集 生成 侯选k-项集，然后对数据库进行搜索，得到 侯选k-项集 的支持度，与最小支持度进行比较，从而找到 频繁k-项集，删除 侯选k-项集 中 不频繁k-项集。</li>
-<li>如果没有 频繁k-项集 生成，则停止，返回 频繁(k-1)-项集 作为 最大频繁项集；<br>否则，k = k+1，返回步骤2</li>
+<li>如果没有 频繁k-项集 生成，则停止，返回 频繁(k-1)-项集 作为 最大频繁项集；
+否则，k = k+1，返回步骤2</li>
 </ol>
-<p><strong>优点</strong>：<br>简单，易理解，没有复杂的理论推导<br><strong>缺点</strong>：</p>
+<p><strong>优点</strong>：
+简单，易理解，没有复杂的理论推导
+<strong>缺点</strong>：</p>
 <ol>
 <li>每一步产生侯选项集时循环产生的组合过多，没有排除不应该参与组合的元素</li>
 <li>每次计算项集的支持度时，都会对数据库的全部记录进行扫描比较，I/O开销大</li>
@@ -537,7 +592,8 @@
     
     <summary type="html">
     
-      &lt;h2 id=&quot;关联规则&quot;&gt;&lt;a href=&quot;#关联规则&quot; class=&quot;headerlink&quot; title=&quot;关联规则&quot;&gt;&lt;/a&gt;&lt;strong&gt;关联规则&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;　　关联规则就是有关联的规则，形式可以定义为：两个 &lt;strong&gt;不相交&lt;/strong&gt; 的非空集合X、Y，如果有X-&amp;gt;Y，就说X-&amp;gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度(confidence)来描述。&lt;br&gt;
+      &lt;h2&gt;&lt;strong&gt;关联规则&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;关联规则就是有关联的规则，形式可以定义为：两个 &lt;strong&gt;不相交&lt;/strong&gt; 的非空集合X、Y，如果有X-&amp;gt;Y，就说X-&amp;gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度
     
     </summary>
     
@@ -605,20 +661,26 @@ echo  U盘隐藏文件夹恢复&lt;br&gt;
     <published>2017-03-04T14:13:00.000Z</published>
     <updated>2017-07-20T00:37:11.393Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.<br><a id="more"></a></p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.
+&lt;!--more--&gt;</p>
+<h2>Quick Start</h2>
+<h3>Create a new post</h3>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure></p>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<h3>Run server</h3>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<h3>Generate static files</h3>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure></p>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<h3>Deploy to remote sites</h3>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure></p>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.io/docs/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;documentation&lt;/a&gt; for more info. If you get any problems when using Hexo, you can find the answer in &lt;a href=&quot;https://hexo.io/docs/troubleshooting.html&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;troubleshooting&lt;/a&gt; or you can ask me on &lt;a href=&quot;https://github.com/hexojs/hexo/issues&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;GitHub&lt;/a&gt;.&lt;br&gt;
+      &lt;p&gt;Welcome to &lt;a href=&quot;https://hexo.io/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;Hexo&lt;/a&gt;! This is your very first post. Check &lt;a href=&quot;https://hexo.
     
     </summary>
     
