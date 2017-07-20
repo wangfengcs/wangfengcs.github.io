@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -113,17 +113,17 @@
 
 
 
-<meta name="description" content="关联规则">
+<meta name="description" content="关联规则 关联规则就是有关联的规则，形式可以定义为：两个 不相交 的非空集合X、Y，如果有X-&amp;gt;Y，就说X-&amp;gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度(confidence)来描述。 &amp;lt;!--more--&amp;gt; 　　支持度的定义：$$support(X–&amp;gt;Y) = \frac{|X \cap Y|}{N}$$集合X与集合Y中的项在一条记录中同时出">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关联规则">
 <meta property="og:url" content="http://wangfengcs.github.io/2017/07/19/关联规则/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="关联规则">
-<meta property="og:updated_time" content="2017-07-19T10:27:36.901Z">
+<meta property="og:description" content="关联规则 关联规则就是有关联的规则，形式可以定义为：两个 不相交 的非空集合X、Y，如果有X-&amp;gt;Y，就说X-&amp;gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度(confidence)来描述。 &amp;lt;!--more--&amp;gt; 　　支持度的定义：$$support(X–&amp;gt;Y) = \frac{|X \cap Y|}{N}$$集合X与集合Y中的项在一条记录中同时出">
+<meta property="og:updated_time" content="2017-07-20T00:30:14.699Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关联规则">
-<meta name="twitter:description" content="关联规则">
+<meta name="twitter:description" content="关联规则 关联规则就是有关联的规则，形式可以定义为：两个 不相交 的非空集合X、Y，如果有X-&amp;gt;Y，就说X-&amp;gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度(confidence)来描述。 &amp;lt;!--more--&amp;gt; 　　支持度的定义：$$support(X–&amp;gt;Y) = \frac{|X \cap Y|}{N}$$集合X与集合Y中的项在一条记录中同时出">
 
 
 
@@ -157,13 +157,13 @@
 
 
 
-  <title>关联规则 | 我的博客</title>
+  <title>关联规则 | 我的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
-<script>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><script>
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '',
@@ -423,17 +423,28 @@
       
 
       
-        <h2 id="关联规则"><a href="#关联规则" class="headerlink" title="关联规则"></a><strong>关联规则</strong></h2><a id="more"></a>
-<p>　　关联规则就是有关联的规则，形式可以定义为：两个 <strong>不相交</strong> 的非空集合X、Y，如果有X-&gt;Y，就说X-&gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度(confidence)来描述。<br>　　支持度的定义：$$support(X–&gt;Y) = \frac{|X \cap Y|}{N}$$集合X与集合Y中的项在一条记录中同时出现的次数/数据记录的个数。<br>　　自信度的定义：$$confidence(X-&gt;Y)=\frac{|X \cap Y|}{|X|}$$表示集合X与集合Y中的项在一条记录中同时出现的次数/集合X出现的个数。<br>　　上述所讲的支持度和自信度都是相对的支持度和自信度，不是绝对支持度，绝对支持度为：$$abs_support=N<em>support,　N为数据记录数$$　　支持度和自信度越高，说明规则越强，关联规则挖掘就是挖掘出满足一定强度的规则。<br><em>*项集</em></em>：属性名称集合。比如，{a,b},{c},{a,d}<br>如果一个项集同时满足最小支持度阈值和最小置信度阈值，则认为这个项集的关联规则是有趣的。</p>
+        <h2><strong>关联规则</strong></h2>
+<p>关联规则就是有关联的规则，形式可以定义为：两个 <strong>不相交</strong> 的非空集合X、Y，如果有X-&gt;Y，就说X-&gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度(confidence)来描述。<br>
+&lt;!--more--&gt;<br>
+　　支持度的定义：$$support(X–&gt;Y) = \frac{|X \cap Y|}{N}$$集合X与集合Y中的项在一条记录中同时出现的次数/数据记录的个数。<br>
+　　自信度的定义：$$confidence(X-&gt;Y)=\frac{|X \cap Y|}{|X|}$$表示集合X与集合Y中的项在一条记录中同时出现的次数/集合X出现的个数。<br>
+　　上述所讲的支持度和自信度都是相对的支持度和自信度，不是绝对支持度，绝对支持度为：$$abs_support=N*support,　N为数据记录数$$　　支持度和自信度越高，说明规则越强，关联规则挖掘就是挖掘出满足一定强度的规则。<br>
+<strong>项集</strong>：属性名称集合。比如，{a,b},{c},{a,d}
+如果一个项集同时满足最小支持度阈值和最小置信度阈值，则认为这个项集的关联规则是有趣的。</p>
 <p><strong>频繁项集</strong>：满足最小支持度的项集。</p>
-<p>如果一个项集{a,b}是频繁的，那么它的所有子集{a}也是频繁的。<br>如果一个项集{a,b}是不频繁的，那么它的所有超集{a,b,c}也是不频繁的。</p>
-<h4 id="Apriori是找频繁项集的算法"><a href="#Apriori是找频繁项集的算法" class="headerlink" title="Apriori是找频繁项集的算法"></a><strong>Apriori是找频繁项集的算法</strong></h4><p>　　Apriori算法：使用候选项集找频繁项集。Apriori算法是一种最有影响的挖掘布尔关联规则频繁项集的算法。其核心是基于两阶段频集思想的递推算法。该关联规则在分类上属于单维、单层、布尔关联规则。</p>
+<p>如果一个项集{a,b}是频繁的，那么它的所有子集{a}也是频繁的。
+如果一个项集{a,b}是不频繁的，那么它的所有超集{a,b,c}也是不频繁的。</p>
+<h4><strong>Apriori是找频繁项集的算法</strong></h4>
+<p>Apriori算法：使用候选项集找频繁项集。Apriori算法是一种最有影响的挖掘布尔关联规则频繁项集的算法。其核心是基于两阶段频集思想的递推算法。该关联规则在分类上属于单维、单层、布尔关联规则。</p>
 <ol>
 <li>统计一个元素项集出现的频数，找出不小于最小支持度的项集，得到 频繁1-项集。令k=2</li>
 <li>根据第k-1步生成的 频繁(k-1)-项集 生成 侯选k-项集，然后对数据库进行搜索，得到 侯选k-项集 的支持度，与最小支持度进行比较，从而找到 频繁k-项集，删除 侯选k-项集 中 不频繁k-项集。</li>
-<li>如果没有 频繁k-项集 生成，则停止，返回 频繁(k-1)-项集 作为 最大频繁项集；<br>否则，k = k+1，返回步骤2</li>
+<li>如果没有 频繁k-项集 生成，则停止，返回 频繁(k-1)-项集 作为 最大频繁项集；
+否则，k = k+1，返回步骤2</li>
 </ol>
-<p><strong>优点</strong>：<br>简单，易理解，没有复杂的理论推导<br><strong>缺点</strong>：</p>
+<p><strong>优点</strong>：
+简单，易理解，没有复杂的理论推导
+<strong>缺点</strong>：</p>
 <ol>
 <li>每一步产生侯选项集时循环产生的组合过多，没有排除不应该参与组合的元素</li>
 <li>每次计算项集的支持度时，都会对数据库的全部记录进行扫描比较，I/O开销大</li>
@@ -627,7 +638,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#关联规则"><span class="nav-number">1.</span> <span class="nav-text">关联规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#Apriori是找频繁项集的算法"><span class="nav-number">1.0.1.</span> <span class="nav-text">Apriori是找频繁项集的算法</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">关联规则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.0.1.</span> <span class="nav-text">Apriori是找频繁项集的算法</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
@@ -1135,7 +1146,24 @@
         onPopupClose();
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
@@ -1148,26 +1176,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 

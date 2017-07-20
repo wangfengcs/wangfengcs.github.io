@@ -7,7 +7,7 @@
 
 <html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 
@@ -113,16 +113,16 @@
 
 
 
-<meta name="description" content="当U盘文件变成快捷方式时，使用下面的代码解决：">
+<meta name="description" content="当U盘文件变成快捷方式时，使用下面的代码解决： &amp;lt;!--more--&amp;gt; @echo off echo============================================ echo. echo  U盘隐藏文件夹恢复 echo. echo============================================ pause rem echo 列出目录 di">
 <meta property="og:type" content="article">
 <meta property="og:title" content="U盘快捷方式病毒处理方法">
 <meta property="og:url" content="http://wangfengcs.github.io/2017/07/16/U盘快捷方式病毒处理方法/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="当U盘文件变成快捷方式时，使用下面的代码解决：">
-<meta property="og:updated_time" content="2017-07-16T14:16:46.329Z">
+<meta property="og:description" content="当U盘文件变成快捷方式时，使用下面的代码解决： &amp;lt;!--more--&amp;gt; @echo off echo============================================ echo. echo  U盘隐藏文件夹恢复 echo. echo============================================ pause rem echo 列出目录 di">
+<meta property="og:updated_time" content="2017-07-20T00:32:59.480Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="U盘快捷方式病毒处理方法">
-<meta name="twitter:description" content="当U盘文件变成快捷方式时，使用下面的代码解决：">
+<meta name="twitter:description" content="当U盘文件变成快捷方式时，使用下面的代码解决： &amp;lt;!--more--&amp;gt; @echo off echo============================================ echo. echo  U盘隐藏文件夹恢复 echo. echo============================================ pause rem echo 列出目录 di">
 
 
 
@@ -156,13 +156,13 @@
 
 
 
-  <title>U盘快捷方式病毒处理方法 | 我的博客</title>
+  <title>U盘快捷方式病毒处理方法 | 我的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
-<script>
+<!-- hexo-inject:begin --><!-- hexo-inject:end --><script>
   window.fbAsyncInit = function() {
     FB.init({
       appId      : '',
@@ -422,9 +422,33 @@
       
 
       
-        <p>当U盘文件变成快捷方式时，使用下面的代码解决：<br><a id="more"></a><br><br>@echo off<br>echo============================================<br>echo.<br>echo  U盘隐藏文件夹恢复<br>echo.<br>echo============================================<br><br>pause<br><br>rem echo 列出目录<br><br>dir /a:d /b &gt;yxkmp4dir.txt<br><br>rem echo 列出目录外的所有文件<br><br>rem dir /a:s /a:-d /b<br><br>for /f “tokens=* delims= “ %%i in (yxkmp4dir.txt) do call :ss “%%i”</p>
-<p><br>del yxkmp4dir.txt<br><br>echo.<br><br>echo 全部修复完成,谢谢你的使用!<br><br>echo.<br><br>pause<br><br>goto :eof<br><br>:ss<br><br>set var=%1<br><br>echo 正在修复文件夹 %var%  …<br><br>attrib -s -h -r  %var%</p>
-<p>goto :eof<br><br>将文件后缀改为bat,双击运行<br><br>除此之外，可以通过在文件夹选项中，选择显示全部隐藏文件，可以显示被隐藏的文件。</p>
+        <p>当U盘文件变成快捷方式时，使用下面的代码解决：
+&lt;!--more--&gt;<br>
+@echo off
+echo============================================<br>
+echo.<br>
+echo  U盘隐藏文件夹恢复<br>
+echo.<br>
+echo============================================<br>
+pause<br>
+rem echo 列出目录
+dir /a:d /b &gt;yxkmp4dir.txt<br>
+rem echo 列出目录外的所有文件<br>
+rem dir /a:s /a:-d /b<br>
+for /f &quot;tokens=* delims= &quot; %%i in (yxkmp4dir.txt) do call :ss &quot;%%i&quot;</p>
+<p>del yxkmp4dir.txt<br>
+echo.<br>
+echo 全部修复完成,谢谢你的使用!<br>
+echo.<br>
+pause<br>
+goto :eof<br>
+:ss<br>
+set var=%1<br>
+echo 正在修复文件夹 %var%  ...<br>
+attrib -s -h -r  %var%</p>
+<p>goto :eof<br>
+将文件后缀改为bat,双击运行<br>
+除此之外，可以通过在文件夹选项中，选择显示全部隐藏文件，可以显示被隐藏的文件。</p>
 
       
     </div>
@@ -1090,7 +1114,24 @@
         onPopupClose();
       }
     });
-  </script>
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
 
@@ -1103,26 +1144,6 @@
   
 
   
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
   
 
 
