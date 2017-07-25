@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangfengcs.github.io/"/>
-  <updated>2017-07-24T07:34:52.664Z</updated>
+  <updated>2017-07-25T04:10:35.367Z</updated>
   <id>http://wangfengcs.github.io/</id>
   
   <author>
@@ -16,11 +16,69 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>朴素贝叶斯</title>
+    <link href="http://wangfengcs.github.io/2017/03/01/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/"/>
+    <id>http://wangfengcs.github.io/2017/03/01/朴素贝叶斯/</id>
+    <published>2017-03-01T01:06:54.000Z</published>
+    <updated>2017-07-25T04:10:35.367Z</updated>
+    
+    <content type="html"><![CDATA[<h2>贝叶斯</h2>
+<h2>朴素贝叶斯</h2>
+<p>朴素贝叶斯是基于贝叶斯定理和属性条件独立的分类器。其中，”朴素”指的是一个很naive的假设，即属性条件独立。
+$$\begin{align} y&amp;=argmax_kP(c_k|x)\\ &amp;=argmax_k\frac{P(c_k)P(x|c_k)}{P(x)}\\ &amp;=argmax_kP(c_k)P(x|c_k)\\ &amp;=argmax_kP(c_k)\prod_{j=1}^DP(x^{(j)}|c_k)\\ &amp;=argmax_kP(c_k)\prod_{j=1}^D\frac{P(x^{(j)},c_k)}{P(c_k)}\\ &amp;=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)}N \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)}{\sum_{i=1}^NI(y_i=c_k)}\\ &amp;=argmax_k\frac{N_k}{N}\prod_{j=1}^{D}\frac{N_k^{x^{(j)}}}{N_k} \end{align}$$</p>
+<p>上式第3步，因为分母于参数k无关，故舍去<br>
+上式第4步，因为naive，故属性条件独立</p>
+<p>$x$表示需要预测的属性值向量，是values<br>
+$y$表示预测的类别值，是values<br>
+$D$表示属性个数<br>
+$D^{(j)}$表示第j个属性的取值数<br>
+$K$表示类别个数<br>
+$N$表示样本量<br>
+$N_k$表示属于k类的样本量<br>
+$N^{x^{(j)}}_k$表示属于k类，且第j个属性值为$x^{(j)}$的样本量<br>
+$x^{(j)}_i$表示第i个样例的第j个属性，是key<br>
+$x^{(j)}$表示x的第j个属性值，是value</p>
+<h2>平滑</h2>
+<p>当数据量较小时，很容易出现$N^{x^{(j)}}_k$为0的情况，因此需要做平滑。</p>
+<p>具体来说，<br>
+$$\begin{align} y&amp;=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)}N \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)}{\sum_{i=1}^NI(y_i=c_k)}\\ &amp;=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)+\lambda}{N+\lambda K} \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)+\lambda}{\sum_{i=1}^NI(y_i=c_k)+\lambda D^{(j)}}\\ &amp;=argmax_k\frac{N_k+\lambda}{N+\lambda K}\prod_{j=1}^{D}\frac{N_k^{x^{(j)}}+\lambda}{N_k+\lambda D^{(j)}} \end{align}$$</p>
+<h2>预测时，最大后验概率的意义</h2>
+<p>再次强调，模型已经通过ML或者MAP估计好了，这里是预测时，朴素贝叶斯将实例分到后验概率最大的类中，等价于期望风险最小化。<br>
+$X$是输入随机向量，$Y$是输出随机变量<br>
+损失函数为0-1损失：<br>
+$L(Y,f(X))= \begin{cases} 1, \ Y=f(X) \\ 0, \ Y\neq f(X) \end{cases} $<br>
+则期望损失为：
+$R_{exp}(f)=E_{X\times Y}[L(Y,f(X))]$<br>
+将期望损失分解成$P(Y|X)$条件期望的内部，和$P(X)$的外部形式:
+$\begin{align} R_{exp}(f) &amp;=E_{X\times Y}[L(Y,f(X))] \\ &amp;=\iint_{X\times Y}L(Y,f(X))P(Y,X)\\ &amp;=\iint_{X\times Y}L(Y,f(X))P(Y|X)P(X)\\ &amp;=\int_X\left\{\int_YL(Y,f(X))P(Y|X)\right\}P(X)\\ &amp;=\int_X\left\{\sum_{k=1}^KL(c_k,f(X))P(Y=c_k|X)\right\}P(X)\end{align}$</p>
+<p>当数据给定后，$P(X)$为定值，且不影响期望损失($f$的泛函)中对$f$的选择。<br>
+因此，为了使期望损失最小，只需要使得条件期望部分最小即可，具体来说，就是对$X=x$逐个极小化。
+$$\begin{align} \hat f(x)&amp;=argmin_{f(x)}\sum_{k=1}^KL(c_k,f(x))P(Y=c_k|X=x) \\ &amp;=argmin_y\sum_{k=1}^KL(c_k,y)P(Y=c_k|X=x) \\ &amp;=argmin_y\sum_{k=1}^KL(c_k,y)P(c_k|X=x) \\ &amp;=argmin_y\sum_{k=1}^KP(y\neq c_k|X=x) \\ &amp;=argmin_y\left\{1-\sum_{k=1}^KP(y=c_k|X=x)\right\} \\ &amp;=argmin_y\left\{1-P(y=c_k|X=x)\right\} \\ &amp;=argmax_yP(y=c_k|X=x) \\ &amp;=argmax_{c_k}P(Y=c_k|X=x) \end{align}$$<br>
+因此，期望风险最小等同于后验概率最大化。</p>
+<h2>Reference</h2>
+<p>PRML</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2&gt;贝叶斯&lt;/h2&gt;
+&lt;h2&gt;朴素贝叶斯&lt;/h2&gt;
+&lt;p&gt;朴素贝叶斯是基于贝叶斯定理和属性条件独立的分类器。其中，”朴素”指的是一个很naive的假设，即属性条件独立。
+$$\begin{align} y&amp;amp;=argmax_kP(c_k|x)\\ &amp;amp;=argma
+    
+    </summary>
+    
+    
+      <category term="机器学习" scheme="http://wangfengcs.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>关于建模和模型评价的一些总结</title>
-    <link href="http://wangfengcs.github.io/2017/07/24/%E5%85%B3%E4%BA%8E%E5%BB%BA%E6%A8%A1%E5%92%8C%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BB%B7%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/"/>
-    <id>http://wangfengcs.github.io/2017/07/24/关于建模和模型评价的一些总结/</id>
-    <published>2017-07-24T01:53:32.000Z</published>
-    <updated>2017-07-24T07:34:52.664Z</updated>
+    <link href="http://wangfengcs.github.io/2017/02/24/%E5%85%B3%E4%BA%8E%E5%BB%BA%E6%A8%A1%E5%92%8C%E6%A8%A1%E5%9E%8B%E8%AF%84%E4%BB%B7%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%BB%E7%BB%93/"/>
+    <id>http://wangfengcs.github.io/2017/02/24/关于建模和模型评价的一些总结/</id>
+    <published>2017-02-24T01:53:32.000Z</published>
+    <updated>2017-07-25T01:14:19.716Z</updated>
     
     <content type="html"><![CDATA[<h2><strong>模型评估方法</strong></h2>
 <h3>网格搜索调参</h3>
@@ -147,7 +205,7 @@ lasso的解是稀疏的，如sparse coding， compressed sensing</p>
 <li>准确率一般比生成模型高</li>
 <li>可以对原数据X进行特征的变化，例如降维，特征选择</li>
 </ol>
-<p><img src="/2017/07/24/关于建模和模型评价的一些总结/产生式和判别式.jpg" alt="产生式和判别式.jpg" title=""></p>
+<p><img src="/2017/02/24/关于建模和模型评价的一些总结/产生式和判别式.jpg" alt="产生式和判别式.jpg" title=""></p>
 <h3>Reference</h3>
 <p>http://blog.csdn.net/zouxy09/article/details/8195017
 https://zhengyangcs.github.io/2016/08/19/模型综述/</p>
@@ -225,7 +283,7 @@ https://zhengyangcs.github.io/2016/08/19/模型综述/</p>
     <link href="http://wangfengcs.github.io/2017/02/04/Mathjax%E8%AF%AD%E6%B3%95%E6%80%BB%E7%BB%93/"/>
     <id>http://wangfengcs.github.io/2017/02/04/Mathjax语法总结/</id>
     <published>2017-02-04T10:32:55.000Z</published>
-    <updated>2017-07-20T07:24:56.002Z</updated>
+    <updated>2017-07-25T01:59:58.351Z</updated>
     
     <content type="html"><![CDATA[<p>hexo写markdown中_与*一样，表示斜体或粗体，但mathjax中_表示下标，因此：<br>
 　　mathjax中换行\，在markdown中写成\\<br>
@@ -731,7 +789,7 @@ n=3, if\ x\ is\ 0
 <h3>矩阵</h3>
 <p>$$\begin{pmatrix}   1 &amp; a_1 &amp; a_1^2 &amp; \cdots &amp; a_1^n \\    1 &amp; a_2 &amp; a_2^2 &amp; \cdots &amp; a_2^n \\     \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\     1 &amp; a_n &amp; a_n^2 &amp; \cdots &amp; a_n^n      \end{pmatrix}$$</p>
 <h3>推导1</h3>
-<p>$\begin{align}E&amp;=\sum_{n=1}^{N}exp{-t_nf_{m-1}(\mathbf{x_n})-\frac12t_n\alpha_my_m(\mathbf{x_n})}\\ &amp; =\sum_{n=1}^{N}w_n^{(m)}exp\left\{-\frac12t_n\alpha_my_m(\mathbf{x_n})\right\} \end{align}$</p>
+<p>$\begin{align} E&amp;=\sum_{n=1}^{N}exp{-t_nf_{m-1}(\mathbf{x_n})-\frac12t_n\alpha_my_m(\mathbf{x_n})}\\ &amp; =\sum_{n=1}^{N}w_n^{(m)}exp\left\{-\frac12t_n\alpha_my_m(\mathbf{x_n})\right\} \end{align}$</p>
 <h3>推导2</h3>
 <p>$\begin{align} \sqrt{37} &amp; = \sqrt{\frac{73^2-1}{12^2}} \\  &amp; = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\  &amp; = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\  &amp; = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \\  &amp; \approx \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right) \end{align}$</p>
 <h3>Reference</h3>

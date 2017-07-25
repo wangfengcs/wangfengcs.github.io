@@ -95,7 +95,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="工具书，机器学习," />
 
 
 
@@ -113,15 +113,19 @@
 
 
 
-<meta name="description" content="life is great">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的博客">
-<meta property="og:url" content="http://wangfengcs.github.io/categories/工具书/index.html">
+<meta name="description" content="模型评估方法 网格搜索调参 在训练集上训练模型，根据验证集上的结果调参。调好参数后，在测试集上得到测试误差。  将数据集分为训练集，验证集，测试集 将参数网格化，每一个交叉点都是一组参数 遍历每个网格参数，在训练集上训练模型，在验证集上得到与网格参数对应的验证误差 挑选最小的验证误差所对应的那个网格参数，作为最优的参数 用最优参数设置模型，在训练集?验证集上训练，得到训练误差，在测试集上得到测试误">
+<meta name="keywords" content="工具书，机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="关于建模和模型评价的一些总结">
+<meta property="og:url" content="http://wangfengcs.github.io/2017/02/24/关于建模和模型评价的一些总结/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="life is great">
+<meta property="og:description" content="模型评估方法 网格搜索调参 在训练集上训练模型，根据验证集上的结果调参。调好参数后，在测试集上得到测试误差。  将数据集分为训练集，验证集，测试集 将参数网格化，每一个交叉点都是一组参数 遍历每个网格参数，在训练集上训练模型，在验证集上得到与网格参数对应的验证误差 挑选最小的验证误差所对应的那个网格参数，作为最优的参数 用最优参数设置模型，在训练集?验证集上训练，得到训练误差，在测试集上得到测试误">
+<meta property="og:image" content="http://wangfengcs.github.io/2017/02/24/关于建模和模型评价的一些总结/产生式和判别式.jpg">
+<meta property="og:updated_time" content="2017-07-25T01:14:19.716Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的博客">
-<meta name="twitter:description" content="life is great">
+<meta name="twitter:title" content="关于建模和模型评价的一些总结">
+<meta name="twitter:description" content="模型评估方法 网格搜索调参 在训练集上训练模型，根据验证集上的结果调参。调好参数后，在测试集上得到测试误差。  将数据集分为训练集，验证集，测试集 将参数网格化，每一个交叉点都是一组参数 遍历每个网格参数，在训练集上训练模型，在验证集上得到与网格参数对应的验证误差 挑选最小的验证误差所对应的那个网格参数，作为最优的参数 用最优参数设置模型，在训练集?验证集上训练，得到训练误差，在测试集上得到测试误">
+<meta name="twitter:image" content="http://wangfengcs.github.io/2017/02/24/关于建模和模型评价的一些总结/产生式和判别式.jpg">
 
 
 
@@ -149,13 +153,13 @@
 
 
 
-  <link rel="canonical" href="http://wangfengcs.github.io/categories/工具书/"/>
+  <link rel="canonical" href="http://wangfengcs.github.io/2017/02/24/关于建模和模型评价的一些总结/"/>
 
 
 
 
 
-  <title>分类: 工具书 | 我的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>关于建模和模型评价的一些总结 | 我的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -199,7 +203,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -337,101 +341,312 @@
           <div id="content" class="content">
             
 
-  <section id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h1>工具书<small>分类</small>
-      </h1>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/02/04/Mathjax语法总结/" itemprop="url">
-              
-                <span itemprop="name">Mathjax语法总结</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-02-04T18:32:55+08:00"
-              content="2017-02-04" >
-          02-04
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/01/16/U盘快捷方式病毒处理方法/" itemprop="url">
-              
-                <span itemprop="name">U盘快捷方式病毒处理方法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-01-16T19:10:37+08:00"
-              content="2017-01-16" >
-          01-16
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/01/12/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hexo简单指令</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-01-12T22:13:00+08:00"
-              content="2017-01-12" >
-          01-12
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </section>
 
   
 
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://wangfengcs.github.io/2017/02/24/关于建模和模型评价的一些总结/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangfengcs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/touxiang2.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">关于建模和模型评价的一些总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-02-24T09:53:32+08:00">
+                2017-02-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/工具书，机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">工具书，机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/02/24/关于建模和模型评价的一些总结/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://wangfengcs.github.io/2017/02/24/关于建模和模型评价的一些总结/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2><strong>模型评估方法</strong></h2>
+<h3>网格搜索调参</h3>
+<p>在训练集上训练模型，根据验证集上的结果调参。调好参数后，在测试集上得到测试误差。</p>
+<ol>
+<li>将数据集分为训练集，验证集，测试集</li>
+<li>将参数网格化，每一个交叉点都是一组参数</li>
+<li>遍历每个网格参数，在训练集上训练模型，在验证集上得到与网格参数对应的验证误差</li>
+<li>挑选最小的验证误差所对应的那个网格参数，作为最优的参数</li>
+<li>用最优参数设置模型，在训练集?验证集上训练，得到训练误差，在测试集上得到测试误差。<br>
+　　因为模型参数的选择是依赖于验证集，而模型对于测试集是没有依赖的，所以在测试上的准确率一般来说会比验证集低一些。</li>
+</ol>
+<h3>交叉验证 &amp; 估计期望泛化误差</h3>
+<p>用交叉验证的目的是为了得到可靠稳定的模型。如果已经调好参了，且得到的估计的期望泛化误差比较大，那么说明模型不太适用，就可以考虑做一些特征变化或换模型了。
+在非测试集上交叉验证，用MSE估计期望泛化误差，在测试集上得到测试误差</p>
+<ol>
+<li>将数据集分为非测试集和测试集</li>
+<li>在将非测试集分为k份，其中k-1份作为训练集，另一份作为验证集</li>
+<li>在训练集上训练模型，得到一个训练误差，在验证集上测试，得到一个验证误差。</li>
+<li>共训练了k个模型，得到k个训练误差和k个验证误差。用k个验证误差的平均来估计期望泛化误差。</li>
+<li>在非测试集上训练模型，得到训练误差，在测试集上测试模型，得到测试误差。</li>
+</ol>
+<p>为了减小因样本划分不同而引起的差别，k折交叉验证通常要随机使用不同的划分重复p次，最终的评估结果是这p次k折交叉验证结果的平均。所以说，一共会训练pk个模型，并得到pk个验证误差。</p>
+<p><strong>如果只是为了估计模型的期望泛化误差，可以去掉验证集，并以测试集代替。</strong></p>
+<h3>网格搜索 &amp; 交叉验证</h3>
+<p>比网格搜索更稳定些，因为评价的标准不再是单个的验证误差，而是k个验证误差的平均。<br>
+在非测试集上网格搜索并交叉验证，用MSE估计期望泛化误差，调参。调好参数后，在测试集上得到测试误差。</p>
+<ol>
+<li>将数据集分为非测试集，测试集</li>
+<li>将非测试集分为k份，其中k-1份作为训练集，另一份作为验证集</li>
+<li>将参数网格化，每个交叉点都是一组参数</li>
+<li>遍历每个网格参数，进行k交叉验证，共得到k个模型，k个训练误差，k个验证误差。<strong>用k个验证误差的平均来估计期望泛化误差，作为参数选择的评判标准。</strong></li>
+<li>选择估计期望泛化误差最小所对应的一个网格参数，作为最优参数</li>
+<li>用最优参数设置模型，在非测试集上训练，得到训练误差，在测试集上得到测试误差</li>
+</ol>
+<h3>小结</h3>
+<ol>
+<li>对于给定的模型，确定了网络结构，确定了损失函数，确定了核的选择，<br>
+那么便确定了唯一的训练误差和测试误差，最优参数值的选择会根据网格搜索在验证集上确定。</li>
+<li>如果模型的所有参数都确定了，那么就可以只用训练集和测试集了。</li>
+<li>网格搜索是在验证集是调参用的。</li>
+<li>交叉验证只是用于估计期望泛化误差。可以有验证集，也可以不用验证集。如果同时要得到训练的模型，训练误差，测试误差，那么就需要有验证集。</li>
+<li>交叉验证可以使网格搜索的参数评判更准确。</li>
+<li>如果不需要调参，那么就没必要有验证集了。</li>
+</ol>
+<h2>P-R曲线 &amp; ROC曲线</h2>
+<p><strong>先列，后行</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">真实\预测</th>
+<th style="text-align:left">正例</th>
+<th style="text-align:left">反例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">正例</td>
+<td style="text-align:left"><strong>TP</strong>(True Positive)</td>
+<td style="text-align:left"><strong>FN</strong>(False Positive)</td>
+</tr>
+<tr>
+<td style="text-align:left">反例</td>
+<td style="text-align:left"><strong>FP</strong>(False Negative)</td>
+<td style="text-align:left"><strong>TN</strong>(True Negative)</td>
+</tr>
+</tbody>
+</table>
+<p>TP：正确肯定的数目；FN：漏报，没有正确找到的匹配的数目；
+FP：误报，给出的匹配是不正确的；TN：正确拒绝的非匹配对数；</p>
+<h3>P-R</h3>
+<p>TPR 计算列1 显示列<br>
+FPR 计算行1 显示行<br>
+$TPR=\frac{TP}{TP+FN}$<br>
+$FPR=\frac {FP}{FP+TN}$</p>
+<h3>准确率(Precision)，召回率(Recall)和F1-Score</h3>
+<p>(1) 准确率(precision)：正确率
+(2) 召回率(recall)：查全率
+(3) F1-Score:准确率和召回率的综合指标
+定义：
+$precision=\frac{true positive}{true positive+false negative}=\frac{true positive}{no.of predicted positive}$</p>
+<p>$recall=\frac{true positive}{true positive+false negative}=\frac{true positive}{no.of actual positve}$</p>
+<p>$F1-Score=2\times\frac{precision\times recall}{precision+recall}$</p>
+<h3>正则</h3>
+<p>正则就是在训练数据的模型上加一个惩罚项，shrink模型的参数。<br>
+lasso的解是稀疏的，如sparse coding， compressed sensing</p>
+<h3>构造目标函数</h3>
+<p>用X来构造分布，用Y来确定分布的具体值。</p>
+<ol>
+<li>构造概率函数。给定x，初始超参数，构造出一个概率函数。但此概率函数的变量是y，不是x。</li>
+<li>构造似然函数。根据真实y，得到p(y|x)概率，连乘得到似然函数</li>
+<li>优化的参数，其实是构造分布时的超参数。</li>
+</ol>
+<h3>不平衡类</h3>
+<ol>
+<li>
+<p>对多的类进行欠采样</p>
+</li>
+<li>
+<p>对少的类进行过采样</p>
+</li>
+<li>
+<p>移动阈值$\frac{y}{1-y} \gt \frac{m^+}{m^-} $即为正类</p>
+</li>
+<li>
+<p>少类的插值(kmeans聚类，然后在一个簇里面插值)</p>
+</li>
+</ol>
+<h3>生成模型 &amp; 判别模型</h3>
+<h4>生成模型</h4>
+<p>学习的是联合分布p(y,x)</p>
+<ol>
+<li>可以由联合分布p(y,x)在y上积分得到p(x)，即类条件概率p(x|y)与p(y)在y上的积分，如果p(x)的概率比较小，说明可能是异常点(outlier)，该点的分类效果可能不好。对p(x,y)在y上的积分有时比较难求，需要用MCMC抽样方法得到p(x)或变分近似p(x)。</li>
+<li>根据贝叶斯公式，p(y,x) / p(x)得到条件分布p(y|x)，即得到预测的条件分布。</li>
+<li>当样本量较多时，生成模型能更快地收敛于真实模型。</li>
+<li>可以解决存在隐变量的模型，比如GMM，HMM。</li>
+<li>需要更大的样本，做判别的时候，有些信息用不到。</li>
+</ol>
+<h4>判别模型</h4>
+<p>学习的是条件分布p(y|x)，或判别函数f(x)</p>
+<ol>
+<li>需要的样本量少于生成模型</li>
+<li>寻找的是不同类别的最优分类面</li>
+<li>准确率一般比生成模型高</li>
+<li>可以对原数据X进行特征的变化，例如降维，特征选择</li>
+</ol>
+<p><img src="/2017/02/24/关于建模和模型评价的一些总结/产生式和判别式.jpg" alt="产生式和判别式.jpg" title=""></p>
+<h3>Reference</h3>
+<p>http://blog.csdn.net/zouxy09/article/details/8195017
+https://zhengyangcs.github.io/2016/08/19/模型综述/</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/工具书，机器学习/" rel="tag"># 工具书，机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/02/10/关联规则/" rel="next" title="关联规则">
+                <i class="fa fa-chevron-left"></i> 关联规则
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/01/朴素贝叶斯/" rel="prev" title="朴素贝叶斯">
+                朴素贝叶斯 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -439,6 +654,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://wangfengcs.github.io/2017/02/24/关于建模和模型评价的一些总结/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -458,8 +684,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/touxiang2.png"
@@ -528,6 +763,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">模型评估方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">网格搜索调参</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">交叉验证 & 估计期望泛化误差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.3.</span> <span class="nav-text">网格搜索 & 交叉验证</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.4.</span> <span class="nav-text">小结</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">P-R曲线 & ROC曲线</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">P-R</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">准确率(Precision)，召回率(Recall)和F1-Score</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">正则</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.</span> <span class="nav-text">构造目标函数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.</span> <span class="nav-text">不平衡类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.6.</span> <span class="nav-text">生成模型 & 判别模型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.6.1.</span> <span class="nav-text">生成模型</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.6.2.</span> <span class="nav-text">判别模型</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.7.</span> <span class="nav-text">Reference</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -648,10 +899,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
@@ -669,6 +920,18 @@
       <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://wangfengcs.github.io/2017/02/24/关于建模和模型评价的一些总结/';
+          this.page.identifier = '2017/02/24/关于建模和模型评价的一些总结/';
+          this.page.title = '关于建模和模型评价的一些总结';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
@@ -1018,39 +1281,7 @@
         onPopupClose();
       }
     });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1068,6 +1299,18 @@
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
+
+
+
+
+
+  
+
+  
+
+  
+
+  
   
 
 
