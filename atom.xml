@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangfengcs.github.io/"/>
-  <updated>2017-07-26T08:21:03.041Z</updated>
+  <updated>2017-07-26T08:40:38.759Z</updated>
   <id>http://wangfengcs.github.io/</id>
   
   <author>
@@ -17,10 +17,10 @@
   
   <entry>
     <title>参数估计方法</title>
-    <link href="http://wangfengcs.github.io/2017/07/26/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1%E6%96%B9%E6%B3%95/"/>
-    <id>http://wangfengcs.github.io/2017/07/26/参数估计方法/</id>
-    <published>2017-07-26T02:07:38.000Z</published>
-    <updated>2017-07-26T08:21:03.041Z</updated>
+    <link href="http://wangfengcs.github.io/2017/03/16/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1%E6%96%B9%E6%B3%95/"/>
+    <id>http://wangfengcs.github.io/2017/03/16/参数估计方法/</id>
+    <published>2017-03-16T02:07:38.000Z</published>
+    <updated>2017-07-26T08:40:38.759Z</updated>
     
     <content type="html"><![CDATA[<h4>几个参数估计的策略</h4>
 <p>期望损失(expected loss) 风险函数(risk function)<br>
@@ -38,8 +38,8 @@ $$posterior=\frac{likelihood \cdot prior}{evidence}$$</p>
 <h3>最大似然ML(Maximum likelihood)估计</h3>
 <p>$$P(\theta|X)=P(X|\theta)$$
 $$posterior=likelihood$$
-在网上偶然找到一张图，可以看到在实际求解时，我们所求的往往是极大值而不是最大值。
-{ % asset_img 最大似然估计.png  %}<br>
+在网上偶然找到一张图，可以看到在实际求解时，我们所求的往往是极大值而不是最大值。</p>
+<p><img src="/2017/03/16/参数估计方法/最大似然估计.jpg" alt="最大似然估计.jpg" title=""><br>
 $$\begin{align} \hat \theta_{ML}&amp;=argmax_{\theta}logL \\ &amp;=argmax_{\theta}logP(X|\theta) \\ &amp;=argmax_{\theta}log\prod_xP(x|\theta) \\ &amp;=argmax_{\theta}\sum_xlogP(x|\theta) \\ \end{align}$$<br>
 在实际应用中，模型分判别模型和生产模型，如果模型是判别模型，则似然估计为，<br>
 $$\hat \theta_{ML}=argmax_{\theta}\sum_{i=1}^N logP(y_i|x_i,\theta)$$<br>
