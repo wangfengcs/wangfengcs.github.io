@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangfengcs.github.io/"/>
-  <updated>2017-07-25T07:29:29.535Z</updated>
+  <updated>2017-07-26T02:58:26.853Z</updated>
   <id>http://wangfengcs.github.io/</id>
   
   <author>
@@ -16,26 +16,107 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>参数估计方法</title>
+    <link href="http://wangfengcs.github.io/2017/07/26/%E5%8F%82%E6%95%B0%E4%BC%B0%E8%AE%A1%E6%96%B9%E6%B3%95/"/>
+    <id>http://wangfengcs.github.io/2017/07/26/参数估计方法/</id>
+    <published>2017-07-26T02:07:38.000Z</published>
+    <updated>2017-07-26T02:58:26.853Z</updated>
+    
+    <content type="html"><![CDATA[<h4>几个参数估计的策略</h4>
+<p>期望损失(expected loss) 风险函数(risk function)<br>
+是模型$f(X)$关于联合分布$P(X,Y)$的期望
+经验风险最小化 ERM(Empirical Risk Minimization)<br>
+是关于训练样本的平均损失
+结构风险最小化 SRM(Structural Risk Minimization)
+是加了正则项的经验风险最小化</p>
+<h4>P(x)与p(x)区别</h4>
+<p>大写$P(x)$表示概率质量函数 <strong>pmf</strong> (probability mass function)<br>
+小写$p(x)$表示概率密度函数 <strong>pdf</strong> (probability density function)</p>
+<h4>贝叶斯公式</h4>
+<p>$$P(\theta|X)=\frac{P(X|\theta) \cdot P(\theta)}{P(X)}$$<br>
+$$posterior=\frac{likelihood \cdot prior}{evidence}$$</p>
+<h3>最大似然ML(Maximum likelihood)估计</h3>
+<p>$$P(\theta|X)=P(X|\theta)$$
+$$posterior=likelihood$$
+在网上偶然找到一张图，可以看到在实际求解时，我们所求的往往是极大值而不是最大值。
+{ % asset_img 最大似然估计.png  %}<br>
+$$\begin{align} \hat \theta_{ML}&amp;=argmax_{\theta}logL \\ &amp;=argmax_{\theta}logP(X|\theta) \\ &amp;=argmax_{\theta}log\prod_xP(x|\theta) \\ &amp;=argmax_{\theta}\sum_xlogP(x|\theta) \\ \end{align}$$<br>
+在实际应用中，模型分判别模型和生产模型，如果模型是判别模型，则似然估计为，<br>
+$$\hat \theta_{ML}=argmax_{\theta}\sum_{i=1}^N logP(y_i|x_i,\theta)$$<br>
+如果模型是生成模型，则似然估计为，
+$$\hat \theta_{ML}=argmax_{\theta}\sum_{i=1}^N logP(y_i,x_i|\theta)$$</p>
+<h4>经验风险最小化 ERM(Empirical Risk Minimization)</h4>
+<p>当模型是条件概率分布，损失函数是对数损失时，判别模型的最大似然估计等同于经验风险最小化。<br>
+$$\hat \theta_{ERM}&amp;=argmin_f \frac{1}{N} \sum_{i=1}^N L(y_i,f(x_i)) &amp;=argmin_{\theta} \frac{1}{N} \sum_{i=1}^N L(y_i,P(y_i|x_i,\theta)) &amp;=argmin_(\theta) \frac{1}{N} \sum_{i=1}^N \left\{ -logP(y_i|x_i,\theta)\right\} &amp;=argmin_{\theta} \frac{1}{N} \sum_{i=1}^N logP(y_i|x_i,\theta) &amp;=argmax_{\theta} \sum_{i=1}^N logP(y_i|x_i,\theta) $$</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h4&gt;几个参数估计的策略&lt;/h4&gt;
+&lt;p&gt;期望损失(expected loss) 风险函数(risk function)&lt;br&gt;
+是模型$f(X)$关于联合分布$P(X,Y)$的期望
+经验风险最小化 ERM(Empirical Risk Minimization)&lt;br&gt;
+是关
+    
+    </summary>
+    
+      <category term="机器学习" scheme="http://wangfengcs.github.io/categories/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="机器学习" scheme="http://wangfengcs.github.io/tags/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0/"/>
+    
+  </entry>
+  
+  <entry>
     <title>朴素贝叶斯</title>
     <link href="http://wangfengcs.github.io/2017/03/03/%E6%9C%B4%E7%B4%A0%E8%B4%9D%E5%8F%B6%E6%96%AF/"/>
     <id>http://wangfengcs.github.io/2017/03/03/朴素贝叶斯/</id>
     <published>2017-03-03T01:06:54.000Z</published>
     <updated>2017-07-25T07:29:29.535Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="贝叶斯"><a href="#贝叶斯" class="headerlink" title="贝叶斯"></a>贝叶斯</h2><h2 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h2><p>朴素贝叶斯是基于贝叶斯定理和属性条件独立的分类器。其中，”朴素”指的是一个很naive的假设，即属性条件独立。</p>
-<script type="math/tex; mode=display">\begin{align} y&=argmax_kP(c_k|x)\\\\ &=argmax_k\frac{P(c_k)P(x|c_k)}{P(x)}\\\\ &=argmax_kP(c_k)P(x|c_k)\\\\ &=argmax_kP(c_k)\prod_{j=1}^DP(x^{(j)}|c_k)\\\\ &=argmax_kP(c_k)\prod_{j=1}^D\frac{P(x^{(j)},c_k)}{P(c_k)}\\\\ &=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)}N \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)}{\sum_{i=1}^NI(y_i=c_k)}\\\\ &=argmax_k\frac{N_k}{N}\prod_{j=1}^{D}\frac{N_k^{x^{(j)}}}{N_k} \end{align}</script><p>上式第3步，因为分母于参数k无关，故舍去<br>上式第4步，因为naive，故属性条件独立  </p>
-<p>$x$表示需要预测的属性值向量，是values<br>$y$表示预测的类别值，是values<br>$D$表示属性个数<br>$D^{(j)}$表示第j个属性的取值数<br>$K$表示类别个数<br>$N$表示样本量<br>$N_k$表示属于k类的样本量<br>$N^{x^{(j)}}_k$表示属于k类，且第j个属性值为$x^{(j)}$的样本量<br>$x^{(j)}_i$表示第i个样例的第j个属性，是key<br>$x^{(j)}$表示x的第j个属性值，是value  </p>
-<h2 id="平滑"><a href="#平滑" class="headerlink" title="平滑"></a>平滑</h2><p>当数据量较小时，很容易出现$N^{x^{(j)}}_k$为0的情况，因此需要做平滑。  </p>
-<p>具体来说，  </p>
-<script type="math/tex; mode=display">\begin{align} y&=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)}N \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)}{\sum_{i=1}^NI(y_i=c_k)}\\\\ &=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)+\lambda}{N+\lambda K} \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)+\lambda}{\sum_{i=1}^NI(y_i=c_k)+\lambda D^{(j)}}\\\\ &=argmax_k\frac{N_k+\lambda}{N+\lambda K}\prod_{j=1}^{D}\frac{N_k^{x^{(j)}}+\lambda}{N_k+\lambda D^{(j)}} \end{align}</script><h2 id="预测时，最大后验概率的意义"><a href="#预测时，最大后验概率的意义" class="headerlink" title="预测时，最大后验概率的意义"></a>预测时，最大后验概率的意义</h2><p>再次强调，模型已经通过ML或者MAP估计好了，这里是预测时，朴素贝叶斯将实例分到后验概率最大的类中，等价于期望风险最小化。<br>$X$是输入随机向量，$Y$是输出随机变量<br>损失函数为0-1损失：<br>$L(Y,f(X))= \begin{cases} 1, \ Y=f(X) \\ 0, \ Y\neq f(X) \end{cases} $<br>则期望损失为：<br>$R<em>{exp}(f)=E</em>{X\times Y}[L(Y,f(X))]$<br>将期望损失分解成$P(Y|X)$条件期望的内部，和$P(X)$的外部形式:<br>$\begin{align} R<em>{exp}(f) &amp;=E</em>{X\times Y}[L(Y,f(X))] \\ &amp;=\iint<em>{X\times Y}L(Y,f(X))P(Y,X)\\ &amp;=\iint</em>{X\times Y}L(Y,f(X))P(Y|X)P(X)\\ &amp;=\int<em>X\left\{\int_YL(Y,f(X))P(Y|X)\right\}P(X)\\ &amp;=\int_X\left\{\sum</em>{k=1}^KL(c_k,f(X))P(Y=c_k|X)\right\}P(X)\end{align}$</p>
-<p>当数据给定后，$P(X)$为定值，且不影响期望损失($f$的泛函)中对$f$的选择。<br>因此，为了使期望损失最小，只需要使得条件期望部分最小即可，具体来说，就是对$X=x$逐个极小化。</p>
-<script type="math/tex; mode=display">\begin{align} \hat f(x)&=argmin_{f(x)}\sum_{k=1}^KL(c_k,f(x))P(Y=c_k|X=x) \\\\ &=argmin_y\sum_{k=1}^KL(c_k,y)P(Y=c_k|X=x) \\\\ &=argmin_y\sum_{k=1}^KL(c_k,y)P(c_k|X=x) \\\\ &=argmin_y\sum_{k=1}^KP(y\neq c_k|X=x) \\\\ &=argmin_y\left\\{1-\sum_{k=1}^KP(y=c_k|X=x)\right\\} \\\\ &=argmin_y\left\\{1-P(y=c_k|X=x)\right\\} \\\\ &=argmax_yP(y=c_k|X=x) \\\\ &=argmax_{c_k}P(Y=c_k|X=x) \end{align}</script><p>因此，期望风险最小等同于后验概率最大化。  </p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>PRML</p>
+    <content type="html"><![CDATA[<h2>贝叶斯</h2>
+<h2>朴素贝叶斯</h2>
+<p>朴素贝叶斯是基于贝叶斯定理和属性条件独立的分类器。其中，”朴素”指的是一个很naive的假设，即属性条件独立。
+$$\begin{align} y&amp;=argmax_kP(c_k|x)\\ &amp;=argmax_k\frac{P(c_k)P(x|c_k)}{P(x)}\\ &amp;=argmax_kP(c_k)P(x|c_k)\\ &amp;=argmax_kP(c_k)\prod_{j=1}^DP(x^{(j)}|c_k)\\ &amp;=argmax_kP(c_k)\prod_{j=1}^D\frac{P(x^{(j)},c_k)}{P(c_k)}\\ &amp;=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)}N \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)}{\sum_{i=1}^NI(y_i=c_k)}\\ &amp;=argmax_k\frac{N_k}{N}\prod_{j=1}^{D}\frac{N_k^{x^{(j)}}}{N_k} \end{align}$$</p>
+<p>上式第3步，因为分母于参数k无关，故舍去<br>
+上式第4步，因为naive，故属性条件独立</p>
+<p>$x$表示需要预测的属性值向量，是values<br>
+$y$表示预测的类别值，是values<br>
+$D$表示属性个数<br>
+$D^{(j)}$表示第j个属性的取值数<br>
+$K$表示类别个数<br>
+$N$表示样本量<br>
+$N_k$表示属于k类的样本量<br>
+$N^{x^{(j)}}_k$表示属于k类，且第j个属性值为$x^{(j)}$的样本量<br>
+$x^{(j)}_i$表示第i个样例的第j个属性，是key<br>
+$x^{(j)}$表示x的第j个属性值，是value</p>
+<h2>平滑</h2>
+<p>当数据量较小时，很容易出现$N^{x^{(j)}}_k$为0的情况，因此需要做平滑。</p>
+<p>具体来说，<br>
+$$\begin{align} y&amp;=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)}N \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)}{\sum_{i=1}^NI(y_i=c_k)}\\ &amp;=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)+\lambda}{N+\lambda K} \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)+\lambda}{\sum_{i=1}^NI(y_i=c_k)+\lambda D^{(j)}}\\ &amp;=argmax_k\frac{N_k+\lambda}{N+\lambda K}\prod_{j=1}^{D}\frac{N_k^{x^{(j)}}+\lambda}{N_k+\lambda D^{(j)}} \end{align}$$</p>
+<h2>预测时，最大后验概率的意义</h2>
+<p>再次强调，模型已经通过ML或者MAP估计好了，这里是预测时，朴素贝叶斯将实例分到后验概率最大的类中，等价于期望风险最小化。<br>
+$X$是输入随机向量，$Y$是输出随机变量<br>
+损失函数为0-1损失：<br>
+$L(Y,f(X))= \begin{cases} 1, \ Y=f(X) \\ 0, \ Y\neq f(X) \end{cases} $<br>
+则期望损失为：
+$R_{exp}(f)=E_{X\times Y}[L(Y,f(X))]$<br>
+将期望损失分解成$P(Y|X)$条件期望的内部，和$P(X)$的外部形式:
+$\begin{align} R_{exp}(f) &amp;=E_{X\times Y}[L(Y,f(X))] \\ &amp;=\iint_{X\times Y}L(Y,f(X))P(Y,X)\\ &amp;=\iint_{X\times Y}L(Y,f(X))P(Y|X)P(X)\\ &amp;=\int_X\left\{\int_YL(Y,f(X))P(Y|X)\right\}P(X)\\ &amp;=\int_X\left\{\sum_{k=1}^KL(c_k,f(X))P(Y=c_k|X)\right\}P(X)\end{align}$</p>
+<p>当数据给定后，$P(X)$为定值，且不影响期望损失($f$的泛函)中对$f$的选择。<br>
+因此，为了使期望损失最小，只需要使得条件期望部分最小即可，具体来说，就是对$X=x$逐个极小化。
+$$\begin{align} \hat f(x)&amp;=argmin_{f(x)}\sum_{k=1}^KL(c_k,f(x))P(Y=c_k|X=x) \\ &amp;=argmin_y\sum_{k=1}^KL(c_k,y)P(Y=c_k|X=x) \\ &amp;=argmin_y\sum_{k=1}^KL(c_k,y)P(c_k|X=x) \\ &amp;=argmin_y\sum_{k=1}^KP(y\neq c_k|X=x) \\ &amp;=argmin_y\left\{1-\sum_{k=1}^KP(y=c_k|X=x)\right\} \\ &amp;=argmin_y\left\{1-P(y=c_k|X=x)\right\} \\ &amp;=argmax_yP(y=c_k|X=x) \\ &amp;=argmax_{c_k}P(Y=c_k|X=x) \end{align}$$<br>
+因此，期望风险最小等同于后验概率最大化。</p>
+<h2>Reference</h2>
+<p>PRML</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;贝叶斯&quot;&gt;&lt;a href=&quot;#贝叶斯&quot; class=&quot;headerlink&quot; title=&quot;贝叶斯&quot;&gt;&lt;/a&gt;贝叶斯&lt;/h2&gt;&lt;h2 id=&quot;朴素贝叶斯&quot;&gt;&lt;a href=&quot;#朴素贝叶斯&quot; class=&quot;headerlink&quot; title=&quot;朴素贝叶斯&quot;&gt;&lt;/a&gt;
+      &lt;h2&gt;贝叶斯&lt;/h2&gt;
+&lt;h2&gt;朴素贝叶斯&lt;/h2&gt;
+&lt;p&gt;朴素贝叶斯是基于贝叶斯定理和属性条件独立的分类器。其中，”朴素”指的是一个很naive的假设，即属性条件独立。
+$$\begin{align} y&amp;amp;=argmax_kP(c_k|x)\\ &amp;amp;=argma
     
     </summary>
     
@@ -98,62 +179,116 @@ $\eta$ 是变量$x$的超参数&lt;/p&gt;
     <published>2017-02-24T01:53:32.000Z</published>
     <updated>2017-07-25T01:14:19.716Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="模型评估方法"><a href="#模型评估方法" class="headerlink" title="模型评估方法"></a><strong>模型评估方法</strong></h2><h3 id="网格搜索调参"><a href="#网格搜索调参" class="headerlink" title="网格搜索调参"></a>网格搜索调参</h3><p>在训练集上训练模型，根据验证集上的结果调参。调好参数后，在测试集上得到测试误差。  </p>
+    <content type="html"><![CDATA[<h2><strong>模型评估方法</strong></h2>
+<h3>网格搜索调参</h3>
+<p>在训练集上训练模型，根据验证集上的结果调参。调好参数后，在测试集上得到测试误差。</p>
 <ol>
-<li>将数据集分为训练集，验证集，测试集  </li>
-<li>将参数网格化，每一个交叉点都是一组参数  </li>
-<li>遍历每个网格参数，在训练集上训练模型，在验证集上得到与网格参数对应的验证误差  </li>
-<li>挑选最小的验证误差所对应的那个网格参数，作为最优的参数  </li>
-<li>用最优参数设置模型，在训练集?验证集上训练，得到训练误差，在测试集上得到测试误差。<br>　　因为模型参数的选择是依赖于验证集，而模型对于测试集是没有依赖的，所以在测试上的准确率一般来说会比验证集低一些。  </li>
+<li>将数据集分为训练集，验证集，测试集</li>
+<li>将参数网格化，每一个交叉点都是一组参数</li>
+<li>遍历每个网格参数，在训练集上训练模型，在验证集上得到与网格参数对应的验证误差</li>
+<li>挑选最小的验证误差所对应的那个网格参数，作为最优的参数</li>
+<li>用最优参数设置模型，在训练集?验证集上训练，得到训练误差，在测试集上得到测试误差。<br>
+　　因为模型参数的选择是依赖于验证集，而模型对于测试集是没有依赖的，所以在测试上的准确率一般来说会比验证集低一些。</li>
 </ol>
-<h3 id="交叉验证-amp-估计期望泛化误差"><a href="#交叉验证-amp-估计期望泛化误差" class="headerlink" title="交叉验证 &amp; 估计期望泛化误差"></a>交叉验证 &amp; 估计期望泛化误差</h3><p>　　用交叉验证的目的是为了得到可靠稳定的模型。如果已经调好参了，且得到的估计的期望泛化误差比较大，那么说明模型不太适用，就可以考虑做一些特征变化或换模型了。<br>在非测试集上交叉验证，用MSE估计期望泛化误差，在测试集上得到测试误差</p>
+<h3>交叉验证 &amp; 估计期望泛化误差</h3>
+<p>用交叉验证的目的是为了得到可靠稳定的模型。如果已经调好参了，且得到的估计的期望泛化误差比较大，那么说明模型不太适用，就可以考虑做一些特征变化或换模型了。
+在非测试集上交叉验证，用MSE估计期望泛化误差，在测试集上得到测试误差</p>
 <ol>
 <li>将数据集分为非测试集和测试集</li>
 <li>在将非测试集分为k份，其中k-1份作为训练集，另一份作为验证集</li>
 <li>在训练集上训练模型，得到一个训练误差，在验证集上测试，得到一个验证误差。</li>
 <li>共训练了k个模型，得到k个训练误差和k个验证误差。用k个验证误差的平均来估计期望泛化误差。</li>
-<li>在非测试集上训练模型，得到训练误差，在测试集上测试模型，得到测试误差。  </li>
+<li>在非测试集上训练模型，得到训练误差，在测试集上测试模型，得到测试误差。</li>
 </ol>
-<p>　　为了减小因样本划分不同而引起的差别，k折交叉验证通常要随机使用不同的划分重复p次，最终的评估结果是这p次k折交叉验证结果的平均。所以说，一共会训练pk个模型，并得到pk个验证误差。  </p>
+<p>为了减小因样本划分不同而引起的差别，k折交叉验证通常要随机使用不同的划分重复p次，最终的评估结果是这p次k折交叉验证结果的平均。所以说，一共会训练pk个模型，并得到pk个验证误差。</p>
 <p><strong>如果只是为了估计模型的期望泛化误差，可以去掉验证集，并以测试集代替。</strong></p>
-<h3 id="网格搜索-amp-交叉验证"><a href="#网格搜索-amp-交叉验证" class="headerlink" title="网格搜索 &amp; 交叉验证"></a>网格搜索 &amp; 交叉验证</h3><p>比网格搜索更稳定些，因为评价的标准不再是单个的验证误差，而是k个验证误差的平均。<br>在非测试集上网格搜索并交叉验证，用MSE估计期望泛化误差，调参。调好参数后，在测试集上得到测试误差。</p>
+<h3>网格搜索 &amp; 交叉验证</h3>
+<p>比网格搜索更稳定些，因为评价的标准不再是单个的验证误差，而是k个验证误差的平均。<br>
+在非测试集上网格搜索并交叉验证，用MSE估计期望泛化误差，调参。调好参数后，在测试集上得到测试误差。</p>
 <ol>
 <li>将数据集分为非测试集，测试集</li>
 <li>将非测试集分为k份，其中k-1份作为训练集，另一份作为验证集</li>
 <li>将参数网格化，每个交叉点都是一组参数</li>
 <li>遍历每个网格参数，进行k交叉验证，共得到k个模型，k个训练误差，k个验证误差。<strong>用k个验证误差的平均来估计期望泛化误差，作为参数选择的评判标准。</strong></li>
 <li>选择估计期望泛化误差最小所对应的一个网格参数，作为最优参数</li>
-<li>用最优参数设置模型，在非测试集上训练，得到训练误差，在测试集上得到测试误差  </li>
+<li>用最优参数设置模型，在非测试集上训练，得到训练误差，在测试集上得到测试误差</li>
 </ol>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ol>
-<li>对于给定的模型，确定了网络结构，确定了损失函数，确定了核的选择，<br>那么便确定了唯一的训练误差和测试误差，最优参数值的选择会根据网格搜索在验证集上确定。</li>
+<h3>小结</h3>
+<ol>
+<li>对于给定的模型，确定了网络结构，确定了损失函数，确定了核的选择，<br>
+那么便确定了唯一的训练误差和测试误差，最优参数值的选择会根据网格搜索在验证集上确定。</li>
 <li>如果模型的所有参数都确定了，那么就可以只用训练集和测试集了。</li>
 <li>网格搜索是在验证集是调参用的。</li>
 <li>交叉验证只是用于估计期望泛化误差。可以有验证集，也可以不用验证集。如果同时要得到训练的模型，训练误差，测试误差，那么就需要有验证集。</li>
 <li>交叉验证可以使网格搜索的参数评判更准确。</li>
-<li>如果不需要调参，那么就没必要有验证集了。  </li>
+<li>如果不需要调参，那么就没必要有验证集了。</li>
 </ol>
-<h2 id="P-R曲线-amp-ROC曲线"><a href="#P-R曲线-amp-ROC曲线" class="headerlink" title="P-R曲线 &amp; ROC曲线"></a>P-R曲线 &amp; ROC曲线</h2><p><strong>先列，后行</strong><br>真实\预测|正例|反例<br>:—|:—|:—<br>正例|<strong>TP</strong>(True Positive)|<strong>FN</strong>(False Positive)<br>反例|<strong>FP</strong>(False Negative)|<strong>TN</strong>(True Negative)<br>TP：正确肯定的数目；FN：漏报，没有正确找到的匹配的数目；<br>FP：误报，给出的匹配是不正确的；TN：正确拒绝的非匹配对数；</p>
-<h3 id="P-R"><a href="#P-R" class="headerlink" title="P-R"></a>P-R</h3><p>TPR 计算列1 显示列<br>FPR 计算行1 显示行<br>$TPR=\frac{TP}{TP+FN}$<br>$FPR=\frac {FP}{FP+TN}$</p>
-<h3 id="准确率-Precision-，召回率-Recall-和F1-Score"><a href="#准确率-Precision-，召回率-Recall-和F1-Score" class="headerlink" title="准确率(Precision)，召回率(Recall)和F1-Score"></a>准确率(Precision)，召回率(Recall)和F1-Score</h3><p>(1) 准确率(precision)：正确率<br>(2) 召回率(recall)：查全率<br>(3) F1-Score:准确率和召回率的综合指标<br>定义：<br>$precision=\frac{true positive}{true positive+false negative}=\frac{true positive}{no.of predicted positive}$  </p>
-<p>$recall=\frac{true positive}{true positive+false negative}=\frac{true positive}{no.of actual positve}$  </p>
-<p>$F1-Score=2\times\frac{precision\times recall}{precision+recall}$    </p>
-<h3 id="正则"><a href="#正则" class="headerlink" title="正则"></a>正则</h3><p>正则就是在训练数据的模型上加一个惩罚项，shrink模型的参数。<br>lasso的解是稀疏的，如sparse coding， compressed sensing  </p>
-<h3 id="构造目标函数"><a href="#构造目标函数" class="headerlink" title="构造目标函数"></a>构造目标函数</h3><p>用X来构造分布，用Y来确定分布的具体值。</p>
+<h2>P-R曲线 &amp; ROC曲线</h2>
+<p><strong>先列，后行</strong></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">真实\预测</th>
+<th style="text-align:left">正例</th>
+<th style="text-align:left">反例</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">正例</td>
+<td style="text-align:left"><strong>TP</strong>(True Positive)</td>
+<td style="text-align:left"><strong>FN</strong>(False Positive)</td>
+</tr>
+<tr>
+<td style="text-align:left">反例</td>
+<td style="text-align:left"><strong>FP</strong>(False Negative)</td>
+<td style="text-align:left"><strong>TN</strong>(True Negative)</td>
+</tr>
+</tbody>
+</table>
+<p>TP：正确肯定的数目；FN：漏报，没有正确找到的匹配的数目；
+FP：误报，给出的匹配是不正确的；TN：正确拒绝的非匹配对数；</p>
+<h3>P-R</h3>
+<p>TPR 计算列1 显示列<br>
+FPR 计算行1 显示行<br>
+$TPR=\frac{TP}{TP+FN}$<br>
+$FPR=\frac {FP}{FP+TN}$</p>
+<h3>准确率(Precision)，召回率(Recall)和F1-Score</h3>
+<p>(1) 准确率(precision)：正确率
+(2) 召回率(recall)：查全率
+(3) F1-Score:准确率和召回率的综合指标
+定义：
+$precision=\frac{true positive}{true positive+false negative}=\frac{true positive}{no.of predicted positive}$</p>
+<p>$recall=\frac{true positive}{true positive+false negative}=\frac{true positive}{no.of actual positve}$</p>
+<p>$F1-Score=2\times\frac{precision\times recall}{precision+recall}$</p>
+<h3>正则</h3>
+<p>正则就是在训练数据的模型上加一个惩罚项，shrink模型的参数。<br>
+lasso的解是稀疏的，如sparse coding， compressed sensing</p>
+<h3>构造目标函数</h3>
+<p>用X来构造分布，用Y来确定分布的具体值。</p>
 <ol>
 <li>构造概率函数。给定x，初始超参数，构造出一个概率函数。但此概率函数的变量是y，不是x。</li>
 <li>构造似然函数。根据真实y，得到p(y|x)概率，连乘得到似然函数</li>
-<li>优化的参数，其实是构造分布时的超参数。  </li>
+<li>优化的参数，其实是构造分布时的超参数。</li>
 </ol>
-<h3 id="不平衡类"><a href="#不平衡类" class="headerlink" title="不平衡类"></a>不平衡类</h3><ol>
-<li>对多的类进行欠采样</li>
-<li>对少的类进行过采样</li>
-<li><p>移动阈值$\frac{y}{1-y} \gt \frac{m^+}{m^-} $即为正类</p>
+<h3>不平衡类</h3>
+<ol>
+<li>
+<p>对多的类进行欠采样</p>
 </li>
-<li><p>少类的插值(kmeans聚类，然后在一个簇里面插值)</p>
+<li>
+<p>对少的类进行过采样</p>
+</li>
+<li>
+<p>移动阈值$\frac{y}{1-y} \gt \frac{m^+}{m^-} $即为正类</p>
+</li>
+<li>
+<p>少类的插值(kmeans聚类，然后在一个簇里面插值)</p>
 </li>
 </ol>
-<h3 id="生成模型-amp-判别模型"><a href="#生成模型-amp-判别模型" class="headerlink" title="生成模型 &amp; 判别模型"></a>生成模型 &amp; 判别模型</h3><h4 id="生成模型"><a href="#生成模型" class="headerlink" title="生成模型"></a>生成模型</h4><p>学习的是联合分布p(y,x)  </p>
+<h3>生成模型 &amp; 判别模型</h3>
+<h4>生成模型</h4>
+<p>学习的是联合分布p(y,x)</p>
 <ol>
 <li>可以由联合分布p(y,x)在y上积分得到p(x)，即类条件概率p(x|y)与p(y)在y上的积分，如果p(x)的概率比较小，说明可能是异常点(outlier)，该点的分类效果可能不好。对p(x,y)在y上的积分有时比较难求，需要用MCMC抽样方法得到p(x)或变分近似p(x)。</li>
 <li>根据贝叶斯公式，p(y,x) / p(x)得到条件分布p(y|x)，即得到预测的条件分布。</li>
@@ -161,20 +296,28 @@ $\eta$ 是变量$x$的超参数&lt;/p&gt;
 <li>可以解决存在隐变量的模型，比如GMM，HMM。</li>
 <li>需要更大的样本，做判别的时候，有些信息用不到。</li>
 </ol>
-<h4 id="判别模型"><a href="#判别模型" class="headerlink" title="判别模型"></a>判别模型</h4><p>学习的是条件分布p(y|x)，或判别函数f(x)  </p>
+<h4>判别模型</h4>
+<p>学习的是条件分布p(y|x)，或判别函数f(x)</p>
 <ol>
 <li>需要的样本量少于生成模型</li>
 <li>寻找的是不同类别的最优分类面</li>
 <li>准确率一般比生成模型高</li>
 <li>可以对原数据X进行特征的变化，例如降维，特征选择</li>
 </ol>
-<img src="/2017/02/24/关于建模和模型评价的一些总结/产生式和判别式.jpg" alt="产生式和判别式.jpg" title="">
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://blog.csdn.net/zouxy09/article/details/8195017" target="_blank" rel="external">http://blog.csdn.net/zouxy09/article/details/8195017</a><br><a href="https://zhengyangcs.github.io/2016/08/19/模型综述/" target="_blank" rel="external">https://zhengyangcs.github.io/2016/08/19/模型综述/</a></p>
+<p><img src="/2017/02/24/关于建模和模型评价的一些总结/产生式和判别式.jpg" alt="产生式和判别式.jpg" title=""></p>
+<h3>Reference</h3>
+<p>http://blog.csdn.net/zouxy09/article/details/8195017
+https://zhengyangcs.github.io/2016/08/19/模型综述/</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2 id=&quot;模型评估方法&quot;&gt;&lt;a href=&quot;#模型评估方法&quot; class=&quot;headerlink&quot; title=&quot;模型评估方法&quot;&gt;&lt;/a&gt;&lt;strong&gt;模型评估方法&lt;/strong&gt;&lt;/h2&gt;&lt;h3 id=&quot;网格搜索调参&quot;&gt;&lt;a href=&quot;#网格搜索调参&quot; class=
+      &lt;h2&gt;&lt;strong&gt;模型评估方法&lt;/strong&gt;&lt;/h2&gt;
+&lt;h3&gt;网格搜索调参&lt;/h3&gt;
+&lt;p&gt;在训练集上训练模型，根据验证集上的结果调参。调好参数后，在测试集上得到测试误差。&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将数据集分为训练集，验证集，测试集&lt;/li&gt;
+&lt;li&gt;将参数网格化，
     
     </summary>
     
@@ -192,16 +335,27 @@ $\eta$ 是变量$x$的超参数&lt;/p&gt;
     <published>2017-02-10T01:19:16.000Z</published>
     <updated>2017-07-20T07:15:31.425Z</updated>
     
-    <content type="html"><![CDATA[<h2 id="关联规则"><a href="#关联规则" class="headerlink" title="关联规则"></a><strong>关联规则</strong></h2><p>　　关联规则就是有关联的规则，形式可以定义为：两个 <strong>不相交</strong> 的非空集合X、Y，如果有X-&gt;Y，就说X-&gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度(confidence)来描述。<br>　　支持度的定义：<script type="math/tex">support(X–>Y) = \frac{|X \cap Y|}{N}</script>集合X与集合Y中的项在一条记录中同时出现的次数/数据记录的个数。<br>　　自信度的定义：<script type="math/tex">confidence(X->Y)=\frac{|X \cap Y|}{|X|}</script>表示集合X与集合Y中的项在一条记录中同时出现的次数/集合X出现的个数。<br>　　上述所讲的支持度和自信度都是相对的支持度和自信度，不是绝对支持度，绝对支持度为：<script type="math/tex">abs\_support=N*support,　N为数据记录数</script>　　支持度和自信度越高，说明规则越强，关联规则挖掘就是挖掘出满足一定强度的规则。<br><strong>项集</strong>：属性名称集合。比如，{a,b},{c},{a,d}<br>如果一个项集同时满足最小支持度阈值和最小置信度阈值，则认为这个项集的关联规则是有趣的。</p>
+    <content type="html"><![CDATA[<h2><strong>关联规则</strong></h2>
+<p>关联规则就是有关联的规则，形式可以定义为：两个 <strong>不相交</strong> 的非空集合X、Y，如果有X-&gt;Y，就说X-&gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度(confidence)来描述。<br>
+　　支持度的定义：$$support(X–&gt;Y) = \frac{|X \cap Y|}{N}$$集合X与集合Y中的项在一条记录中同时出现的次数/数据记录的个数。<br>
+　　自信度的定义：$$confidence(X-&gt;Y)=\frac{|X \cap Y|}{|X|}$$表示集合X与集合Y中的项在一条记录中同时出现的次数/集合X出现的个数。<br>
+　　上述所讲的支持度和自信度都是相对的支持度和自信度，不是绝对支持度，绝对支持度为：$$abs_support=N*support,　N为数据记录数$$　　支持度和自信度越高，说明规则越强，关联规则挖掘就是挖掘出满足一定强度的规则。<br>
+<strong>项集</strong>：属性名称集合。比如，{a,b},{c},{a,d}
+如果一个项集同时满足最小支持度阈值和最小置信度阈值，则认为这个项集的关联规则是有趣的。</p>
 <p><strong>频繁项集</strong>：满足最小支持度的项集。</p>
-<p>如果一个项集{a,b}是频繁的，那么它的所有子集{a}也是频繁的。<br>如果一个项集{a,b}是不频繁的，那么它的所有超集{a,b,c}也是不频繁的。</p>
-<h4 id="Apriori是找频繁项集的算法"><a href="#Apriori是找频繁项集的算法" class="headerlink" title="Apriori是找频繁项集的算法"></a><strong>Apriori是找频繁项集的算法</strong></h4><p>　　Apriori算法：使用候选项集找频繁项集。Apriori算法是一种最有影响的挖掘布尔关联规则频繁项集的算法。其核心是基于两阶段频集思想的递推算法。该关联规则在分类上属于单维、单层、布尔关联规则。</p>
+<p>如果一个项集{a,b}是频繁的，那么它的所有子集{a}也是频繁的。
+如果一个项集{a,b}是不频繁的，那么它的所有超集{a,b,c}也是不频繁的。</p>
+<h4><strong>Apriori是找频繁项集的算法</strong></h4>
+<p>Apriori算法：使用候选项集找频繁项集。Apriori算法是一种最有影响的挖掘布尔关联规则频繁项集的算法。其核心是基于两阶段频集思想的递推算法。该关联规则在分类上属于单维、单层、布尔关联规则。</p>
 <ol>
 <li>统计一个元素项集出现的频数，找出不小于最小支持度的项集，得到 频繁1-项集。令k=2</li>
 <li>根据第k-1步生成的 频繁(k-1)-项集 生成 侯选k-项集，然后对数据库进行搜索，得到 侯选k-项集 的支持度，与最小支持度进行比较，从而找到 频繁k-项集，删除 侯选k-项集 中 不频繁k-项集。</li>
-<li>如果没有 频繁k-项集 生成，则停止，返回 频繁(k-1)-项集 作为 最大频繁项集；<br>否则，k = k+1，返回步骤2</li>
+<li>如果没有 频繁k-项集 生成，则停止，返回 频繁(k-1)-项集 作为 最大频繁项集；
+否则，k = k+1，返回步骤2</li>
 </ol>
-<p><strong>优点</strong>：<br>简单，易理解，没有复杂的理论推导<br><strong>缺点</strong>：</p>
+<p><strong>优点</strong>：
+简单，易理解，没有复杂的理论推导
+<strong>缺点</strong>：</p>
 <ol>
 <li>每一步产生侯选项集时循环产生的组合过多，没有排除不应该参与组合的元素</li>
 <li>每次计算项集的支持度时，都会对数据库的全部记录进行扫描比较，I/O开销大</li>
@@ -211,7 +365,8 @@ $\eta$ 是变量$x$的超参数&lt;/p&gt;
     
     <summary type="html">
     
-      &lt;h2 id=&quot;关联规则&quot;&gt;&lt;a href=&quot;#关联规则&quot; class=&quot;headerlink&quot; title=&quot;关联规则&quot;&gt;&lt;/a&gt;&lt;strong&gt;关联规则&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;　　关联规则就是有关联的规则，形式可以定义为：两个 &lt;strong&gt;不相交&lt;/strong
+      &lt;h2&gt;&lt;strong&gt;关联规则&lt;/strong&gt;&lt;/h2&gt;
+&lt;p&gt;关联规则就是有关联的规则，形式可以定义为：两个 &lt;strong&gt;不相交&lt;/strong&gt; 的非空集合X、Y，如果有X-&amp;gt;Y，就说X-&amp;gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度
     
     </summary>
     
@@ -229,11 +384,44 @@ $\eta$ 是变量$x$的超参数&lt;/p&gt;
     <published>2017-02-04T10:32:55.000Z</published>
     <updated>2017-07-25T01:59:58.351Z</updated>
     
-    <content type="html"><![CDATA[<p>　　hexo写markdown中<em>与*一样，表示斜体或粗体，但mathjax中</em>表示下标，因此：<br>　　mathjax中换行\，在markdown中写成\\<br>　　mathjax中下标<em>，在markdown改写成\</em><br>　　mathjax中下标{，在markdown改写成\{<br>　　mathjax中下标}，在markdown改写成\}<br>在markdown的表格中插入|，可以输入 <strong>\&#124;</strong> 代替<br><strong>公式右键-Show Math As-Tex Commands可以查看编辑</strong></p>
-<h3 id="1-行中公式inline-amp-独立公式displayed"><a href="#1-行中公式inline-amp-独立公式displayed" class="headerlink" title="1. 行中公式inline &amp; 独立公式displayed"></a>1. 行中公式inline &amp; 独立公式displayed</h3><h4 id="行中公式-inline"><a href="#行中公式-inline" class="headerlink" title="行中公式 inline"></a>行中公式 inline</h4><p>This is an example for $x_mu+ y_mu$.<br><strong>mathjax写法</strong><br>This is an example for \$x_mu+ y_mu\$.</p>
-<h4 id="独立公式-displayed"><a href="#独立公式-displayed" class="headerlink" title="独立公式 displayed"></a>独立公式 displayed</h4><script type="math/tex; mode=display">J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}</script><p>mathjax写法<br>$$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}$$</p>
-<h3 id="2-表格"><a href="#2-表格" class="headerlink" title="2. 表格"></a>2. 表格</h3><p>一种表格的生成方式：<br>|col1　|col2　|col3　|<br>|:———-|:————|:————|<br>内容行<br>|col1　|col2　|col3　|<br>|:———-|:————|:————|<br>|内容|内容|内容|</p>
-<h3 id="3-希腊字母"><a href="#3-希腊字母" class="headerlink" title="3. 希腊字母"></a>3. 希腊字母</h3><div class="table-container">
+    <content type="html"><![CDATA[<p>hexo写markdown中_与*一样，表示斜体或粗体，但mathjax中_表示下标，因此：<br>
+　　mathjax中换行\，在markdown中写成\\<br>
+　　mathjax中下标_，在markdown改写成_<br>
+　　mathjax中下标{，在markdown改写成\{<br>
+　　mathjax中下标}，在markdown改写成\}<br>
+在markdown的表格中插入|，可以输入 <strong>&amp;#124;</strong> 代替<br>
+<strong>公式右键-Show Math As-Tex Commands可以查看编辑</strong></p>
+<h3>1. 行中公式inline &amp; 独立公式displayed</h3>
+<h4>行中公式 inline</h4>
+<p>This is an example for $x_mu+ y_mu$.<br>
+<strong>mathjax写法</strong>
+This is an example for \$x_mu+ y_mu\$.</p>
+<h4>独立公式 displayed</h4>
+<p>$$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}$$
+mathjax写法
+$$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}$$</p>
+<h3>2. 表格</h3>
+<p>一种表格的生成方式：<br>
+|col1　|col2　|col3　|<br>
+|:-------|:--------|:--------|<br>
+内容行</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">col1</th>
+<th style="text-align:left">col2</th>
+<th style="text-align:left">col3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">内容</td>
+<td style="text-align:left">内容</td>
+<td style="text-align:left">内容</td>
+</tr>
+</tbody>
+</table>
+<h3>3. 希腊字母</h3>
 <table>
 <thead>
 <tr>
@@ -415,8 +603,7 @@ $\eta$ 是变量$x$的超参数&lt;/p&gt;
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="运算符和数据符号"><a href="#运算符和数据符号" class="headerlink" title="运算符和数据符号"></a>运算符和数据符号</h3><div class="table-container">
+<h3>运算符和数据符号</h3>
 <table>
 <thead>
 <tr>
@@ -574,12 +761,12 @@ $\eta$ 是变量$x$的超参数&lt;/p&gt;
 <tr>
 <td style="text-align:left">积分2</td>
 <td style="text-align:left">$\int_0^{+\infty}x^ne^{-x}dx$</td>
-<td style="text-align:left">\int_0\^{+\infty}x\^ne\^{-x}dx</td>
+<td style="text-align:left">\int_0^{+\infty}x^ne^{-x}dx</td>
 </tr>
 <tr>
 <td style="text-align:left">共轭转置</td>
 <td style="text-align:left">$U^{\dagger}U=UU^{\dagger}=I$</td>
-<td style="text-align:left">U\^{\dagger}U=UU^{\dagger}=I</td>
+<td style="text-align:left">U^{\dagger}U=UU^{\dagger}=I</td>
 </tr>
 <tr>
 <td style="text-align:left">连乘</td>
@@ -633,8 +820,7 @@ $\eta$ 是变量$x$的超参数&lt;/p&gt;
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><div class="table-container">
+<h3>字体</h3>
 <table>
 <thead>
 <tr>
@@ -647,7 +833,7 @@ $\eta$ 是变量$x$的超参数&lt;/p&gt;
 <tbody>
 <tr>
 <td style="text-align:left">黑板粗体1</td>
-<td style="text-align:left">$\mathbb{AaBb12} AaBb12    $</td>
+<td style="text-align:left">$\mathbb{AaBb12} AaBb12	$</td>
 <td style="text-align:left">\mathbb{AaBb12} AaBb12</td>
 <td style="text-align:left"></td>
 </tr>
@@ -665,13 +851,13 @@ $\eta$ 是变量$x$的超参数&lt;/p&gt;
 </tr>
 <tr>
 <td style="text-align:left">希腊字母黑体</td>
-<td style="text-align:left">$\boldsymbol{\mu sigma}    $</td>
+<td style="text-align:left">$\boldsymbol{\mu sigma}	$</td>
 <td style="text-align:left">\boldsymbol{\mu sigma}</td>
 <td style="text-align:left"></td>
 </tr>
 <tr>
 <td style="text-align:left">罗马字体</td>
-<td style="text-align:left">$\mathrm{AaBb12}    $</td>
+<td style="text-align:left">$\mathrm{AaBb12}	$</td>
 <td style="text-align:left">\mathrm{AaBb12}</td>
 <td style="text-align:left"></td>
 </tr>
@@ -689,25 +875,36 @@ $\eta$ 是变量$x$的超参数&lt;/p&gt;
 </tr>
 </tbody>
 </table>
-</div>
-<h3 id="分类表达式"><a href="#分类表达式" class="headerlink" title="分类表达式"></a>分类表达式</h3><script type="math/tex; mode=display">f(x)= \begin{cases} n=1, if\ x\ is\ even\\\\
-          n=2, if\ x\ is\ odd\\\\
-          n=3, if\ x\ is\ 0
-          \end{cases}</script><h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><script type="math/tex; mode=display">\begin{array}{c|cccc} n & \text{Left} & \text{Center} & \text{Right} & \text{last}\\\\    \hline 1 & 0.24 & 1 & 125 & 235 \\\\
-   2 & 0.24 & 1 & 125 & 235 \\\\  
-    3 & 0.24 & 1 & 125 & 235 \\\\  
-     \end{array}</script><h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><script type="math/tex; mode=display">\begin{pmatrix}   1 & a_1 & a_1^2 & \cdots & a_1^n \\\\    1 & a_2 & a_2^2 & \cdots & a_2^n \\\\     \vdots & \vdots & \vdots & \ddots & \vdots \\\\     1 & a_n & a_n^2 & \cdots & a_n^n      \end{pmatrix}</script><h3 id="推导1"><a href="#推导1" class="headerlink" title="推导1"></a>推导1</h3><p>$\begin{align} E&amp;=\sum<em>{n=1}^{N}exp{-t_nf</em>{m-1}(\mathbf{x<em>n})-\frac12t_n\alpha_my_m(\mathbf{x_n})}\\ &amp; =\sum</em>{n=1}^{N}w_n^{(m)}exp\left\{-\frac12t_n\alpha_my_m(\mathbf{x_n})\right\} \end{align}$</p>
-<h3 id="推导2"><a href="#推导2" class="headerlink" title="推导2"></a>推导2</h3><p>$\begin{align} \sqrt{37} &amp; = \sqrt{\frac{73^2-1}{12^2}} \\  &amp; = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\  &amp; = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\  &amp; = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \\  &amp; \approx \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right) \end{align}$</p>
-<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ol>
-<li><a href="http://blog.leanote.com/post/freewalk/Markdown-语法手册" target="_blank" rel="external">http://blog.leanote.com/post/freewalk/Markdown-语法手册</a></li>
-<li><a href="https://zhengyangcs.github.io/2016/08/17/mathjax/" target="_blank" rel="external">https://zhengyangcs.github.io/2016/08/17/mathjax/</a></li>
-<li><a href="http://blog.csdn.net/wx11055/article/details/52694682" target="_blank" rel="external">http://blog.csdn.net/wx11055/article/details/52694682</a></li>
+<h3>分类表达式</h3>
+<p>$$f(x)= \begin{cases} n=1, if\ x\ is\ even\\
+n=2, if\ x\ is\ odd\\
+n=3, if\ x\ is\ 0
+\end{cases}$$</p>
+<h3>表格</h3>
+<p>$$\begin{array}{c|cccc} n &amp; \text{Left} &amp; \text{Center} &amp; \text{Right} &amp; \text{last}\\    \hline 1 &amp; 0.24 &amp; 1 &amp; 125 &amp; 235 \\
+2 &amp; 0.24 &amp; 1 &amp; 125 &amp; 235 \\<br>
+3 &amp; 0.24 &amp; 1 &amp; 125 &amp; 235 \\<br>
+\end{array}$$</p>
+<h3>矩阵</h3>
+<p>$$\begin{pmatrix}   1 &amp; a_1 &amp; a_1^2 &amp; \cdots &amp; a_1^n \\    1 &amp; a_2 &amp; a_2^2 &amp; \cdots &amp; a_2^n \\     \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\     1 &amp; a_n &amp; a_n^2 &amp; \cdots &amp; a_n^n      \end{pmatrix}$$</p>
+<h3>推导1</h3>
+<p>$\begin{align} E&amp;=\sum_{n=1}^{N}exp{-t_nf_{m-1}(\mathbf{x_n})-\frac12t_n\alpha_my_m(\mathbf{x_n})}\\ &amp; =\sum_{n=1}^{N}w_n^{(m)}exp\left\{-\frac12t_n\alpha_my_m(\mathbf{x_n})\right\} \end{align}$</p>
+<h3>推导2</h3>
+<p>$\begin{align} \sqrt{37} &amp; = \sqrt{\frac{73^2-1}{12^2}} \\  &amp; = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\  &amp; = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\  &amp; = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \\  &amp; \approx \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right) \end{align}$</p>
+<h3>Reference</h3>
+<ol>
+<li>http://blog.leanote.com/post/freewalk/Markdown-语法手册</li>
+<li>https://zhengyangcs.github.io/2016/08/17/mathjax/</li>
+<li>http://blog.csdn.net/wx11055/article/details/52694682</li>
 </ol>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;　　hexo写markdown中&lt;em&gt;与*一样，表示斜体或粗体，但mathjax中&lt;/em&gt;表示下标，因此：&lt;br&gt;　　mathjax中换行\，在markdown中写成\\&lt;br&gt;　　mathjax中下标&lt;em&gt;，在markdown改写成\&lt;/em&gt;&lt;br&gt;　　mathj
+      &lt;p&gt;hexo写markdown中_与*一样，表示斜体或粗体，但mathjax中_表示下标，因此：&lt;br&gt;
+　　mathjax中换行\，在markdown中写成\\&lt;br&gt;
+　　mathjax中下标_，在markdown改写成_&lt;br&gt;
+　　mathjax中下标{，在markdo
     
     </summary>
     
@@ -725,14 +922,43 @@ $\eta$ 是变量$x$的超参数&lt;/p&gt;
     <published>2017-01-16T11:10:37.000Z</published>
     <updated>2017-07-20T07:14:55.416Z</updated>
     
-    <content type="html"><![CDATA[<p>当U盘文件变成快捷方式时，使用下面的代码解决:<br>@echo off<br>echo============================================<br>echo.<br>echo  U盘隐藏文件夹恢复<br>echo.<br>echo============================================<br>pause<br>rem echo 列出目录<br>dir /a:d /b &gt;yxkmp4dir.txt<br>rem echo 列出目录外的所有文件<br>rem dir /a:s /a:-d /b<br>for /f “tokens=* delims= “ %%i in (yxkmp4dir.txt) do call :ss “%%i”  </p>
-<p>del yxkmp4dir.txt<br>echo.<br>echo 全部修复完成,谢谢你的使用!<br>echo.<br>pause<br>goto :eof<br>:ss<br>set var=%1<br>echo 正在修复文件夹 %var%  …<br>attrib -s -h -r  %var%  </p>
-<p>goto :eof<br>将文件后缀改为bat,双击运行<br>除此之外，可以通过在文件夹选项中，选择显示全部隐藏文件，可以显示被隐藏的文件。  </p>
+    <content type="html"><![CDATA[<p>当U盘文件变成快捷方式时，使用下面的代码解决:<br>
+@echo off
+echo============================================<br>
+echo.<br>
+echo  U盘隐藏文件夹恢复<br>
+echo.<br>
+echo============================================<br>
+pause<br>
+rem echo 列出目录
+dir /a:d /b &gt;yxkmp4dir.txt<br>
+rem echo 列出目录外的所有文件<br>
+rem dir /a:s /a:-d /b<br>
+for /f &quot;tokens=* delims= &quot; %%i in (yxkmp4dir.txt) do call :ss &quot;%%i&quot;</p>
+<p>del yxkmp4dir.txt<br>
+echo.<br>
+echo 全部修复完成,谢谢你的使用!<br>
+echo.<br>
+pause<br>
+goto :eof<br>
+:ss<br>
+set var=%1<br>
+echo 正在修复文件夹 %var%  ...<br>
+attrib -s -h -r  %var%</p>
+<p>goto :eof<br>
+将文件后缀改为bat,双击运行<br>
+除此之外，可以通过在文件夹选项中，选择显示全部隐藏文件，可以显示被隐藏的文件。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;当U盘文件变成快捷方式时，使用下面的代码解决:&lt;br&gt;@echo off&lt;br&gt;echo============================================&lt;br&gt;echo.&lt;br&gt;echo  U盘隐藏文件夹恢复&lt;br&gt;echo.&lt;br&gt;echo====
+      &lt;p&gt;当U盘文件变成快捷方式时，使用下面的代码解决:&lt;br&gt;
+@echo off
+echo============================================&lt;br&gt;
+echo.&lt;br&gt;
+echo  U盘隐藏文件夹恢复&lt;br&gt;
+echo.&lt;br&gt;
+echo==
     
     </summary>
     
@@ -748,14 +974,19 @@ $\eta$ 是变量$x$的超参数&lt;/p&gt;
     <published>2017-01-12T14:13:00.000Z</published>
     <updated>2017-07-20T07:14:52.860Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.  </p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
+<h2>Quick Start</h2>
+<h3>Create a new post</h3>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure></p>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<h3>Run server</h3>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<h3>Generate static files</h3>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure></p>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
+<h3>Deploy to remote sites</h3>
+<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure></p>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 ]]></content>
     

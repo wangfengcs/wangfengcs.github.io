@@ -113,17 +113,17 @@
 
 
 
-<meta name="description" content="贝叶斯朴素贝叶斯朴素贝叶斯是基于贝叶斯定理和属性条件独立的分类器。其中，”朴素”指的是一个很naive的假设，即属性条件独立。 \begin{align} y&amp;=argmax_kP(c_k|x)\\\\ &amp;=argmax_k\frac{P(c_k)P(x|c_k)}{P(x)}\\\\ &amp;=argmax_kP(c_k)P(x|c_k)\\\\ &amp;=argmax_kP(c_k)\prod_{j=1}">
+<meta name="description" content="贝叶斯 朴素贝叶斯 朴素贝叶斯是基于贝叶斯定理和属性条件独立的分类器。其中，”朴素”指的是一个很naive的假设，即属性条件独立。 $$\begin{align} y&amp;amp;=argmax_kP(c_k|x)\\ &amp;amp;=argmax_k\frac{P(c_k)P(x|c_k)}{P(x)}\\ &amp;amp;=argmax_kP(c_k)P(x|c_k)\\ &amp;amp;=argmax_kP(c">
 <meta name="keywords" content="机器学习">
 <meta property="og:type" content="article">
 <meta property="og:title" content="朴素贝叶斯">
 <meta property="og:url" content="http://wangfengcs.github.io/2017/03/03/朴素贝叶斯/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="贝叶斯朴素贝叶斯朴素贝叶斯是基于贝叶斯定理和属性条件独立的分类器。其中，”朴素”指的是一个很naive的假设，即属性条件独立。 \begin{align} y&amp;=argmax_kP(c_k|x)\\\\ &amp;=argmax_k\frac{P(c_k)P(x|c_k)}{P(x)}\\\\ &amp;=argmax_kP(c_k)P(x|c_k)\\\\ &amp;=argmax_kP(c_k)\prod_{j=1}">
+<meta property="og:description" content="贝叶斯 朴素贝叶斯 朴素贝叶斯是基于贝叶斯定理和属性条件独立的分类器。其中，”朴素”指的是一个很naive的假设，即属性条件独立。 $$\begin{align} y&amp;amp;=argmax_kP(c_k|x)\\ &amp;amp;=argmax_k\frac{P(c_k)P(x|c_k)}{P(x)}\\ &amp;amp;=argmax_kP(c_k)P(x|c_k)\\ &amp;amp;=argmax_kP(c">
 <meta property="og:updated_time" content="2017-07-25T07:29:29.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="朴素贝叶斯">
-<meta name="twitter:description" content="贝叶斯朴素贝叶斯朴素贝叶斯是基于贝叶斯定理和属性条件独立的分类器。其中，”朴素”指的是一个很naive的假设，即属性条件独立。 \begin{align} y&amp;=argmax_kP(c_k|x)\\\\ &amp;=argmax_k\frac{P(c_k)P(x|c_k)}{P(x)}\\\\ &amp;=argmax_kP(c_k)P(x|c_k)\\\\ &amp;=argmax_kP(c_k)\prod_{j=1}">
+<meta name="twitter:description" content="贝叶斯 朴素贝叶斯 朴素贝叶斯是基于贝叶斯定理和属性条件独立的分类器。其中，”朴素”指的是一个很naive的假设，即属性条件独立。 $$\begin{align} y&amp;amp;=argmax_kP(c_k|x)\\ &amp;amp;=argmax_k\frac{P(c_k)P(x|c_k)}{P(x)}\\ &amp;amp;=argmax_kP(c_k)P(x|c_k)\\ &amp;amp;=argmax_kP(c">
 
 
 
@@ -445,15 +445,41 @@
       
 
       
-        <h2 id="贝叶斯"><a href="#贝叶斯" class="headerlink" title="贝叶斯"></a>贝叶斯</h2><h2 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h2><p>朴素贝叶斯是基于贝叶斯定理和属性条件独立的分类器。其中，”朴素”指的是一个很naive的假设，即属性条件独立。</p>
-<script type="math/tex; mode=display">\begin{align} y&=argmax_kP(c_k|x)\\\\ &=argmax_k\frac{P(c_k)P(x|c_k)}{P(x)}\\\\ &=argmax_kP(c_k)P(x|c_k)\\\\ &=argmax_kP(c_k)\prod_{j=1}^DP(x^{(j)}|c_k)\\\\ &=argmax_kP(c_k)\prod_{j=1}^D\frac{P(x^{(j)},c_k)}{P(c_k)}\\\\ &=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)}N \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)}{\sum_{i=1}^NI(y_i=c_k)}\\\\ &=argmax_k\frac{N_k}{N}\prod_{j=1}^{D}\frac{N_k^{x^{(j)}}}{N_k} \end{align}</script><p>上式第3步，因为分母于参数k无关，故舍去<br>上式第4步，因为naive，故属性条件独立  </p>
-<p>$x$表示需要预测的属性值向量，是values<br>$y$表示预测的类别值，是values<br>$D$表示属性个数<br>$D^{(j)}$表示第j个属性的取值数<br>$K$表示类别个数<br>$N$表示样本量<br>$N_k$表示属于k类的样本量<br>$N^{x^{(j)}}_k$表示属于k类，且第j个属性值为$x^{(j)}$的样本量<br>$x^{(j)}_i$表示第i个样例的第j个属性，是key<br>$x^{(j)}$表示x的第j个属性值，是value  </p>
-<h2 id="平滑"><a href="#平滑" class="headerlink" title="平滑"></a>平滑</h2><p>当数据量较小时，很容易出现$N^{x^{(j)}}_k$为0的情况，因此需要做平滑。  </p>
-<p>具体来说，  </p>
-<script type="math/tex; mode=display">\begin{align} y&=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)}N \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)}{\sum_{i=1}^NI(y_i=c_k)}\\\\ &=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)+\lambda}{N+\lambda K} \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)+\lambda}{\sum_{i=1}^NI(y_i=c_k)+\lambda D^{(j)}}\\\\ &=argmax_k\frac{N_k+\lambda}{N+\lambda K}\prod_{j=1}^{D}\frac{N_k^{x^{(j)}}+\lambda}{N_k+\lambda D^{(j)}} \end{align}</script><h2 id="预测时，最大后验概率的意义"><a href="#预测时，最大后验概率的意义" class="headerlink" title="预测时，最大后验概率的意义"></a>预测时，最大后验概率的意义</h2><p>再次强调，模型已经通过ML或者MAP估计好了，这里是预测时，朴素贝叶斯将实例分到后验概率最大的类中，等价于期望风险最小化。<br>$X$是输入随机向量，$Y$是输出随机变量<br>损失函数为0-1损失：<br>$L(Y,f(X))= \begin{cases} 1, \ Y=f(X) \\ 0, \ Y\neq f(X) \end{cases} $<br>则期望损失为：<br>$R<em>{exp}(f)=E</em>{X\times Y}[L(Y,f(X))]$<br>将期望损失分解成$P(Y|X)$条件期望的内部，和$P(X)$的外部形式:<br>$\begin{align} R<em>{exp}(f) &amp;=E</em>{X\times Y}[L(Y,f(X))] \\ &amp;=\iint<em>{X\times Y}L(Y,f(X))P(Y,X)\\ &amp;=\iint</em>{X\times Y}L(Y,f(X))P(Y|X)P(X)\\ &amp;=\int<em>X\left\{\int_YL(Y,f(X))P(Y|X)\right\}P(X)\\ &amp;=\int_X\left\{\sum</em>{k=1}^KL(c_k,f(X))P(Y=c_k|X)\right\}P(X)\end{align}$</p>
-<p>当数据给定后，$P(X)$为定值，且不影响期望损失($f$的泛函)中对$f$的选择。<br>因此，为了使期望损失最小，只需要使得条件期望部分最小即可，具体来说，就是对$X=x$逐个极小化。</p>
-<script type="math/tex; mode=display">\begin{align} \hat f(x)&=argmin_{f(x)}\sum_{k=1}^KL(c_k,f(x))P(Y=c_k|X=x) \\\\ &=argmin_y\sum_{k=1}^KL(c_k,y)P(Y=c_k|X=x) \\\\ &=argmin_y\sum_{k=1}^KL(c_k,y)P(c_k|X=x) \\\\ &=argmin_y\sum_{k=1}^KP(y\neq c_k|X=x) \\\\ &=argmin_y\left\\{1-\sum_{k=1}^KP(y=c_k|X=x)\right\\} \\\\ &=argmin_y\left\\{1-P(y=c_k|X=x)\right\\} \\\\ &=argmax_yP(y=c_k|X=x) \\\\ &=argmax_{c_k}P(Y=c_k|X=x) \end{align}</script><p>因此，期望风险最小等同于后验概率最大化。  </p>
-<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>PRML</p>
+        <h2>贝叶斯</h2>
+<h2>朴素贝叶斯</h2>
+<p>朴素贝叶斯是基于贝叶斯定理和属性条件独立的分类器。其中，”朴素”指的是一个很naive的假设，即属性条件独立。
+$$\begin{align} y&amp;=argmax_kP(c_k|x)\\ &amp;=argmax_k\frac{P(c_k)P(x|c_k)}{P(x)}\\ &amp;=argmax_kP(c_k)P(x|c_k)\\ &amp;=argmax_kP(c_k)\prod_{j=1}^DP(x^{(j)}|c_k)\\ &amp;=argmax_kP(c_k)\prod_{j=1}^D\frac{P(x^{(j)},c_k)}{P(c_k)}\\ &amp;=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)}N \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)}{\sum_{i=1}^NI(y_i=c_k)}\\ &amp;=argmax_k\frac{N_k}{N}\prod_{j=1}^{D}\frac{N_k^{x^{(j)}}}{N_k} \end{align}$$</p>
+<p>上式第3步，因为分母于参数k无关，故舍去<br>
+上式第4步，因为naive，故属性条件独立</p>
+<p>$x$表示需要预测的属性值向量，是values<br>
+$y$表示预测的类别值，是values<br>
+$D$表示属性个数<br>
+$D^{(j)}$表示第j个属性的取值数<br>
+$K$表示类别个数<br>
+$N$表示样本量<br>
+$N_k$表示属于k类的样本量<br>
+$N^{x^{(j)}}_k$表示属于k类，且第j个属性值为$x^{(j)}$的样本量<br>
+$x^{(j)}_i$表示第i个样例的第j个属性，是key<br>
+$x^{(j)}$表示x的第j个属性值，是value</p>
+<h2>平滑</h2>
+<p>当数据量较小时，很容易出现$N^{x^{(j)}}_k$为0的情况，因此需要做平滑。</p>
+<p>具体来说，<br>
+$$\begin{align} y&amp;=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)}N \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)}{\sum_{i=1}^NI(y_i=c_k)}\\ &amp;=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)+\lambda}{N+\lambda K} \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)+\lambda}{\sum_{i=1}^NI(y_i=c_k)+\lambda D^{(j)}}\\ &amp;=argmax_k\frac{N_k+\lambda}{N+\lambda K}\prod_{j=1}^{D}\frac{N_k^{x^{(j)}}+\lambda}{N_k+\lambda D^{(j)}} \end{align}$$</p>
+<h2>预测时，最大后验概率的意义</h2>
+<p>再次强调，模型已经通过ML或者MAP估计好了，这里是预测时，朴素贝叶斯将实例分到后验概率最大的类中，等价于期望风险最小化。<br>
+$X$是输入随机向量，$Y$是输出随机变量<br>
+损失函数为0-1损失：<br>
+$L(Y,f(X))= \begin{cases} 1, \ Y=f(X) \\ 0, \ Y\neq f(X) \end{cases} $<br>
+则期望损失为：
+$R_{exp}(f)=E_{X\times Y}[L(Y,f(X))]$<br>
+将期望损失分解成$P(Y|X)$条件期望的内部，和$P(X)$的外部形式:
+$\begin{align} R_{exp}(f) &amp;=E_{X\times Y}[L(Y,f(X))] \\ &amp;=\iint_{X\times Y}L(Y,f(X))P(Y,X)\\ &amp;=\iint_{X\times Y}L(Y,f(X))P(Y|X)P(X)\\ &amp;=\int_X\left\{\int_YL(Y,f(X))P(Y|X)\right\}P(X)\\ &amp;=\int_X\left\{\sum_{k=1}^KL(c_k,f(X))P(Y=c_k|X)\right\}P(X)\end{align}$</p>
+<p>当数据给定后，$P(X)$为定值，且不影响期望损失($f$的泛函)中对$f$的选择。<br>
+因此，为了使期望损失最小，只需要使得条件期望部分最小即可，具体来说，就是对$X=x$逐个极小化。
+$$\begin{align} \hat f(x)&amp;=argmin_{f(x)}\sum_{k=1}^KL(c_k,f(x))P(Y=c_k|X=x) \\ &amp;=argmin_y\sum_{k=1}^KL(c_k,y)P(Y=c_k|X=x) \\ &amp;=argmin_y\sum_{k=1}^KL(c_k,y)P(c_k|X=x) \\ &amp;=argmin_y\sum_{k=1}^KP(y\neq c_k|X=x) \\ &amp;=argmin_y\left\{1-\sum_{k=1}^KP(y=c_k|X=x)\right\} \\ &amp;=argmin_y\left\{1-P(y=c_k|X=x)\right\} \\ &amp;=argmax_yP(y=c_k|X=x) \\ &amp;=argmax_{c_k}P(Y=c_k|X=x) \end{align}$$<br>
+因此，期望风险最小等同于后验概率最大化。</p>
+<h2>Reference</h2>
+<p>PRML</p>
 
       
     </div>
@@ -505,6 +531,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/07/26/参数估计方法/" rel="prev" title="参数估计方法">
+                参数估计方法 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -583,7 +613,7 @@
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">7</span>
+                <span class="site-state-item-count">8</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
@@ -647,7 +677,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#贝叶斯"><span class="nav-number">1.</span> <span class="nav-text">贝叶斯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#朴素贝叶斯"><span class="nav-number">2.</span> <span class="nav-text">朴素贝叶斯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#平滑"><span class="nav-number">3.</span> <span class="nav-text">平滑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#预测时，最大后验概率的意义"><span class="nav-number">4.</span> <span class="nav-text">预测时，最大后验概率的意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Reference"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">贝叶斯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">朴素贝叶斯</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">平滑</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">预测时，最大后验概率的意义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">Reference</span></a></li></ol></div>
             
 
           </div>

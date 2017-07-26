@@ -95,7 +95,7 @@
 <link href="/css/main.css?v=5.1.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="机器学习," />
 
 
 
@@ -113,15 +113,17 @@
 
 
 
-<meta name="description" content="life is great">
-<meta property="og:type" content="website">
-<meta property="og:title" content="我的博客">
-<meta property="og:url" content="http://wangfengcs.github.io/tags/机器学习/index.html">
+<meta name="description" content="几个参数估计的策略 期望损失(expected loss) 风险函数(risk function) 是模型$f(X)$关于联合分布$P(X,Y)$的期望 经验风险最小化 ERM(Empirical Risk Minimization) 是关于训练样本的平均损失 结构风险最小化 SRM(Structural Risk Minimization) 是加了正则项的经验风险最小化 P(x)与p(x)区别">
+<meta name="keywords" content="机器学习">
+<meta property="og:type" content="article">
+<meta property="og:title" content="参数估计方法">
+<meta property="og:url" content="http://wangfengcs.github.io/2017/07/26/参数估计方法/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="life is great">
+<meta property="og:description" content="几个参数估计的策略 期望损失(expected loss) 风险函数(risk function) 是模型$f(X)$关于联合分布$P(X,Y)$的期望 经验风险最小化 ERM(Empirical Risk Minimization) 是关于训练样本的平均损失 结构风险最小化 SRM(Structural Risk Minimization) 是加了正则项的经验风险最小化 P(x)与p(x)区别">
+<meta property="og:updated_time" content="2017-07-26T02:58:26.853Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="我的博客">
-<meta name="twitter:description" content="life is great">
+<meta name="twitter:title" content="参数估计方法">
+<meta name="twitter:description" content="几个参数估计的策略 期望损失(expected loss) 风险函数(risk function) 是模型$f(X)$关于联合分布$P(X,Y)$的期望 经验风险最小化 ERM(Empirical Risk Minimization) 是关于训练样本的平均损失 结构风险最小化 SRM(Structural Risk Minimization) 是加了正则项的经验风险最小化 P(x)与p(x)区别">
 
 
 
@@ -149,13 +151,13 @@
 
 
 
-  <link rel="canonical" href="http://wangfengcs.github.io/tags/机器学习/"/>
+  <link rel="canonical" href="http://wangfengcs.github.io/2017/07/26/参数估计方法/"/>
 
 
 
 
 
-  <title>标签: 机器学习 | 我的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>参数估计方法 | 我的博客</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -199,7 +201,7 @@
     
   
 
-  <div class="container sidebar-position-left  ">
+  <div class="container sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -337,128 +339,205 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-collapse">
-    <div class="collection-title">
-      <h1>机器学习<small>标签</small>
-      </h1>
-    </div>
-
+  <div id="posts" class="posts-expand">
     
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/07/26/参数估计方法/" itemprop="url">
-              
-                <span itemprop="name">参数估计方法</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-07-26T10:07:38+08:00"
-              content="2017-07-26" >
-          07-26
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/03/03/朴素贝叶斯/" itemprop="url">
-              
-                <span itemprop="name">朴素贝叶斯</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-03T09:06:54+08:00"
-              content="2017-03-03" >
-          03-03
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/03/01/经验贝叶斯/" itemprop="url">
-              
-                <span itemprop="name">经验贝叶斯</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-03-01T15:28:52+08:00"
-              content="2017-03-01" >
-          03-01
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h2 class="post-title">
-        
-            <a class="post-title-link" href="/2017/02/10/关联规则/" itemprop="url">
-              
-                <span itemprop="name">关联规则</span>
-              
-            </a>
-        
-      </h2>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-02-10T09:19:16+08:00"
-              content="2017-02-10" >
-          02-10
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-    
-  </div>
 
   
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+    <link itemprop="mainEntityOfPage" href="http://wangfengcs.github.io/2017/07/26/参数估计方法/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangfengcs">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/touxiang2.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="我的博客">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">参数估计方法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2017-07-26T10:07:38+08:00">
+                2017-07-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/机器学习/" itemprop="url" rel="index">
+                    <span itemprop="name">机器学习</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2017/07/26/参数估计方法/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count fb-comments-count" data-href="http://wangfengcs.github.io/2017/07/26/参数估计方法/" itemprop="commentCount">0</span> comments
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h4>几个参数估计的策略</h4>
+<p>期望损失(expected loss) 风险函数(risk function)<br>
+是模型$f(X)$关于联合分布$P(X,Y)$的期望
+经验风险最小化 ERM(Empirical Risk Minimization)<br>
+是关于训练样本的平均损失
+结构风险最小化 SRM(Structural Risk Minimization)
+是加了正则项的经验风险最小化</p>
+<h4>P(x)与p(x)区别</h4>
+<p>大写$P(x)$表示概率质量函数 <strong>pmf</strong> (probability mass function)<br>
+小写$p(x)$表示概率密度函数 <strong>pdf</strong> (probability density function)</p>
+<h4>贝叶斯公式</h4>
+<p>$$P(\theta|X)=\frac{P(X|\theta) \cdot P(\theta)}{P(X)}$$<br>
+$$posterior=\frac{likelihood \cdot prior}{evidence}$$</p>
+<h3>最大似然ML(Maximum likelihood)估计</h3>
+<p>$$P(\theta|X)=P(X|\theta)$$
+$$posterior=likelihood$$
+在网上偶然找到一张图，可以看到在实际求解时，我们所求的往往是极大值而不是最大值。
+{ % asset_img 最大似然估计.png  %}<br>
+$$\begin{align} \hat \theta_{ML}&amp;=argmax_{\theta}logL \\ &amp;=argmax_{\theta}logP(X|\theta) \\ &amp;=argmax_{\theta}log\prod_xP(x|\theta) \\ &amp;=argmax_{\theta}\sum_xlogP(x|\theta) \\ \end{align}$$<br>
+在实际应用中，模型分判别模型和生产模型，如果模型是判别模型，则似然估计为，<br>
+$$\hat \theta_{ML}=argmax_{\theta}\sum_{i=1}^N logP(y_i|x_i,\theta)$$<br>
+如果模型是生成模型，则似然估计为，
+$$\hat \theta_{ML}=argmax_{\theta}\sum_{i=1}^N logP(y_i,x_i|\theta)$$</p>
+<h4>经验风险最小化 ERM(Empirical Risk Minimization)</h4>
+<p>当模型是条件概率分布，损失函数是对数损失时，判别模型的最大似然估计等同于经验风险最小化。<br>
+$$\hat \theta_{ERM}&amp;=argmin_f \frac{1}{N} \sum_{i=1}^N L(y_i,f(x_i)) &amp;=argmin_{\theta} \frac{1}{N} \sum_{i=1}^N L(y_i,P(y_i|x_i,\theta)) &amp;=argmin_(\theta) \frac{1}{N} \sum_{i=1}^N \left\{ -logP(y_i|x_i,\theta)\right\} &amp;=argmin_{\theta} \frac{1}{N} \sum_{i=1}^N logP(y_i|x_i,\theta) &amp;=argmax_{\theta} \sum_{i=1}^N logP(y_i|x_i,\theta) $$</p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/机器学习/" rel="tag"># 机器学习</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/03/朴素贝叶斯/" rel="next" title="朴素贝叶斯">
+                <i class="fa fa-chevron-left"></i> 朴素贝叶斯
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -466,6 +545,17 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="fb-comments"
+           data-href="http://wangfengcs.github.io/2017/07/26/参数估计方法/"
+           data-numposts="10"
+           data-width="100%"
+           data-colorscheme="light">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -485,8 +575,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel sidebar-panel-active">
+      <section class="site-overview sidebar-panel">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/uploads/touxiang2.png"
@@ -555,6 +654,22 @@
 
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">几个参数估计的策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">P(x)与p(x)区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">贝叶斯公式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">最大似然ML(Maximum likelihood)估计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">经验风险最小化 ERM(Empirical Risk Minimization)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -675,10 +790,10 @@
 
 
   
-    <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.1"></script>
 <script type="text/javascript" src="/js/src/post-details.js?v=5.1.1"></script>
 
-  
+
 
   
 
@@ -696,6 +811,18 @@
       <script id="dsq-count-scr" src="https://.disqus.com/count.js" async></script>
     
 
+    
+      <script type="text/javascript">
+        var disqus_config = function () {
+          this.page.url = 'http://wangfengcs.github.io/2017/07/26/参数估计方法/';
+          this.page.identifier = '2017/07/26/参数估计方法/';
+          this.page.title = '参数估计方法';
+        };
+        var d = document, s = d.createElement('script');
+        s.src = 'https://.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', '' + +new Date());
+        (d.head || d.body).appendChild(s);
+      </script>
     
 
   
@@ -1045,39 +1172,7 @@
         onPopupClose();
       }
     });
-  </script>
-
-
-
-
-
-  
-
-  
-
-  
-
-  
-  
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Config({
-        tex2jax: {
-          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
-          processEscapes: true,
-          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
-        }
-      });
-    </script>
-
-    <script type="text/x-mathjax-config">
-      MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax(), i;
-        for (i=0; i < all.length; i += 1) {
-          all[i].SourceElement().parentNode.className += ' has-jax';
-        }
-      });
-    </script>
-    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+  </script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
 <script type="text/x-mathjax-config">
   MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
 </script>
@@ -1095,6 +1190,18 @@
 </script>
 <!-- End: Injected MathJax -->
 <!-- hexo-inject:end -->
+
+
+
+
+
+  
+
+  
+
+  
+
+  
   
 
 
