@@ -120,7 +120,7 @@
 <meta property="og:url" content="http://wangfengcs.github.io/2017/07/26/参数估计方法/index.html">
 <meta property="og:site_name" content="我的博客">
 <meta property="og:description" content="几个参数估计的策略 期望损失(expected loss) 风险函数(risk function) 是模型$f(X)$关于联合分布$P(X,Y)$的期望 经验风险最小化 ERM(Empirical Risk Minimization) 是关于训练样本的平均损失 结构风险最小化 SRM(Structural Risk Minimization) 是加了正则项的经验风险最小化 P(x)与p(x)区别">
-<meta property="og:updated_time" content="2017-07-26T02:58:26.853Z">
+<meta property="og:updated_time" content="2017-07-26T08:21:03.041Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="参数估计方法">
 <meta name="twitter:description" content="几个参数估计的策略 期望损失(expected loss) 风险函数(risk function) 是模型$f(X)$关于联合分布$P(X,Y)$的期望 经验风险最小化 ERM(Empirical Risk Minimization) 是关于训练样本的平均损失 结构风险最小化 SRM(Structural Risk Minimization) 是加了正则项的经验风险最小化 P(x)与p(x)区别">
@@ -470,7 +470,51 @@ $$\hat \theta_{ML}=argmax_{\theta}\sum_{i=1}^N logP(y_i|x_i,\theta)$$<br>
 $$\hat \theta_{ML}=argmax_{\theta}\sum_{i=1}^N logP(y_i,x_i|\theta)$$</p>
 <h4>经验风险最小化 ERM(Empirical Risk Minimization)</h4>
 <p>当模型是条件概率分布，损失函数是对数损失时，判别模型的最大似然估计等同于经验风险最小化。<br>
-$$\hat \theta_{ERM}&amp;=argmin_f \frac{1}{N} \sum_{i=1}^N L(y_i,f(x_i)) &amp;=argmin_{\theta} \frac{1}{N} \sum_{i=1}^N L(y_i,P(y_i|x_i,\theta)) &amp;=argmin_(\theta) \frac{1}{N} \sum_{i=1}^N \left\{ -logP(y_i|x_i,\theta)\right\} &amp;=argmin_{\theta} \frac{1}{N} \sum_{i=1}^N logP(y_i|x_i,\theta) &amp;=argmax_{\theta} \sum_{i=1}^N logP(y_i|x_i,\theta) $$</p>
+$\begin{align} \hat \theta_{ERM}&amp;=argmin_{f}\frac{1}{N}\sum_{i=1}^NL(y_i,f(x_i)) \\ &amp;=argmin_{\theta}\frac{1}{N}\sum_{i=1}^NL(y_i,P(y_i|x_i,\theta)) \\ &amp;=argmin_{\theta}\frac{1}{N}\sum_{i=1}^N{-logP(y_i|x_i,\theta)} \\ &amp;=argmax_{\theta}\frac{1}{N}\sum_{i=1}^NlogP(y_i|x_i,\theta) \\ &amp;=argmax_{\theta}\sum_{i=1}^NlogP(y_i|x_i,\theta) \end{align}$</p>
+<h3>最大后验概率MAP(maximum a posteriori)估计</h3>
+<p>$$P(\theta|X)=P(X|\theta) \cdot P(\theta)$$<br>
+$$posterior=likelihood \cdot prior$$
+相比于最大似然估计，最大后验估计加入一个先验，根据贝叶斯公式计算出的整个后验概率最大。但因为只需要求使$P(\theta|X)$最大的$\theta$，这里$P(X)$与参数$\theta$无关，因此等价于使分子最大。
+最大后验概率估计是不完整的后验概率估计；后面的贝叶斯估计是完整的后验概率估计<br>
+$\begin{align} \hat \theta_{MAP}&amp;=argmax_{\theta}logP(\theta|X) \\ &amp;=argmax_{\theta}log\frac{P(X|\theta)\cdot P(\theta)}{P(X)} \\ &amp;=argmax_{\theta}log(P(X|\theta)\cdot P(\theta)) \\ &amp;=argmax_{\theta}{logP(X|\theta)+logP(\theta)} \\ &amp;=argmax_{\theta}{log\prod_xP(x|\theta)+logP(\theta)} \\ &amp;=argmax_{\theta}{\sum_xlogP(x|\theta)+logP(\theta)} \end{align}$<br>
+同样，在实际应用中，模型分判别模型和生产模型，如果模型是判别模型，则MAP估计为，<br>
+$$\hat \theta_{MAP}=argmax_{\theta}\left\{\sum_{i=1}^NlogP(y_i|x_i,\theta)+logP(\theta)\right\}$$<br>
+如果模型是生成模型，则MAP估计为，<br>
+$$\hat \theta_{MAP}=argmax_{\theta}\left\{\sum_{i=1}^NlogP(y_i,x_i|\theta)+logP(\theta)\right\}$$</p>
+<h4>结构风险最小化 SRM(Structural Risk Minimization)</h4>
+<p>当模型是条件概率分布，损失函数是对数损失，正则项为负log先验时，判别模型的MAP估计等同于结构风险最小化。<br>
+$\begin{align} \hat \theta_{SRM}&amp;=argmin_{f}{\frac{1}{N}\sum_{i=1}^NL(y_i,f(x_i))+\lambda J(f)} \\ &amp;=argmin_{\theta}{\frac{1}{N}\sum_{i=1}^NL(y_i,P(y_i|x_i,\theta))-\frac1NlogP(\theta)} \\ &amp;=argmin_{\theta}{\frac{1}{N}\sum_{i=1}^N{-logP(y_i|x_i,\theta)}-\frac1NlogP(\theta)} \\ &amp;=argmax_{\theta}{\frac{1}{N}\sum_{i=1}^NlogP(y_i|x_i,\theta)+\frac1NlogP(\theta)} \\ &amp;=argmax_{\theta}{\sum_{i=1}^NlogP(y_i|x_i,\theta)+logP(\theta)} \end{align}$</p>
+<h3>贝叶斯估计(Bayesian estimator)</h3>
+<p>$$P(\theta|X)= \frac{P(X|\theta) \cdot P(\theta)}{P(X)}$$
+$$posterior= \frac{likelihood \cdot prior}{evidence}$$
+Bayesian估计是后验的完整形式。
+在MAP估计中，只取了后验P(θ|X)P(θ|X)的最大值作为θθ的估计，忽略了θθ的其他可能性，可能丢失信息。而Bayesian估计则把θθ的所有可能取值(分母部分)考虑进来，即，<br>
+$$P(\theta|X)=\frac{P(X|\theta) \cdot P(\theta)}{P(X)}=\frac {P(X|\theta) \cdot P(\theta)}{\int_{\theta}P(X,\theta)d\theta}=\frac {P(X|\theta) \cdot P(\theta)}{\int_{\theta}P(X|\theta) \cdot P(\theta)d\theta}$$<br>
+因此，Bayesian估计要比MAP估计更可靠些，但随着数据越多，Bayesian估计，MAP估计和ML估计越趋于一致。</p>
+<h4>优点</h4>
+<ol>
+<li>Bayesian估计不仅可以得到后验的期望，还可以得到后验的方差，表示对这个期望值的确信程度。常用共轭先验作先验，可以根据分布的参数直接得到方差。</li>
+<li>Bayesian估计可以估计θθ后验分布上的某个具体的θθ值，而不是最大值，也就是Bayesian Inference。</li>
+</ol>
+<h4>缺点</h4>
+<p>Bayesian估计比较复杂，原因是分母$P(X)$不能在忽略，需要对$P(X|\theta)$在$P(\theta)$上求期望，<br>
+$$P(\theta|X)=\frac{P(X|\theta) \cdot P(\theta)}{\int_{\theta}P(X|\theta) \cdot P(\theta)d\theta}$$</p>
+<h3>总结</h3>
+<ol>
+<li>估计的复杂程度，ML&lt;MAP&lt;Bayesian</li>
+<li>ML估计最简单，posteriori=likelihoodposteriori=likelihood</li>
+<li>MAP估计，posteriori=likelihood⋅priorposteriori=likelihood⋅prior</li>
+<li>Bayesian估计，posteriori=likelihood⋅priorevidenceposteriori=likelihood⋅priorevidence</li>
+<li>ML估计和MAP估计都是点估计，返回的是参数变量θθ的特定值</li>
+<li>MAP估计和Bayesian估计都需要先验。MAP估计只需要得到最大值，并不需要得到完整的后验，因此，可以不计算P(X)P(X)。而Bayesian估计是要得到完整的后验，所以需要计算P(X)P(X)。</li>
+<li>MAP估计的后验是一个不完整的后验，因此，不能说得到的后验与先验共轭。而Bayesian估计是后验的完整形式，所以先验和后验关于似然共轭，这也是共轭先验的由来。</li>
+<li>Bayesian估计可以求方差，表示确信度(confidence)，而且可以做推断(Inference)。</li>
+</ol>
+<h3>Reference</h3>
+<p><a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1" target="_blank" rel="external">https://zh.wikipedia.org/wiki/最大似然估计</a>
+<a href="https://en.wikipedia.org/wiki/Maximum_a_posteriori_estimation" target="_blank" rel="external">https://en.wikipedia.org/wiki/Maximum_a_posteriori_estimation</a>
+<a href="https://engineering.purdue.edu/kak/Trinity.pdf" target="_blank" rel="external">https://engineering.purdue.edu/kak/Trinity.pdf</a>
+<a href="http://blog.csdn.net/yangliuy/article/details/829648" target="_blank" rel="external">http://blog.csdn.net/yangliuy/article/details/829648</a></p>
 
       
     </div>
@@ -664,7 +708,7 @@ $$\hat \theta_{ERM}&amp;=argmin_f \frac{1}{N} \sum_{i=1}^N L(y_i,f(x_i)) &amp;=a
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">几个参数估计的策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">P(x)与p(x)区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">贝叶斯公式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">最大似然ML(Maximum likelihood)估计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">经验风险最小化 ERM(Empirical Risk Minimization)</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">几个参数估计的策略</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">P(x)与p(x)区别</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">贝叶斯公式</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">最大似然ML(Maximum likelihood)估计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">经验风险最小化 ERM(Empirical Risk Minimization)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">最大后验概率MAP(maximum a posteriori)估计</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">结构风险最小化 SRM(Structural Risk Minimization)</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">贝叶斯估计(Bayesian estimator)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">缺点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">总结</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number"></span> <span class="nav-text">Reference</span></a></div>
             
 
           </div>
