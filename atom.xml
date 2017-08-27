@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangfengcs.github.io/"/>
-  <updated>2017-07-26T08:40:38.759Z</updated>
+  <updated>2017-08-27T14:55:09.175Z</updated>
   <id>http://wangfengcs.github.io/</id>
   
   <author>
@@ -14,6 +14,259 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>排序算法</title>
+    <link href="http://wangfengcs.github.io/2017/08/27/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
+    <id>http://wangfengcs.github.io/2017/08/27/排序算法/</id>
+    <published>2017-08-27T14:49:08.000Z</published>
+    <updated>2017-08-27T14:55:09.175Z</updated>
+    
+    <content type="html"><![CDATA[<p>public class Main {
+	private int[] aux;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] input={25,13,5,48,16,9,7,29,36,11};
+		Main res=new Main();
+	    res.Bubble(input);
+	    res.PrintResult(input);
+	}
+	public void PrintResult(int[] input){
+		for(int i=0;i&lt;input.length;i++){
+			System.out.print(input[i]+&quot; &quot;);
+		}
+	}
+	public void Exchange(int[] input,int a,int b){
+		int temp;
+		if(input[a]&gt;input[b]){
+			temp=input[a]+input[b];
+			input[a]=temp-input[a];
+			input[b]=temp-input[a];
+		}
+	}
+	*****************************************************************************
+	** 堆排序代码段来自：http://blog.csdn.net/apei830/article/details/6584645 **
+	   public static void swap(int[] data, int i, int j) {<br>
+if (i == j) {<br>
+return;<br>
+}<br>
+data[i] = data[i] + data[j];<br>
+data[j] = data[i] - data[j];<br>
+data[i] = data[i] - data[j];<br>
+}</p>
+<pre><code>public static void heapSort(int[] data) {  
+    for (int i = 0; i &lt; data.length; i++) {  
+        createMaxdHeap(data, data.length - 1 - i);  
+        swap(data, 0, data.length - 1 - i);  
+        print(data);  
+    }  
+}  
+
+public static void createMaxdHeap(int[] data, int lastIndex) {  
+    for (int i = (lastIndex - 1) / 2; i &gt;= 0; i--) {  
+        // 保存当前正在判断的节点  
+        int k = i;  
+        // 若当前节点的子节点存在  
+        while (2 * k + 1 &lt;= lastIndex) {  
+            // biggerIndex总是记录较大节点的值,先赋值为当前判断节点的左子节点  
+            int biggerIndex = 2 * k + 1;  
+            if (biggerIndex &lt; lastIndex) {  
+                // 若右子节点存在，否则此时biggerIndex应该等于 lastIndex  
+                if (data[biggerIndex] &lt; data[biggerIndex + 1]) {  
+                    // 若右子节点值比左子节点值大，则biggerIndex记录的是右子节点的值  
+                    biggerIndex++;  
+                }  
+            }  
+            if (data[k] &lt; data[biggerIndex]) {  
+                // 若当前节点值比子节点最大值小，则交换2者得值，交换后将biggerIndex值赋值给k  
+                swap(data, k, biggerIndex);  
+                k = biggerIndex;  
+            } else {  
+                break;  
+            }  
+        }  
+    }  
+}
+</code></pre>
+<hr>
+<pre><code>public void QuickSort(int[] input){
+	Quick3Sort(input,0,input.length-1);
+}
+public void Quick3Sort(int[] input,int lo,int hi){
+	if(hi&lt;=lo) return;
+	int lt=lo,i=lo+1,gt=hi;
+	int v=input[lo];
+	while(i&lt;=gt){
+		if(input[i]&lt;v)
+			Exchange(input,lt++,i++);
+		else if(input[i]&gt;v)
+			Exchange(input,i,gt--);
+		else
+			i++;
+	}
+	Quick3Sort(input,lo,lt-1);
+	Quick3Sort(input,gt+1,hi);
+
+}
+******************************************************************
+public void QuickSort(int[] input){
+	QuickSort(input,0,input.length-1);
+}
+public void QuickSort(int[] input,int lo,int hi){
+	if(hi&lt;=lo)
+		return;
+	int j=partition(input,lo,hi);
+	QuickSort(input,lo,j-1);
+	QuickSort(input,j+1,hi);
+}
+private int partition(int[] input,int lo,int hi){
+	int i=lo,j=hi+1;
+	int v=input[lo];
+	while(true){
+		while(input[++i]&lt;v)
+			if(i==hi)
+				break;
+		while(v&lt;input[--j])
+			if(j==lo)
+				break;
+		if(i&gt;=j)
+			break;
+		Exchange(input,i,j);
+	}
+	Exchange(input,lo,j);
+	return j;
+}
+****************************************************************
+public void PartitionSortBU(int[] input){
+	int len=input.length;
+	aux=new int[len];
+	for(int sz=1;sz&lt;len;sz=sz+sz){
+		for(int lo=0;lo&lt;len-sz;lo=lo+sz+sz)
+			merge(input,lo,lo+sz-1,Math.min(lo+sz+sz-1, len-1));
+	}
+}
+
+public void merge(int[] input,int lo,int mid,int hi){
+	int i=lo,j=mid+1;
+	for(int k=lo;k&lt;=hi;k++){
+		aux[k]=input[k];
+	}
+	for(int k=lo;k&lt;=hi;k++){
+		if(i&gt;mid)
+			input[k]=aux[j++];
+		else if(j&gt;hi)
+			input[k]=aux[i++];
+		else if(aux[j]&lt;aux[i])
+			input[k]=aux[j++];
+		else
+			input[k]=aux[i++];
+	}  		
+}
+************************************************************
+ public void PartitionSort(int[] input){
+	int len=input.length;
+	aux=new int[len];
+	Sort(input,0,len-1);
+}
+public void Sort(int[] input,int lo,int hi){
+	if(lo&gt;=hi)
+		return;
+	int mid=lo+(hi-lo)/2;
+	Sort(input,lo,mid);
+	Sort(input,mid+1,hi);
+	merge(input,lo,mid,hi);
+}
+public void merge(int[] input,int lo,int mid,int hi){
+	int i=lo,j=mid+1;
+	for(int k=lo;k&lt;=hi;k++){
+		aux[k]=input[k];
+	}
+	for(int k=lo;k&lt;=hi;k++){
+		if(i&gt;mid)
+			input[k]=aux[j++];
+		else if(j&gt;hi)
+			input[k]=aux[i++];
+		else if(aux[j]&lt;aux[i])
+			input[k]=aux[j++];
+		else
+			input[k]=aux[i++];
+	}  		
+}
+</code></pre>
+<hr>
+<pre><code>public void ShellSort(int[] input){
+	int len=input.length;
+	int h=1;
+	while(h&lt;len/3)
+		h=h*3+1;
+	while(h&gt;=1){
+		for(int i=h;i&lt;len;i++){
+			for(int j=i;j&gt;=h &amp;&amp; input[j]&lt;input[j-h];j=j-h)
+				Exchange(input,j-h,j);
+		}
+		h=h/3;
+	}
+}
+</code></pre>
+<hr>
+<pre><code>public void InsertionSort(int[] input){
+	int len=input.length;
+	for(int i=1;i&lt;len;i++){
+		for(int j=i;j&gt;0 &amp;&amp; input[j]&lt;input[j-1];j--)
+			Exchange(input,j-1,j);
+	}
+}
+</code></pre>
+<hr>
+<pre><code>public void SelectionSort(int[] input){
+	int len=input.length;
+	int temp;
+	for(int i=0;i&lt;len;i++){
+		int min=i;
+		for(int j=i+1;j&lt;len;j++){
+			if(input[j]&lt;input[min]){
+				min=j;
+			}
+		}
+		temp=input[i]+input[min];
+		input[i]=temp-input[i];
+		input[min]=temp-input[i];
+	}
+}
+</code></pre>
+<hr>
+<pre><code>public void BubbleSort(int[] input){
+	int len=input.length;
+	int temp;
+	for(int i=0;i&lt;len;i++){
+		for(int j=i;j&lt;len;j++){
+			if(input[i]&gt;input[j]){
+				temp=input[i]+input[j];
+				input[i]=temp-input[i];
+				input[j]=temp-input[i];
+			}
+		}
+	}
+}
+</code></pre>
+<hr>
+<p>}</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;public class Main {
+	private int[] aux;
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		int[] input={25,
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://wangfengcs.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
   
   <entry>
     <title>参数估计方法</title>
