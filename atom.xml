@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangfengcs.github.io/"/>
-  <updated>2017-08-27T14:55:09.175Z</updated>
+  <updated>2017-09-04T12:00:16.586Z</updated>
   <id>http://wangfengcs.github.io/</id>
   
   <author>
@@ -16,45 +16,140 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>顺时针和逆时针打印数组</title>
+    <link href="http://wangfengcs.github.io/2017/09/04/%E9%A1%BA%E6%97%B6%E9%92%88%E5%92%8C%E9%80%86%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E6%95%B0%E7%BB%84/"/>
+    <id>http://wangfengcs.github.io/2017/09/04/顺时针和逆时针打印数组/</id>
+    <published>2017-09-04T11:52:37.000Z</published>
+    <updated>2017-09-04T12:00:16.586Z</updated>
+    
+    <content type="html"><![CDATA[<p>package Test;</p>
+<p>给定一个n，由内向外顺时针打印一个n*n的矩阵，分别为1-n</p>
+<p>import java.util.*;<br>public class Main {</p>
+<pre><code> int count=1;  
+public static void main(String[] args) {
+    // TODO Auto-generated method stub
+    Scanner in=new Scanner(System.in);
+    int num=in.nextInt();
+    int[][] res=new int[num][num];
+    Main m=new Main();
+    m.printMatrix(res,num);
+    for(int i=0;i&lt;num;i++){
+        for(int j=0;j&lt;num;j++){
+            System.out.print(res[i][j]+&quot; &quot;);
+        }
+        System.out.println(&quot;&quot;);
+    }    
+}
+
+public  int[][] printMatrix(int[][] res,int n){
+    int cols=n;
+    int rows=n;
+    int start=0;
+    while(cols&gt;start*2 &amp;&amp; rows&gt;start*2){
+        printMatrix(res,rows,cols,start);
+        start++;
+    }
+    return res;
+}
+public void printMatrix(int[][] res,int rows,int cols,int start){
+    int endX=cols-1-start;
+    int endY=rows-1-start;
+    int n=res.length*res.length;
+    for(int i=endX;i&gt;=start;i--){
+        res[start][i]=n-count+1;
+        count++;
+    }
+    if(start&lt;endY){
+        for(int i=start+1;i&lt;=endY;i++){
+            res[i][start]=n-count+1;
+            count++;
+        }
+    }
+    if(start&lt;endX &amp;&amp; start&lt;endY){
+        for(int i=start+1;i&lt;=endX;i++){
+        res[endY][i]=n-count+1;
+        count++;
+        }
+    }
+    if(start&lt;endX &amp;&amp; start&lt;endY-1){
+        for(int i=endY-1;i&gt;=start+1;i--){
+            res[i][endY]=n-count+1;
+            count++;
+        }
+    }
+}
+</code></pre><p>}<br>给定一个数组，由外向内打印顺时针遍历数据<br>import java.util.ArrayList;<br>public class Solution {</p>
+<pre><code>public ArrayList&lt;Integer&gt; printMatrix(int [][] matrix) {
+    int rows=matrix.length;
+    int cols=matrix[0].length;
+    ArrayList&lt;Integer&gt; res=new ArrayList&lt;&gt;();
+    if(matrix==null || cols&lt;=0 || rows&lt;=0)
+        return res;
+    int start=0;
+    while(cols&gt;start*2 &amp;&amp; rows&gt;start*2){
+        printMatrix(matrix,rows,cols,start,res);
+        start++;
+    }
+    return res;
+}
+public void printMatrix(int[][] matrix,int rows,int cols,int start,ArrayList&lt;Integer&gt; res){
+    int endX=cols-start-1;
+    int endY=rows-start-1;
+    for(int i=start;i&lt;=endX;i++)
+        res.add(matrix[start][i]);
+    if(start&lt;endY){
+        for(int i=start+1;i&lt;=endY;i++){
+            res.add(matrix[i][endX]);
+        }
+    }
+    if(start&lt;endX &amp;&amp; start&lt;endY){
+        for(int i=endX-1;i&gt;=start;i--)
+            res.add(matrix[endY][i]);
+    }
+    if(start&lt;endY-1 &amp;&amp; start&lt;endX){
+        for(int i=endY-1;i&gt;=start+1;i--){
+            res.add(matrix[i][start]);
+        }
+    }
+}
+</code></pre><p>}</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;package Test;&lt;/p&gt;
+&lt;p&gt;给定一个n，由内向外顺时针打印一个n*n的矩阵，分别为1-n&lt;/p&gt;
+&lt;p&gt;import java.util.*;&lt;br&gt;public class Main {&lt;/p&gt;
+&lt;pre&gt;&lt;code&gt; int count=1;  
+publ
+    
+    </summary>
+    
+    
+      <category term="算法" scheme="http://wangfengcs.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>排序算法</title>
     <link href="http://wangfengcs.github.io/2017/08/27/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/"/>
     <id>http://wangfengcs.github.io/2017/08/27/排序算法/</id>
     <published>2017-08-27T14:49:08.000Z</published>
     <updated>2017-08-27T14:55:09.175Z</updated>
     
-    <content type="html"><![CDATA[<p>public class Main {
-	private int[] aux;
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int[] input={25,13,5,48,16,9,7,29,36,11};
-		Main res=new Main();
-	    res.Bubble(input);
-	    res.PrintResult(input);
-	}
-	public void PrintResult(int[] input){
-		for(int i=0;i&lt;input.length;i++){
-			System.out.print(input[i]+&quot; &quot;);
-		}
-	}
-	public void Exchange(int[] input,int a,int b){
-		int temp;
-		if(input[a]&gt;input[b]){
-			temp=input[a]+input[b];
-			input[a]=temp-input[a];
-			input[b]=temp-input[a];
-		}
-	}
-	*****************************************************************************
-	** 堆排序代码段来自：http://blog.csdn.net/apei830/article/details/6584645 **
-	   public static void swap(int[] data, int i, int j) {<br>
-if (i == j) {<br>
-return;<br>
-}<br>
-data[i] = data[i] + data[j];<br>
-data[j] = data[i] - data[j];<br>
-data[i] = data[i] - data[j];<br>
-}</p>
-<pre><code>public static void heapSort(int[] data) {  
+    <content type="html"><![CDATA[<p>public class Main {<br>    private int[] aux;<br>    public static void main(String[] args) {<br>        // TODO Auto-generated method stub<br>        int[] input={25,13,5,48,16,9,7,29,36,11};<br>        Main res=new Main();<br>        res.Bubble(input);<br>        res.PrintResult(input);<br>    }<br>    public void PrintResult(int[] input){<br>        for(int i=0;i<input.length;i++){ system.out.print(input[i]+"="" ");="" }="" public="" void="" exchange(int[]="" input,int="" a,int="" b){="" int="" temp;="" if(input[a]="">input[b]){<br>            temp=input[a]+input[b];<br>            input[a]=temp-input[a];<br>            input[b]=temp-input[a];<br>        }<br>    }</input.length;i++){></p>
+<pre><code>*****************************************************************************
+** 堆排序代码段来自：http://blog.csdn.net/apei830/article/details/6584645 **
+   public static void swap(int[] data, int i, int j) {  
+    if (i == j) {  
+        return;  
+    }  
+    data[i] = data[i] + data[j];  
+    data[j] = data[i] - data[j];  
+    data[i] = data[i] - data[j];  
+}  
+
+public static void heapSort(int[] data) {  
     for (int i = 0; i &lt; data.length; i++) {  
         createMaxdHeap(data, data.length - 1 - i);  
         swap(data, 0, data.length - 1 - i);  
@@ -87,179 +182,169 @@ public static void createMaxdHeap(int[] data, int lastIndex) {
         }  
     }  
 }
-</code></pre>
-<hr>
+</code></pre><hr>
 <pre><code>public void QuickSort(int[] input){
-	Quick3Sort(input,0,input.length-1);
+    Quick3Sort(input,0,input.length-1);
 }
 public void Quick3Sort(int[] input,int lo,int hi){
-	if(hi&lt;=lo) return;
-	int lt=lo,i=lo+1,gt=hi;
-	int v=input[lo];
-	while(i&lt;=gt){
-		if(input[i]&lt;v)
-			Exchange(input,lt++,i++);
-		else if(input[i]&gt;v)
-			Exchange(input,i,gt--);
-		else
-			i++;
-	}
-	Quick3Sort(input,lo,lt-1);
-	Quick3Sort(input,gt+1,hi);
+    if(hi&lt;=lo) return;
+    int lt=lo,i=lo+1,gt=hi;
+    int v=input[lo];
+    while(i&lt;=gt){
+        if(input[i]&lt;v)
+            Exchange(input,lt++,i++);
+        else if(input[i]&gt;v)
+            Exchange(input,i,gt--);
+        else
+            i++;
+    }
+    Quick3Sort(input,lo,lt-1);
+    Quick3Sort(input,gt+1,hi);
 
 }
 ******************************************************************
 public void QuickSort(int[] input){
-	QuickSort(input,0,input.length-1);
+    QuickSort(input,0,input.length-1);
 }
 public void QuickSort(int[] input,int lo,int hi){
-	if(hi&lt;=lo)
-		return;
-	int j=partition(input,lo,hi);
-	QuickSort(input,lo,j-1);
-	QuickSort(input,j+1,hi);
+    if(hi&lt;=lo)
+        return;
+    int j=partition(input,lo,hi);
+    QuickSort(input,lo,j-1);
+    QuickSort(input,j+1,hi);
 }
 private int partition(int[] input,int lo,int hi){
-	int i=lo,j=hi+1;
-	int v=input[lo];
-	while(true){
-		while(input[++i]&lt;v)
-			if(i==hi)
-				break;
-		while(v&lt;input[--j])
-			if(j==lo)
-				break;
-		if(i&gt;=j)
-			break;
-		Exchange(input,i,j);
-	}
-	Exchange(input,lo,j);
-	return j;
+    int i=lo,j=hi+1;
+    int v=input[lo];
+    while(true){
+        while(input[++i]&lt;v)
+            if(i==hi)
+                break;
+        while(v&lt;input[--j])
+            if(j==lo)
+                break;
+        if(i&gt;=j)
+            break;
+        Exchange(input,i,j);
+    }
+    Exchange(input,lo,j);
+    return j;
 }
 ****************************************************************
 public void PartitionSortBU(int[] input){
-	int len=input.length;
-	aux=new int[len];
-	for(int sz=1;sz&lt;len;sz=sz+sz){
-		for(int lo=0;lo&lt;len-sz;lo=lo+sz+sz)
-			merge(input,lo,lo+sz-1,Math.min(lo+sz+sz-1, len-1));
-	}
+    int len=input.length;
+    aux=new int[len];
+    for(int sz=1;sz&lt;len;sz=sz+sz){
+        for(int lo=0;lo&lt;len-sz;lo=lo+sz+sz)
+            merge(input,lo,lo+sz-1,Math.min(lo+sz+sz-1, len-1));
+    }
 }
 
 public void merge(int[] input,int lo,int mid,int hi){
-	int i=lo,j=mid+1;
-	for(int k=lo;k&lt;=hi;k++){
-		aux[k]=input[k];
-	}
-	for(int k=lo;k&lt;=hi;k++){
-		if(i&gt;mid)
-			input[k]=aux[j++];
-		else if(j&gt;hi)
-			input[k]=aux[i++];
-		else if(aux[j]&lt;aux[i])
-			input[k]=aux[j++];
-		else
-			input[k]=aux[i++];
-	}  		
+    int i=lo,j=mid+1;
+    for(int k=lo;k&lt;=hi;k++){
+        aux[k]=input[k];
+    }
+    for(int k=lo;k&lt;=hi;k++){
+        if(i&gt;mid)
+            input[k]=aux[j++];
+        else if(j&gt;hi)
+            input[k]=aux[i++];
+        else if(aux[j]&lt;aux[i])
+            input[k]=aux[j++];
+        else
+            input[k]=aux[i++];
+    }          
 }
 ************************************************************
  public void PartitionSort(int[] input){
-	int len=input.length;
-	aux=new int[len];
-	Sort(input,0,len-1);
+    int len=input.length;
+    aux=new int[len];
+    Sort(input,0,len-1);
 }
 public void Sort(int[] input,int lo,int hi){
-	if(lo&gt;=hi)
-		return;
-	int mid=lo+(hi-lo)/2;
-	Sort(input,lo,mid);
-	Sort(input,mid+1,hi);
-	merge(input,lo,mid,hi);
+    if(lo&gt;=hi)
+        return;
+    int mid=lo+(hi-lo)/2;
+    Sort(input,lo,mid);
+    Sort(input,mid+1,hi);
+    merge(input,lo,mid,hi);
 }
 public void merge(int[] input,int lo,int mid,int hi){
-	int i=lo,j=mid+1;
-	for(int k=lo;k&lt;=hi;k++){
-		aux[k]=input[k];
-	}
-	for(int k=lo;k&lt;=hi;k++){
-		if(i&gt;mid)
-			input[k]=aux[j++];
-		else if(j&gt;hi)
-			input[k]=aux[i++];
-		else if(aux[j]&lt;aux[i])
-			input[k]=aux[j++];
-		else
-			input[k]=aux[i++];
-	}  		
+    int i=lo,j=mid+1;
+    for(int k=lo;k&lt;=hi;k++){
+        aux[k]=input[k];
+    }
+    for(int k=lo;k&lt;=hi;k++){
+        if(i&gt;mid)
+            input[k]=aux[j++];
+        else if(j&gt;hi)
+            input[k]=aux[i++];
+        else if(aux[j]&lt;aux[i])
+            input[k]=aux[j++];
+        else
+            input[k]=aux[i++];
+    }          
 }
-</code></pre>
-<hr>
+</code></pre><hr>
 <pre><code>public void ShellSort(int[] input){
-	int len=input.length;
-	int h=1;
-	while(h&lt;len/3)
-		h=h*3+1;
-	while(h&gt;=1){
-		for(int i=h;i&lt;len;i++){
-			for(int j=i;j&gt;=h &amp;&amp; input[j]&lt;input[j-h];j=j-h)
-				Exchange(input,j-h,j);
-		}
-		h=h/3;
-	}
+    int len=input.length;
+    int h=1;
+    while(h&lt;len/3)
+        h=h*3+1;
+    while(h&gt;=1){
+        for(int i=h;i&lt;len;i++){
+            for(int j=i;j&gt;=h &amp;&amp; input[j]&lt;input[j-h];j=j-h)
+                Exchange(input,j-h,j);
+        }
+        h=h/3;
+    }
 }
-</code></pre>
-<hr>
+</code></pre><hr>
 <pre><code>public void InsertionSort(int[] input){
-	int len=input.length;
-	for(int i=1;i&lt;len;i++){
-		for(int j=i;j&gt;0 &amp;&amp; input[j]&lt;input[j-1];j--)
-			Exchange(input,j-1,j);
-	}
+    int len=input.length;
+    for(int i=1;i&lt;len;i++){
+        for(int j=i;j&gt;0 &amp;&amp; input[j]&lt;input[j-1];j--)
+            Exchange(input,j-1,j);
+    }
 }
-</code></pre>
-<hr>
+</code></pre><hr>
 <pre><code>public void SelectionSort(int[] input){
-	int len=input.length;
-	int temp;
-	for(int i=0;i&lt;len;i++){
-		int min=i;
-		for(int j=i+1;j&lt;len;j++){
-			if(input[j]&lt;input[min]){
-				min=j;
-			}
-		}
-		temp=input[i]+input[min];
-		input[i]=temp-input[i];
-		input[min]=temp-input[i];
-	}
+    int len=input.length;
+    int temp;
+    for(int i=0;i&lt;len;i++){
+        int min=i;
+        for(int j=i+1;j&lt;len;j++){
+            if(input[j]&lt;input[min]){
+                min=j;
+            }
+        }
+        temp=input[i]+input[min];
+        input[i]=temp-input[i];
+        input[min]=temp-input[i];
+    }
 }
-</code></pre>
-<hr>
+</code></pre><hr>
 <pre><code>public void BubbleSort(int[] input){
-	int len=input.length;
-	int temp;
-	for(int i=0;i&lt;len;i++){
-		for(int j=i;j&lt;len;j++){
-			if(input[i]&gt;input[j]){
-				temp=input[i]+input[j];
-				input[i]=temp-input[i];
-				input[j]=temp-input[i];
-			}
-		}
-	}
+    int len=input.length;
+    int temp;
+    for(int i=0;i&lt;len;i++){
+        for(int j=i;j&lt;len;j++){
+            if(input[i]&gt;input[j]){
+                temp=input[i]+input[j];
+                input[i]=temp-input[i];
+                input[j]=temp-input[i];
+            }
+        }
+    }
 }
-</code></pre>
-<hr>
+</code></pre><hr>
 <p>}</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;public class Main {
-	private int[] aux;
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int[] input={25,
+      &lt;p&gt;public class Main {&lt;br&gt;    private int[] aux;&lt;br&gt;    public static void main(String[] args) {&lt;br&gt;        // TODO Auto-generated method st
     
     </summary>
     
@@ -275,62 +360,23 @@ public void merge(int[] input,int lo,int mid,int hi){
     <published>2017-03-16T02:07:38.000Z</published>
     <updated>2017-07-26T08:40:38.759Z</updated>
     
-    <content type="html"><![CDATA[<h4>几个参数估计的策略</h4>
-<p>期望损失(expected loss) 风险函数(risk function)<br>
-是模型$f(X)$关于联合分布$P(X,Y)$的期望
-经验风险最小化 ERM(Empirical Risk Minimization)<br>
-是关于训练样本的平均损失
-结构风险最小化 SRM(Structural Risk Minimization)
-是加了正则项的经验风险最小化</p>
-<h4>P(x)与p(x)区别</h4>
-<p>大写$P(x)$表示概率质量函数 <strong>pmf</strong> (probability mass function)<br>
-小写$p(x)$表示概率密度函数 <strong>pdf</strong> (probability density function)</p>
-<h4>贝叶斯公式</h4>
-<p>$$P(\theta|X)=\frac{P(X|\theta) \cdot P(\theta)}{P(X)}$$<br>
-$$posterior=\frac{likelihood \cdot prior}{evidence}$$</p>
-<h3>最大似然ML(Maximum likelihood)估计</h3>
-<p>$$P(\theta|X)=P(X|\theta)$$
-$$posterior=likelihood$$
-在网上偶然找到一张图，可以看到在实际求解时，我们所求的往往是极大值而不是最大值。</p>
-<p><img src="/2017/03/16/参数估计方法/最大似然估计.jpg" alt="最大似然估计.jpg" title=""><br>
-$$\begin{align} \hat \theta_{ML}&amp;=argmax_{\theta}logL \\ &amp;=argmax_{\theta}logP(X|\theta) \\ &amp;=argmax_{\theta}log\prod_xP(x|\theta) \\ &amp;=argmax_{\theta}\sum_xlogP(x|\theta) \\ \end{align}$$<br>
-在实际应用中，模型分判别模型和生产模型，如果模型是判别模型，则似然估计为，<br>
-$$\hat \theta_{ML}=argmax_{\theta}\sum_{i=1}^N logP(y_i|x_i,\theta)$$<br>
-如果模型是生成模型，则似然估计为，
-$$\hat \theta_{ML}=argmax_{\theta}\sum_{i=1}^N logP(y_i,x_i|\theta)$$</p>
-<h4>经验风险最小化 ERM(Empirical Risk Minimization)</h4>
-<p>当模型是条件概率分布，损失函数是对数损失时，判别模型的最大似然估计等同于经验风险最小化。<br>
-$\begin{align} \hat \theta_{ERM}&amp;=argmin_{f}\frac{1}{N}\sum_{i=1}^NL(y_i,f(x_i)) \\ &amp;=argmin_{\theta}\frac{1}{N}\sum_{i=1}^NL(y_i,P(y_i|x_i,\theta)) \\ &amp;=argmin_{\theta}\frac{1}{N}\sum_{i=1}^N{-logP(y_i|x_i,\theta)} \\ &amp;=argmax_{\theta}\frac{1}{N}\sum_{i=1}^NlogP(y_i|x_i,\theta) \\ &amp;=argmax_{\theta}\sum_{i=1}^NlogP(y_i|x_i,\theta) \end{align}$</p>
-<h3>最大后验概率MAP(maximum a posteriori)估计</h3>
-<p>$$P(\theta|X)=P(X|\theta) \cdot P(\theta)$$<br>
-$$posterior=likelihood \cdot prior$$
-相比于最大似然估计，最大后验估计加入一个先验，根据贝叶斯公式计算出的整个后验概率最大。但因为只需要求使$P(\theta|X)$最大的$\theta$，这里$P(X)$与参数$\theta$无关，因此等价于使分子最大。
-最大后验概率估计是不完整的后验概率估计；后面的贝叶斯估计是完整的后验概率估计<br>
-$\begin{align} \hat \theta_{MAP}&amp;=argmax_{\theta}logP(\theta|X) \\ &amp;=argmax_{\theta}log\frac{P(X|\theta)\cdot P(\theta)}{P(X)} \\ &amp;=argmax_{\theta}log(P(X|\theta)\cdot P(\theta)) \\ &amp;=argmax_{\theta}{logP(X|\theta)+logP(\theta)} \\ &amp;=argmax_{\theta}{log\prod_xP(x|\theta)+logP(\theta)} \\ &amp;=argmax_{\theta}{\sum_xlogP(x|\theta)+logP(\theta)} \end{align}$<br>
-同样，在实际应用中，模型分判别模型和生产模型，如果模型是判别模型，则MAP估计为，<br>
-$$\hat \theta_{MAP}=argmax_{\theta}\left\{\sum_{i=1}^NlogP(y_i|x_i,\theta)+logP(\theta)\right\}$$<br>
-如果模型是生成模型，则MAP估计为，<br>
-$$\hat \theta_{MAP}=argmax_{\theta}\left\{\sum_{i=1}^NlogP(y_i,x_i|\theta)+logP(\theta)\right\}$$</p>
-<h4>结构风险最小化 SRM(Structural Risk Minimization)</h4>
-<p>当模型是条件概率分布，损失函数是对数损失，正则项为负log先验时，判别模型的MAP估计等同于结构风险最小化。<br>
-$\begin{align} \hat \theta_{SRM}&amp;=argmin_{f}{\frac{1}{N}\sum_{i=1}^NL(y_i,f(x_i))+\lambda J(f)} \\ &amp;=argmin_{\theta}{\frac{1}{N}\sum_{i=1}^NL(y_i,P(y_i|x_i,\theta))-\frac1NlogP(\theta)} \\ &amp;=argmin_{\theta}{\frac{1}{N}\sum_{i=1}^N{-logP(y_i|x_i,\theta)}-\frac1NlogP(\theta)} \\ &amp;=argmax_{\theta}{\frac{1}{N}\sum_{i=1}^NlogP(y_i|x_i,\theta)+\frac1NlogP(\theta)} \\ &amp;=argmax_{\theta}{\sum_{i=1}^NlogP(y_i|x_i,\theta)+logP(\theta)} \end{align}$</p>
-<h3>贝叶斯估计(Bayesian estimator)</h3>
-<p>$$P(\theta|X)= \frac{P(X|\theta) \cdot P(\theta)}{P(X)}$$
-$$posterior= \frac{likelihood \cdot prior}{evidence}$$
-Bayesian估计是后验的完整形式。
-在MAP估计中，只取了后验P(θ|X)P(θ|X)的最大值作为θθ的估计，忽略了θθ的其他可能性，可能丢失信息。而Bayesian估计则把θθ的所有可能取值(分母部分)考虑进来，即，<br>
-$$P(\theta|X)=\frac{P(X|\theta) \cdot P(\theta)}{P(X)}=\frac {P(X|\theta) \cdot P(\theta)}{\int_{\theta}P(X,\theta)d\theta}=\frac {P(X|\theta) \cdot P(\theta)}{\int_{\theta}P(X|\theta) \cdot P(\theta)d\theta}$$<br>
-因此，Bayesian估计要比MAP估计更可靠些，但随着数据越多，Bayesian估计，MAP估计和ML估计越趋于一致。</p>
-<h4>优点</h4>
-<ol>
-<li>Bayesian估计不仅可以得到后验的期望，还可以得到后验的方差，表示对这个期望值的确信程度。常用共轭先验作先验，可以根据分布的参数直接得到方差。</li>
-<li>Bayesian估计可以估计θθ后验分布上的某个具体的θθ值，而不是最大值，也就是Bayesian Inference。</li>
+    <content type="html"><![CDATA[<h4 id="几个参数估计的策略"><a href="#几个参数估计的策略" class="headerlink" title="几个参数估计的策略"></a>几个参数估计的策略</h4><p>期望损失(expected loss) 风险函数(risk function)<br>是模型$f(X)$关于联合分布$P(X,Y)$的期望<br>经验风险最小化 ERM(Empirical Risk Minimization)<br>是关于训练样本的平均损失<br>结构风险最小化 SRM(Structural Risk Minimization)<br>是加了正则项的经验风险最小化  </p>
+<h4 id="P-x-与p-x-区别"><a href="#P-x-与p-x-区别" class="headerlink" title="P(x)与p(x)区别"></a>P(x)与p(x)区别</h4><p>大写$P(x)$表示概率质量函数 <strong>pmf</strong> (probability mass function)<br>小写$p(x)$表示概率密度函数 <strong>pdf</strong> (probability density function)  </p>
+<h4 id="贝叶斯公式"><a href="#贝叶斯公式" class="headerlink" title="贝叶斯公式"></a>贝叶斯公式</h4><script type="math/tex; mode=display">P(\theta|X)=\frac{P(X|\theta) \cdot P(\theta)}{P(X)}</script><script type="math/tex; mode=display">posterior=\frac{likelihood \cdot prior}{evidence}</script><h3 id="最大似然ML-Maximum-likelihood-估计"><a href="#最大似然ML-Maximum-likelihood-估计" class="headerlink" title="最大似然ML(Maximum likelihood)估计"></a>最大似然ML(Maximum likelihood)估计</h3><script type="math/tex; mode=display">P(\theta|X)=P(X|\theta)</script><script type="math/tex; mode=display">posterior=likelihood</script><p>在网上偶然找到一张图，可以看到在实际求解时，我们所求的往往是极大值而不是最大值。  </p>
+<img src="/2017/03/16/参数估计方法/最大似然估计.jpg" alt="最大似然估计.jpg" title="">  
+<script type="math/tex; mode=display">\begin{align} \hat \theta_{ML}&=argmax_{\theta}logL \\\\ &=argmax_{\theta}logP(X|\theta) \\\\ &=argmax_{\theta}log\prod_xP(x|\theta) \\\\ &=argmax_{\theta}\sum_xlogP(x|\theta) \\\\ \end{align}</script><p>在实际应用中，模型分判别模型和生产模型，如果模型是判别模型，则似然估计为，  </p>
+<script type="math/tex; mode=display">\hat \theta_{ML}=argmax_{\theta}\sum_{i=1}^N logP(y_i|x_i,\theta)</script><p>如果模型是生成模型，则似然估计为，</p>
+<script type="math/tex; mode=display">\hat \theta_{ML}=argmax_{\theta}\sum_{i=1}^N logP(y_i,x_i|\theta)</script><h4 id="经验风险最小化-ERM-Empirical-Risk-Minimization"><a href="#经验风险最小化-ERM-Empirical-Risk-Minimization" class="headerlink" title="经验风险最小化 ERM(Empirical Risk Minimization)"></a>经验风险最小化 ERM(Empirical Risk Minimization)</h4><p>当模型是条件概率分布，损失函数是对数损失时，判别模型的最大似然估计等同于经验风险最小化。<br>$\begin{align} \hat \theta<em>{ERM}&amp;=argmin</em>{f}\frac{1}{N}\sum<em>{i=1}^NL(y_i,f(x_i)) \\ &amp;=argmin</em>{\theta}\frac{1}{N}\sum<em>{i=1}^NL(y_i,P(y_i|x_i,\theta)) \\ &amp;=argmin</em>{\theta}\frac{1}{N}\sum<em>{i=1}^N{-logP(y_i|x_i,\theta)} \\ &amp;=argmax</em>{\theta}\frac{1}{N}\sum<em>{i=1}^NlogP(y_i|x_i,\theta) \\ &amp;=argmax</em>{\theta}\sum_{i=1}^NlogP(y_i|x_i,\theta) \end{align}$  </p>
+<h3 id="最大后验概率MAP-maximum-a-posteriori-估计"><a href="#最大后验概率MAP-maximum-a-posteriori-估计" class="headerlink" title="最大后验概率MAP(maximum a posteriori)估计"></a>最大后验概率MAP(maximum a posteriori)估计</h3><script type="math/tex; mode=display">P(\theta|X)=P(X|\theta) \cdot P(\theta)</script><script type="math/tex; mode=display">posterior=likelihood \cdot prior</script><p>相比于最大似然估计，最大后验估计加入一个先验，根据贝叶斯公式计算出的整个后验概率最大。但因为只需要求使$P(\theta|X)$最大的$\theta$，这里$P(X)$与参数$\theta$无关，因此等价于使分子最大。<br>最大后验概率估计是不完整的后验概率估计；后面的贝叶斯估计是完整的后验概率估计<br>$\begin{align} \hat \theta<em>{MAP}&amp;=argmax</em>{\theta}logP(\theta|X) \\ &amp;=argmax<em>{\theta}log\frac{P(X|\theta)\cdot P(\theta)}{P(X)} \\ &amp;=argmax</em>{\theta}log(P(X|\theta)\cdot P(\theta)) \\ &amp;=argmax<em>{\theta}{logP(X|\theta)+logP(\theta)} \\ &amp;=argmax</em>{\theta}{log\prod<em>xP(x|\theta)+logP(\theta)} \\ &amp;=argmax</em>{\theta}{\sum_xlogP(x|\theta)+logP(\theta)} \end{align}$<br>同样，在实际应用中，模型分判别模型和生产模型，如果模型是判别模型，则MAP估计为，  </p>
+<script type="math/tex; mode=display">\hat \theta_{MAP}=argmax_{\theta}\left\\{\sum_{i=1}^NlogP(y_i|x_i,\theta)+logP(\theta)\right\\}</script><p>如果模型是生成模型，则MAP估计为，  </p>
+<script type="math/tex; mode=display">\hat \theta_{MAP}=argmax_{\theta}\left\\{\sum_{i=1}^NlogP(y_i,x_i|\theta)+logP(\theta)\right\\}</script><h4 id="结构风险最小化-SRM-Structural-Risk-Minimization"><a href="#结构风险最小化-SRM-Structural-Risk-Minimization" class="headerlink" title="结构风险最小化 SRM(Structural Risk Minimization)"></a>结构风险最小化 SRM(Structural Risk Minimization)</h4><p>当模型是条件概率分布，损失函数是对数损失，正则项为负log先验时，判别模型的MAP估计等同于结构风险最小化。<br>$\begin{align} \hat \theta<em>{SRM}&amp;=argmin</em>{f}{\frac{1}{N}\sum<em>{i=1}^NL(y_i,f(x_i))+\lambda J(f)} \\ &amp;=argmin</em>{\theta}{\frac{1}{N}\sum<em>{i=1}^NL(y_i,P(y_i|x_i,\theta))-\frac1NlogP(\theta)} \\ &amp;=argmin</em>{\theta}{\frac{1}{N}\sum<em>{i=1}^N{-logP(y_i|x_i,\theta)}-\frac1NlogP(\theta)} \\ &amp;=argmax</em>{\theta}{\frac{1}{N}\sum<em>{i=1}^NlogP(y_i|x_i,\theta)+\frac1NlogP(\theta)} \\ &amp;=argmax</em>{\theta}{\sum_{i=1}^NlogP(y_i|x_i,\theta)+logP(\theta)} \end{align}$  </p>
+<h3 id="贝叶斯估计-Bayesian-estimator"><a href="#贝叶斯估计-Bayesian-estimator" class="headerlink" title="贝叶斯估计(Bayesian estimator)"></a>贝叶斯估计(Bayesian estimator)</h3><script type="math/tex; mode=display">P(\theta|X)= \frac{P(X|\theta) \cdot P(\theta)}{P(X)}</script><script type="math/tex; mode=display">posterior= \frac{likelihood \cdot prior}{evidence}</script><p>Bayesian估计是后验的完整形式。<br>在MAP估计中，只取了后验P(θ|X)P(θ|X)的最大值作为θθ的估计，忽略了θθ的其他可能性，可能丢失信息。而Bayesian估计则把θθ的所有可能取值(分母部分)考虑进来，即，  </p>
+<script type="math/tex; mode=display">P(\theta|X)=\frac{P(X|\theta) \cdot P(\theta)}{P(X)}=\frac {P(X|\theta) \cdot P(\theta)}{\int_{\theta}P(X,\theta)d\theta}=\frac {P(X|\theta) \cdot P(\theta)}{\int_{\theta}P(X|\theta) \cdot P(\theta)d\theta}</script><p>因此，Bayesian估计要比MAP估计更可靠些，但随着数据越多，Bayesian估计，MAP估计和ML估计越趋于一致。  </p>
+<h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><ol>
+<li>Bayesian估计不仅可以得到后验的期望，还可以得到后验的方差，表示对这个期望值的确信程度。常用共轭先验作先验，可以根据分布的参数直接得到方差。  </li>
+<li>Bayesian估计可以估计θθ后验分布上的某个具体的θθ值，而不是最大值，也就是Bayesian Inference。  <h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4>Bayesian估计比较复杂，原因是分母$P(X)$不能在忽略，需要对$P(X|\theta)$在$P(\theta)$上求期望，  <script type="math/tex; mode=display">P(\theta|X)=\frac{P(X|\theta) \cdot P(\theta)}{\int_{\theta}P(X|\theta) \cdot P(\theta)d\theta}</script></li>
 </ol>
-<h4>缺点</h4>
-<p>Bayesian估计比较复杂，原因是分母$P(X)$不能在忽略，需要对$P(X|\theta)$在$P(\theta)$上求期望，<br>
-$$P(\theta|X)=\frac{P(X|\theta) \cdot P(\theta)}{\int_{\theta}P(X|\theta) \cdot P(\theta)d\theta}$$</p>
-<h3>总结</h3>
-<ol>
+<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><ol>
 <li>估计的复杂程度，ML&lt;MAP&lt;Bayesian</li>
 <li>ML估计最简单，posteriori=likelihoodposteriori=likelihood</li>
 <li>MAP估计，posteriori=likelihood⋅priorposteriori=likelihood⋅prior</li>
@@ -338,22 +384,14 @@ $$P(\theta|X)=\frac{P(X|\theta) \cdot P(\theta)}{\int_{\theta}P(X|\theta) \cdot 
 <li>ML估计和MAP估计都是点估计，返回的是参数变量θθ的特定值</li>
 <li>MAP估计和Bayesian估计都需要先验。MAP估计只需要得到最大值，并不需要得到完整的后验，因此，可以不计算P(X)P(X)。而Bayesian估计是要得到完整的后验，所以需要计算P(X)P(X)。</li>
 <li>MAP估计的后验是一个不完整的后验，因此，不能说得到的后验与先验共轭。而Bayesian估计是后验的完整形式，所以先验和后验关于似然共轭，这也是共轭先验的由来。</li>
-<li>Bayesian估计可以求方差，表示确信度(confidence)，而且可以做推断(Inference)。</li>
+<li>Bayesian估计可以求方差，表示确信度(confidence)，而且可以做推断(Inference)。  </li>
 </ol>
-<h3>Reference</h3>
-<p><a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1" target="_blank" rel="external">https://zh.wikipedia.org/wiki/最大似然估计</a>
-<a href="https://en.wikipedia.org/wiki/Maximum_a_posteriori_estimation" target="_blank" rel="external">https://en.wikipedia.org/wiki/Maximum_a_posteriori_estimation</a>
-<a href="https://engineering.purdue.edu/kak/Trinity.pdf" target="_blank" rel="external">https://engineering.purdue.edu/kak/Trinity.pdf</a>
-<a href="http://blog.csdn.net/yangliuy/article/details/829648" target="_blank" rel="external">http://blog.csdn.net/yangliuy/article/details/829648</a></p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://zh.wikipedia.org/wiki/%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1" target="_blank" rel="external">https://zh.wikipedia.org/wiki/%E6%9C%80%E5%A4%A7%E4%BC%BC%E7%84%B6%E4%BC%B0%E8%AE%A1</a><br><a href="https://en.wikipedia.org/wiki/Maximum_a_posteriori_estimation" target="_blank" rel="external">https://en.wikipedia.org/wiki/Maximum_a_posteriori_estimation</a><br><a href="https://engineering.purdue.edu/kak/Trinity.pdf" target="_blank" rel="external">https://engineering.purdue.edu/kak/Trinity.pdf</a><br><a href="http://blog.csdn.net/yangliuy/article/details/829648" target="_blank" rel="external">http://blog.csdn.net/yangliuy/article/details/829648</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h4&gt;几个参数估计的策略&lt;/h4&gt;
-&lt;p&gt;期望损失(expected loss) 风险函数(risk function)&lt;br&gt;
-是模型$f(X)$关于联合分布$P(X,Y)$的期望
-经验风险最小化 ERM(Empirical Risk Minimization)&lt;br&gt;
-是关
+      &lt;h4 id=&quot;几个参数估计的策略&quot;&gt;&lt;a href=&quot;#几个参数估计的策略&quot; class=&quot;headerlink&quot; title=&quot;几个参数估计的策略&quot;&gt;&lt;/a&gt;几个参数估计的策略&lt;/h4&gt;&lt;p&gt;期望损失(expected loss) 风险函数(risk function)&lt;br
     
     </summary>
     
@@ -371,49 +409,20 @@ $$P(\theta|X)=\frac{P(X|\theta) \cdot P(\theta)}{\int_{\theta}P(X|\theta) \cdot 
     <published>2017-03-03T01:06:54.000Z</published>
     <updated>2017-07-25T07:29:29.535Z</updated>
     
-    <content type="html"><![CDATA[<h2>贝叶斯</h2>
-<h2>朴素贝叶斯</h2>
-<p>朴素贝叶斯是基于贝叶斯定理和属性条件独立的分类器。其中，”朴素”指的是一个很naive的假设，即属性条件独立。
-$$\begin{align} y&amp;=argmax_kP(c_k|x)\\ &amp;=argmax_k\frac{P(c_k)P(x|c_k)}{P(x)}\\ &amp;=argmax_kP(c_k)P(x|c_k)\\ &amp;=argmax_kP(c_k)\prod_{j=1}^DP(x^{(j)}|c_k)\\ &amp;=argmax_kP(c_k)\prod_{j=1}^D\frac{P(x^{(j)},c_k)}{P(c_k)}\\ &amp;=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)}N \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)}{\sum_{i=1}^NI(y_i=c_k)}\\ &amp;=argmax_k\frac{N_k}{N}\prod_{j=1}^{D}\frac{N_k^{x^{(j)}}}{N_k} \end{align}$$</p>
-<p>上式第3步，因为分母于参数k无关，故舍去<br>
-上式第4步，因为naive，故属性条件独立</p>
-<p>$x$表示需要预测的属性值向量，是values<br>
-$y$表示预测的类别值，是values<br>
-$D$表示属性个数<br>
-$D^{(j)}$表示第j个属性的取值数<br>
-$K$表示类别个数<br>
-$N$表示样本量<br>
-$N_k$表示属于k类的样本量<br>
-$N^{x^{(j)}}_k$表示属于k类，且第j个属性值为$x^{(j)}$的样本量<br>
-$x^{(j)}_i$表示第i个样例的第j个属性，是key<br>
-$x^{(j)}$表示x的第j个属性值，是value</p>
-<h2>平滑</h2>
-<p>当数据量较小时，很容易出现$N^{x^{(j)}}_k$为0的情况，因此需要做平滑。</p>
-<p>具体来说，<br>
-$$\begin{align} y&amp;=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)}N \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)}{\sum_{i=1}^NI(y_i=c_k)}\\ &amp;=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)+\lambda}{N+\lambda K} \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)+\lambda}{\sum_{i=1}^NI(y_i=c_k)+\lambda D^{(j)}}\\ &amp;=argmax_k\frac{N_k+\lambda}{N+\lambda K}\prod_{j=1}^{D}\frac{N_k^{x^{(j)}}+\lambda}{N_k+\lambda D^{(j)}} \end{align}$$</p>
-<h2>预测时，最大后验概率的意义</h2>
-<p>再次强调，模型已经通过ML或者MAP估计好了，这里是预测时，朴素贝叶斯将实例分到后验概率最大的类中，等价于期望风险最小化。<br>
-$X$是输入随机向量，$Y$是输出随机变量<br>
-损失函数为0-1损失：<br>
-$L(Y,f(X))= \begin{cases} 1, \ Y=f(X) \\ 0, \ Y\neq f(X) \end{cases} $<br>
-则期望损失为：
-$R_{exp}(f)=E_{X\times Y}[L(Y,f(X))]$<br>
-将期望损失分解成$P(Y|X)$条件期望的内部，和$P(X)$的外部形式:
-$\begin{align} R_{exp}(f) &amp;=E_{X\times Y}[L(Y,f(X))] \\ &amp;=\iint_{X\times Y}L(Y,f(X))P(Y,X)\\ &amp;=\iint_{X\times Y}L(Y,f(X))P(Y|X)P(X)\\ &amp;=\int_X\left\{\int_YL(Y,f(X))P(Y|X)\right\}P(X)\\ &amp;=\int_X\left\{\sum_{k=1}^KL(c_k,f(X))P(Y=c_k|X)\right\}P(X)\end{align}$</p>
-<p>当数据给定后，$P(X)$为定值，且不影响期望损失($f$的泛函)中对$f$的选择。<br>
-因此，为了使期望损失最小，只需要使得条件期望部分最小即可，具体来说，就是对$X=x$逐个极小化。
-$$\begin{align} \hat f(x)&amp;=argmin_{f(x)}\sum_{k=1}^KL(c_k,f(x))P(Y=c_k|X=x) \\ &amp;=argmin_y\sum_{k=1}^KL(c_k,y)P(Y=c_k|X=x) \\ &amp;=argmin_y\sum_{k=1}^KL(c_k,y)P(c_k|X=x) \\ &amp;=argmin_y\sum_{k=1}^KP(y\neq c_k|X=x) \\ &amp;=argmin_y\left\{1-\sum_{k=1}^KP(y=c_k|X=x)\right\} \\ &amp;=argmin_y\left\{1-P(y=c_k|X=x)\right\} \\ &amp;=argmax_yP(y=c_k|X=x) \\ &amp;=argmax_{c_k}P(Y=c_k|X=x) \end{align}$$<br>
-因此，期望风险最小等同于后验概率最大化。</p>
-<h2>Reference</h2>
-<p>PRML</p>
+    <content type="html"><![CDATA[<h2 id="贝叶斯"><a href="#贝叶斯" class="headerlink" title="贝叶斯"></a>贝叶斯</h2><h2 id="朴素贝叶斯"><a href="#朴素贝叶斯" class="headerlink" title="朴素贝叶斯"></a>朴素贝叶斯</h2><p>朴素贝叶斯是基于贝叶斯定理和属性条件独立的分类器。其中，”朴素”指的是一个很naive的假设，即属性条件独立。</p>
+<script type="math/tex; mode=display">\begin{align} y&=argmax_kP(c_k|x)\\\\ &=argmax_k\frac{P(c_k)P(x|c_k)}{P(x)}\\\\ &=argmax_kP(c_k)P(x|c_k)\\\\ &=argmax_kP(c_k)\prod_{j=1}^DP(x^{(j)}|c_k)\\\\ &=argmax_kP(c_k)\prod_{j=1}^D\frac{P(x^{(j)},c_k)}{P(c_k)}\\\\ &=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)}N \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)}{\sum_{i=1}^NI(y_i=c_k)}\\\\ &=argmax_k\frac{N_k}{N}\prod_{j=1}^{D}\frac{N_k^{x^{(j)}}}{N_k} \end{align}</script><p>上式第3步，因为分母于参数k无关，故舍去<br>上式第4步，因为naive，故属性条件独立  </p>
+<p>$x$表示需要预测的属性值向量，是values<br>$y$表示预测的类别值，是values<br>$D$表示属性个数<br>$D^{(j)}$表示第j个属性的取值数<br>$K$表示类别个数<br>$N$表示样本量<br>$N_k$表示属于k类的样本量<br>$N^{x^{(j)}}_k$表示属于k类，且第j个属性值为$x^{(j)}$的样本量<br>$x^{(j)}_i$表示第i个样例的第j个属性，是key<br>$x^{(j)}$表示x的第j个属性值，是value  </p>
+<h2 id="平滑"><a href="#平滑" class="headerlink" title="平滑"></a>平滑</h2><p>当数据量较小时，很容易出现$N^{x^{(j)}}_k$为0的情况，因此需要做平滑。  </p>
+<p>具体来说，  </p>
+<script type="math/tex; mode=display">\begin{align} y&=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)}N \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)}{\sum_{i=1}^NI(y_i=c_k)}\\\\ &=argmax_k \frac{\sum_{i=1}^NI(y_i=c_k)+\lambda}{N+\lambda K} \prod_{j=1}^D\frac{\sum_{i=1}^NI(x_i^{(j)}=x^{(j)},y_i=c_k)+\lambda}{\sum_{i=1}^NI(y_i=c_k)+\lambda D^{(j)}}\\\\ &=argmax_k\frac{N_k+\lambda}{N+\lambda K}\prod_{j=1}^{D}\frac{N_k^{x^{(j)}}+\lambda}{N_k+\lambda D^{(j)}} \end{align}</script><h2 id="预测时，最大后验概率的意义"><a href="#预测时，最大后验概率的意义" class="headerlink" title="预测时，最大后验概率的意义"></a>预测时，最大后验概率的意义</h2><p>再次强调，模型已经通过ML或者MAP估计好了，这里是预测时，朴素贝叶斯将实例分到后验概率最大的类中，等价于期望风险最小化。<br>$X$是输入随机向量，$Y$是输出随机变量<br>损失函数为0-1损失：<br>$L(Y,f(X))= \begin{cases} 1, \ Y=f(X) \\ 0, \ Y\neq f(X) \end{cases} $<br>则期望损失为：<br>$R<em>{exp}(f)=E</em>{X\times Y}[L(Y,f(X))]$<br>将期望损失分解成$P(Y|X)$条件期望的内部，和$P(X)$的外部形式:<br>$\begin{align} R<em>{exp}(f) &amp;=E</em>{X\times Y}[L(Y,f(X))] \\ &amp;=\iint<em>{X\times Y}L(Y,f(X))P(Y,X)\\ &amp;=\iint</em>{X\times Y}L(Y,f(X))P(Y|X)P(X)\\ &amp;=\int<em>X\left\{\int_YL(Y,f(X))P(Y|X)\right\}P(X)\\ &amp;=\int_X\left\{\sum</em>{k=1}^KL(c_k,f(X))P(Y=c_k|X)\right\}P(X)\end{align}$</p>
+<p>当数据给定后，$P(X)$为定值，且不影响期望损失($f$的泛函)中对$f$的选择。<br>因此，为了使期望损失最小，只需要使得条件期望部分最小即可，具体来说，就是对$X=x$逐个极小化。</p>
+<script type="math/tex; mode=display">\begin{align} \hat f(x)&=argmin_{f(x)}\sum_{k=1}^KL(c_k,f(x))P(Y=c_k|X=x) \\\\ &=argmin_y\sum_{k=1}^KL(c_k,y)P(Y=c_k|X=x) \\\\ &=argmin_y\sum_{k=1}^KL(c_k,y)P(c_k|X=x) \\\\ &=argmin_y\sum_{k=1}^KP(y\neq c_k|X=x) \\\\ &=argmin_y\left\\{1-\sum_{k=1}^KP(y=c_k|X=x)\right\\} \\\\ &=argmin_y\left\\{1-P(y=c_k|X=x)\right\\} \\\\ &=argmax_yP(y=c_k|X=x) \\\\ &=argmax_{c_k}P(Y=c_k|X=x) \end{align}</script><p>因此，期望风险最小等同于后验概率最大化。  </p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><p>PRML</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2&gt;贝叶斯&lt;/h2&gt;
-&lt;h2&gt;朴素贝叶斯&lt;/h2&gt;
-&lt;p&gt;朴素贝叶斯是基于贝叶斯定理和属性条件独立的分类器。其中，”朴素”指的是一个很naive的假设，即属性条件独立。
-$$\begin{align} y&amp;amp;=argmax_kP(c_k|x)\\ &amp;amp;=argma
+      &lt;h2 id=&quot;贝叶斯&quot;&gt;&lt;a href=&quot;#贝叶斯&quot; class=&quot;headerlink&quot; title=&quot;贝叶斯&quot;&gt;&lt;/a&gt;贝叶斯&lt;/h2&gt;&lt;h2 id=&quot;朴素贝叶斯&quot;&gt;&lt;a href=&quot;#朴素贝叶斯&quot; class=&quot;headerlink&quot; title=&quot;朴素贝叶斯&quot;&gt;&lt;/a&gt;
     
     </summary>
     
@@ -431,34 +440,18 @@ $$\begin{align} y&amp;amp;=argmax_kP(c_k|x)\\ &amp;amp;=argma
     <published>2017-03-01T07:28:52.000Z</published>
     <updated>2017-07-25T08:53:43.884Z</updated>
     
-    <content type="html"><![CDATA[<h2>贝叶斯</h2>
-<p>$\theta$ 是变量$x$的参数<br>
-$\eta$ 是变量$\theta$的参数<br>
-$\eta$ 是变量$x$的超参数</p>
-<h3>贝叶斯( Bayes or Standard Bayes or Fully Bayes )</h3>
-<p>在给定数据之前，先验分布$p(\theta)$就已经确定下来了，即参数$\theta$的分布$p(\theta)$已知，$p(\theta)$表达式中的参数$\eta$已知。
-$$p(\theta|x)=\frac{p(x|\theta)p(\theta)}{p(x)}$$</p>
-<h3>经验贝叶斯(Empirical Bayes)</h3>
-<p>在给定数据之前，先验分布$p(\theta)$未知，即参数$\eta$未知。给定数据之后，先验分布是根据数据估计的，即确定使$p(x|\eta)$最大的超参数$\eta$的值。<br>
-$$\eta^*=argmax_{\eta}p(x|\eta)$$</p>
-<p>$p(x|\eta)$ 表示关于$\eta$，而不是$\theta$的最大似然。将$p(x|\theta)$中的参数$\theta$替换成$p(\theta)$的表达式，表达式中，只包含超参数$\eta$，所以可以这么写。<br>
-然后根据$\eta^*$得到先验分布的估计，代入贝叶斯公式，其余的部分和贝叶斯都一样。<br>
-$$p(\theta|x) \approx \frac{p(x|\theta)p(\theta|\eta^*)}{p(x|\eta^*)}$$<br>
-经验贝叶斯可以看成是贝叶斯的的近似，经验贝叶斯与贝叶斯也仅仅只有先验给定与估计的区别。</p>
-<h3>Others</h3>
-<p>Empirical Bayes is only one of the possible approximations to a full Bayes treatment. There are many other approximation algorithms available, such as Variational Bayes and Expectation Propagation.</p>
-<h3>Reference</h3>
-<p>https://en.wikipedia.org/wiki/Empirical_Bayes_method
-http://stats.stackexchange.com/questions/115155/empirical-bayes-vs-non-informative-priors?rq=1</p>
+    <content type="html"><![CDATA[<h2 id="贝叶斯"><a href="#贝叶斯" class="headerlink" title="贝叶斯"></a>贝叶斯</h2><p>$\theta$ 是变量$x$的参数<br>$\eta$ 是变量$\theta$的参数<br>$\eta$ 是变量$x$的超参数  </p>
+<h3 id="贝叶斯-Bayes-or-Standard-Bayes-or-Fully-Bayes"><a href="#贝叶斯-Bayes-or-Standard-Bayes-or-Fully-Bayes" class="headerlink" title="贝叶斯( Bayes or Standard Bayes or Fully Bayes )"></a>贝叶斯( Bayes or Standard Bayes or Fully Bayes )</h3><p>在给定数据之前，先验分布$p(\theta)$就已经确定下来了，即参数$\theta$的分布$p(\theta)$已知，$p(\theta)$表达式中的参数$\eta$已知。</p>
+<script type="math/tex; mode=display">p(\theta|x)=\frac{p(x|\theta)p(\theta)}{p(x)}</script><h3 id="经验贝叶斯-Empirical-Bayes"><a href="#经验贝叶斯-Empirical-Bayes" class="headerlink" title="经验贝叶斯(Empirical Bayes)"></a>经验贝叶斯(Empirical Bayes)</h3><p>在给定数据之前，先验分布$p(\theta)$未知，即参数$\eta$未知。给定数据之后，先验分布是根据数据估计的，即确定使$p(x|\eta)$最大的超参数$\eta$的值。  </p>
+<script type="math/tex; mode=display">\eta^\*=argmax_{\eta}p(x|\eta)</script><p>$p(x|\eta)$ 表示关于$\eta$，而不是$\theta$的最大似然。将$p(x|\theta)$中的参数$\theta$替换成$p(\theta)$的表达式，表达式中，只包含超参数$\eta$，所以可以这么写。<br>然后根据$\eta^*$得到先验分布的估计，代入贝叶斯公式，其余的部分和贝叶斯都一样。  </p>
+<script type="math/tex; mode=display">p(\theta|x) \approx \frac{p(x|\theta)p(\theta|\eta^\*)}{p(x|\eta^\*)}</script><p>经验贝叶斯可以看成是贝叶斯的的近似，经验贝叶斯与贝叶斯也仅仅只有先验给定与估计的区别。</p>
+<h3 id="Others"><a href="#Others" class="headerlink" title="Others"></a>Others</h3><p>Empirical Bayes is only one of the possible approximations to a full Bayes treatment. There are many other approximation algorithms available, such as Variational Bayes and Expectation Propagation.</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="https://en.wikipedia.org/wiki/Empirical_Bayes_method" target="_blank" rel="external">https://en.wikipedia.org/wiki/Empirical_Bayes_method</a><br><a href="http://stats.stackexchange.com/questions/115155/empirical-bayes-vs-non-informative-priors?rq=1" target="_blank" rel="external">http://stats.stackexchange.com/questions/115155/empirical-bayes-vs-non-informative-priors?rq=1</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2&gt;贝叶斯&lt;/h2&gt;
-&lt;p&gt;$\theta$ 是变量$x$的参数&lt;br&gt;
-$\eta$ 是变量$\theta$的参数&lt;br&gt;
-$\eta$ 是变量$x$的超参数&lt;/p&gt;
-&lt;h3&gt;贝叶斯( Bayes or Standard Bayes or Fully Bayes )&lt;/h3
+      &lt;h2 id=&quot;贝叶斯&quot;&gt;&lt;a href=&quot;#贝叶斯&quot; class=&quot;headerlink&quot; title=&quot;贝叶斯&quot;&gt;&lt;/a&gt;贝叶斯&lt;/h2&gt;&lt;p&gt;$\theta$ 是变量$x$的参数&lt;br&gt;$\eta$ 是变量$\theta$的参数&lt;br&gt;$\eta$ 是变量$x$的超参数  
     
     </summary>
     
@@ -476,116 +469,62 @@ $\eta$ 是变量$x$的超参数&lt;/p&gt;
     <published>2017-02-24T01:53:32.000Z</published>
     <updated>2017-07-25T01:14:19.716Z</updated>
     
-    <content type="html"><![CDATA[<h2><strong>模型评估方法</strong></h2>
-<h3>网格搜索调参</h3>
-<p>在训练集上训练模型，根据验证集上的结果调参。调好参数后，在测试集上得到测试误差。</p>
+    <content type="html"><![CDATA[<h2 id="模型评估方法"><a href="#模型评估方法" class="headerlink" title="模型评估方法"></a><strong>模型评估方法</strong></h2><h3 id="网格搜索调参"><a href="#网格搜索调参" class="headerlink" title="网格搜索调参"></a>网格搜索调参</h3><p>在训练集上训练模型，根据验证集上的结果调参。调好参数后，在测试集上得到测试误差。  </p>
 <ol>
-<li>将数据集分为训练集，验证集，测试集</li>
-<li>将参数网格化，每一个交叉点都是一组参数</li>
-<li>遍历每个网格参数，在训练集上训练模型，在验证集上得到与网格参数对应的验证误差</li>
-<li>挑选最小的验证误差所对应的那个网格参数，作为最优的参数</li>
-<li>用最优参数设置模型，在训练集?验证集上训练，得到训练误差，在测试集上得到测试误差。<br>
-　　因为模型参数的选择是依赖于验证集，而模型对于测试集是没有依赖的，所以在测试上的准确率一般来说会比验证集低一些。</li>
+<li>将数据集分为训练集，验证集，测试集  </li>
+<li>将参数网格化，每一个交叉点都是一组参数  </li>
+<li>遍历每个网格参数，在训练集上训练模型，在验证集上得到与网格参数对应的验证误差  </li>
+<li>挑选最小的验证误差所对应的那个网格参数，作为最优的参数  </li>
+<li>用最优参数设置模型，在训练集?验证集上训练，得到训练误差，在测试集上得到测试误差。<br>　　因为模型参数的选择是依赖于验证集，而模型对于测试集是没有依赖的，所以在测试上的准确率一般来说会比验证集低一些。  </li>
 </ol>
-<h3>交叉验证 &amp; 估计期望泛化误差</h3>
-<p>用交叉验证的目的是为了得到可靠稳定的模型。如果已经调好参了，且得到的估计的期望泛化误差比较大，那么说明模型不太适用，就可以考虑做一些特征变化或换模型了。
-在非测试集上交叉验证，用MSE估计期望泛化误差，在测试集上得到测试误差</p>
+<h3 id="交叉验证-amp-估计期望泛化误差"><a href="#交叉验证-amp-估计期望泛化误差" class="headerlink" title="交叉验证 &amp; 估计期望泛化误差"></a>交叉验证 &amp; 估计期望泛化误差</h3><p>　　用交叉验证的目的是为了得到可靠稳定的模型。如果已经调好参了，且得到的估计的期望泛化误差比较大，那么说明模型不太适用，就可以考虑做一些特征变化或换模型了。<br>在非测试集上交叉验证，用MSE估计期望泛化误差，在测试集上得到测试误差</p>
 <ol>
 <li>将数据集分为非测试集和测试集</li>
 <li>在将非测试集分为k份，其中k-1份作为训练集，另一份作为验证集</li>
 <li>在训练集上训练模型，得到一个训练误差，在验证集上测试，得到一个验证误差。</li>
 <li>共训练了k个模型，得到k个训练误差和k个验证误差。用k个验证误差的平均来估计期望泛化误差。</li>
-<li>在非测试集上训练模型，得到训练误差，在测试集上测试模型，得到测试误差。</li>
+<li>在非测试集上训练模型，得到训练误差，在测试集上测试模型，得到测试误差。  </li>
 </ol>
-<p>为了减小因样本划分不同而引起的差别，k折交叉验证通常要随机使用不同的划分重复p次，最终的评估结果是这p次k折交叉验证结果的平均。所以说，一共会训练pk个模型，并得到pk个验证误差。</p>
+<p>　　为了减小因样本划分不同而引起的差别，k折交叉验证通常要随机使用不同的划分重复p次，最终的评估结果是这p次k折交叉验证结果的平均。所以说，一共会训练pk个模型，并得到pk个验证误差。  </p>
 <p><strong>如果只是为了估计模型的期望泛化误差，可以去掉验证集，并以测试集代替。</strong></p>
-<h3>网格搜索 &amp; 交叉验证</h3>
-<p>比网格搜索更稳定些，因为评价的标准不再是单个的验证误差，而是k个验证误差的平均。<br>
-在非测试集上网格搜索并交叉验证，用MSE估计期望泛化误差，调参。调好参数后，在测试集上得到测试误差。</p>
+<h3 id="网格搜索-amp-交叉验证"><a href="#网格搜索-amp-交叉验证" class="headerlink" title="网格搜索 &amp; 交叉验证"></a>网格搜索 &amp; 交叉验证</h3><p>比网格搜索更稳定些，因为评价的标准不再是单个的验证误差，而是k个验证误差的平均。<br>在非测试集上网格搜索并交叉验证，用MSE估计期望泛化误差，调参。调好参数后，在测试集上得到测试误差。</p>
 <ol>
 <li>将数据集分为非测试集，测试集</li>
 <li>将非测试集分为k份，其中k-1份作为训练集，另一份作为验证集</li>
 <li>将参数网格化，每个交叉点都是一组参数</li>
 <li>遍历每个网格参数，进行k交叉验证，共得到k个模型，k个训练误差，k个验证误差。<strong>用k个验证误差的平均来估计期望泛化误差，作为参数选择的评判标准。</strong></li>
 <li>选择估计期望泛化误差最小所对应的一个网格参数，作为最优参数</li>
-<li>用最优参数设置模型，在非测试集上训练，得到训练误差，在测试集上得到测试误差</li>
+<li>用最优参数设置模型，在非测试集上训练，得到训练误差，在测试集上得到测试误差  </li>
 </ol>
-<h3>小结</h3>
-<ol>
-<li>对于给定的模型，确定了网络结构，确定了损失函数，确定了核的选择，<br>
-那么便确定了唯一的训练误差和测试误差，最优参数值的选择会根据网格搜索在验证集上确定。</li>
+<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><ol>
+<li>对于给定的模型，确定了网络结构，确定了损失函数，确定了核的选择，<br>那么便确定了唯一的训练误差和测试误差，最优参数值的选择会根据网格搜索在验证集上确定。</li>
 <li>如果模型的所有参数都确定了，那么就可以只用训练集和测试集了。</li>
 <li>网格搜索是在验证集是调参用的。</li>
 <li>交叉验证只是用于估计期望泛化误差。可以有验证集，也可以不用验证集。如果同时要得到训练的模型，训练误差，测试误差，那么就需要有验证集。</li>
 <li>交叉验证可以使网格搜索的参数评判更准确。</li>
-<li>如果不需要调参，那么就没必要有验证集了。</li>
+<li>如果不需要调参，那么就没必要有验证集了。  </li>
 </ol>
-<h2>P-R曲线 &amp; ROC曲线</h2>
-<p><strong>先列，后行</strong></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">真实\预测</th>
-<th style="text-align:left">正例</th>
-<th style="text-align:left">反例</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">正例</td>
-<td style="text-align:left"><strong>TP</strong>(True Positive)</td>
-<td style="text-align:left"><strong>FN</strong>(False Positive)</td>
-</tr>
-<tr>
-<td style="text-align:left">反例</td>
-<td style="text-align:left"><strong>FP</strong>(False Negative)</td>
-<td style="text-align:left"><strong>TN</strong>(True Negative)</td>
-</tr>
-</tbody>
-</table>
-<p>TP：正确肯定的数目；FN：漏报，没有正确找到的匹配的数目；
-FP：误报，给出的匹配是不正确的；TN：正确拒绝的非匹配对数；</p>
-<h3>P-R</h3>
-<p>TPR 计算列1 显示列<br>
-FPR 计算行1 显示行<br>
-$TPR=\frac{TP}{TP+FN}$<br>
-$FPR=\frac {FP}{FP+TN}$</p>
-<h3>准确率(Precision)，召回率(Recall)和F1-Score</h3>
-<p>(1) 准确率(precision)：正确率
-(2) 召回率(recall)：查全率
-(3) F1-Score:准确率和召回率的综合指标
-定义：
-$precision=\frac{true positive}{true positive+false negative}=\frac{true positive}{no.of predicted positive}$</p>
-<p>$recall=\frac{true positive}{true positive+false negative}=\frac{true positive}{no.of actual positve}$</p>
-<p>$F1-Score=2\times\frac{precision\times recall}{precision+recall}$</p>
-<h3>正则</h3>
-<p>正则就是在训练数据的模型上加一个惩罚项，shrink模型的参数。<br>
-lasso的解是稀疏的，如sparse coding， compressed sensing</p>
-<h3>构造目标函数</h3>
-<p>用X来构造分布，用Y来确定分布的具体值。</p>
+<h2 id="P-R曲线-amp-ROC曲线"><a href="#P-R曲线-amp-ROC曲线" class="headerlink" title="P-R曲线 &amp; ROC曲线"></a>P-R曲线 &amp; ROC曲线</h2><p><strong>先列，后行</strong><br>真实\预测|正例|反例<br>:—|:—|:—<br>正例|<strong>TP</strong>(True Positive)|<strong>FN</strong>(False Positive)<br>反例|<strong>FP</strong>(False Negative)|<strong>TN</strong>(True Negative)<br>TP：正确肯定的数目；FN：漏报，没有正确找到的匹配的数目；<br>FP：误报，给出的匹配是不正确的；TN：正确拒绝的非匹配对数；</p>
+<h3 id="P-R"><a href="#P-R" class="headerlink" title="P-R"></a>P-R</h3><p>TPR 计算列1 显示列<br>FPR 计算行1 显示行<br>$TPR=\frac{TP}{TP+FN}$<br>$FPR=\frac {FP}{FP+TN}$</p>
+<h3 id="准确率-Precision-，召回率-Recall-和F1-Score"><a href="#准确率-Precision-，召回率-Recall-和F1-Score" class="headerlink" title="准确率(Precision)，召回率(Recall)和F1-Score"></a>准确率(Precision)，召回率(Recall)和F1-Score</h3><p>(1) 准确率(precision)：正确率<br>(2) 召回率(recall)：查全率<br>(3) F1-Score:准确率和召回率的综合指标<br>定义：<br>$precision=\frac{true positive}{true positive+false negative}=\frac{true positive}{no.of predicted positive}$  </p>
+<p>$recall=\frac{true positive}{true positive+false negative}=\frac{true positive}{no.of actual positve}$  </p>
+<p>$F1-Score=2\times\frac{precision\times recall}{precision+recall}$    </p>
+<h3 id="正则"><a href="#正则" class="headerlink" title="正则"></a>正则</h3><p>正则就是在训练数据的模型上加一个惩罚项，shrink模型的参数。<br>lasso的解是稀疏的，如sparse coding， compressed sensing  </p>
+<h3 id="构造目标函数"><a href="#构造目标函数" class="headerlink" title="构造目标函数"></a>构造目标函数</h3><p>用X来构造分布，用Y来确定分布的具体值。</p>
 <ol>
 <li>构造概率函数。给定x，初始超参数，构造出一个概率函数。但此概率函数的变量是y，不是x。</li>
 <li>构造似然函数。根据真实y，得到p(y|x)概率，连乘得到似然函数</li>
-<li>优化的参数，其实是构造分布时的超参数。</li>
+<li>优化的参数，其实是构造分布时的超参数。  </li>
 </ol>
-<h3>不平衡类</h3>
-<ol>
-<li>
-<p>对多的类进行欠采样</p>
+<h3 id="不平衡类"><a href="#不平衡类" class="headerlink" title="不平衡类"></a>不平衡类</h3><ol>
+<li>对多的类进行欠采样</li>
+<li>对少的类进行过采样</li>
+<li><p>移动阈值$\frac{y}{1-y} \gt \frac{m^+}{m^-} $即为正类</p>
 </li>
-<li>
-<p>对少的类进行过采样</p>
-</li>
-<li>
-<p>移动阈值$\frac{y}{1-y} \gt \frac{m^+}{m^-} $即为正类</p>
-</li>
-<li>
-<p>少类的插值(kmeans聚类，然后在一个簇里面插值)</p>
+<li><p>少类的插值(kmeans聚类，然后在一个簇里面插值)</p>
 </li>
 </ol>
-<h3>生成模型 &amp; 判别模型</h3>
-<h4>生成模型</h4>
-<p>学习的是联合分布p(y,x)</p>
+<h3 id="生成模型-amp-判别模型"><a href="#生成模型-amp-判别模型" class="headerlink" title="生成模型 &amp; 判别模型"></a>生成模型 &amp; 判别模型</h3><h4 id="生成模型"><a href="#生成模型" class="headerlink" title="生成模型"></a>生成模型</h4><p>学习的是联合分布p(y,x)  </p>
 <ol>
 <li>可以由联合分布p(y,x)在y上积分得到p(x)，即类条件概率p(x|y)与p(y)在y上的积分，如果p(x)的概率比较小，说明可能是异常点(outlier)，该点的分类效果可能不好。对p(x,y)在y上的积分有时比较难求，需要用MCMC抽样方法得到p(x)或变分近似p(x)。</li>
 <li>根据贝叶斯公式，p(y,x) / p(x)得到条件分布p(y|x)，即得到预测的条件分布。</li>
@@ -593,28 +532,20 @@ lasso的解是稀疏的，如sparse coding， compressed sensing</p>
 <li>可以解决存在隐变量的模型，比如GMM，HMM。</li>
 <li>需要更大的样本，做判别的时候，有些信息用不到。</li>
 </ol>
-<h4>判别模型</h4>
-<p>学习的是条件分布p(y|x)，或判别函数f(x)</p>
+<h4 id="判别模型"><a href="#判别模型" class="headerlink" title="判别模型"></a>判别模型</h4><p>学习的是条件分布p(y|x)，或判别函数f(x)  </p>
 <ol>
 <li>需要的样本量少于生成模型</li>
 <li>寻找的是不同类别的最优分类面</li>
 <li>准确率一般比生成模型高</li>
 <li>可以对原数据X进行特征的变化，例如降维，特征选择</li>
 </ol>
-<p><img src="/2017/02/24/关于建模和模型评价的一些总结/产生式和判别式.jpg" alt="产生式和判别式.jpg" title=""></p>
-<h3>Reference</h3>
-<p>http://blog.csdn.net/zouxy09/article/details/8195017
-https://zhengyangcs.github.io/2016/08/19/模型综述/</p>
+<img src="/2017/02/24/关于建模和模型评价的一些总结/产生式和判别式.jpg" alt="产生式和判别式.jpg" title="">
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><p><a href="http://blog.csdn.net/zouxy09/article/details/8195017" target="_blank" rel="external">http://blog.csdn.net/zouxy09/article/details/8195017</a><br><a href="https://zhengyangcs.github.io/2016/08/19/模型综述/" target="_blank" rel="external">https://zhengyangcs.github.io/2016/08/19/模型综述/</a></p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;h2&gt;&lt;strong&gt;模型评估方法&lt;/strong&gt;&lt;/h2&gt;
-&lt;h3&gt;网格搜索调参&lt;/h3&gt;
-&lt;p&gt;在训练集上训练模型，根据验证集上的结果调参。调好参数后，在测试集上得到测试误差。&lt;/p&gt;
-&lt;ol&gt;
-&lt;li&gt;将数据集分为训练集，验证集，测试集&lt;/li&gt;
-&lt;li&gt;将参数网格化，
+      &lt;h2 id=&quot;模型评估方法&quot;&gt;&lt;a href=&quot;#模型评估方法&quot; class=&quot;headerlink&quot; title=&quot;模型评估方法&quot;&gt;&lt;/a&gt;&lt;strong&gt;模型评估方法&lt;/strong&gt;&lt;/h2&gt;&lt;h3 id=&quot;网格搜索调参&quot;&gt;&lt;a href=&quot;#网格搜索调参&quot; class=
     
     </summary>
     
@@ -632,27 +563,16 @@ https://zhengyangcs.github.io/2016/08/19/模型综述/</p>
     <published>2017-02-10T01:19:16.000Z</published>
     <updated>2017-07-20T07:15:31.425Z</updated>
     
-    <content type="html"><![CDATA[<h2><strong>关联规则</strong></h2>
-<p>关联规则就是有关联的规则，形式可以定义为：两个 <strong>不相交</strong> 的非空集合X、Y，如果有X-&gt;Y，就说X-&gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度(confidence)来描述。<br>
-　　支持度的定义：$$support(X–&gt;Y) = \frac{|X \cap Y|}{N}$$集合X与集合Y中的项在一条记录中同时出现的次数/数据记录的个数。<br>
-　　自信度的定义：$$confidence(X-&gt;Y)=\frac{|X \cap Y|}{|X|}$$表示集合X与集合Y中的项在一条记录中同时出现的次数/集合X出现的个数。<br>
-　　上述所讲的支持度和自信度都是相对的支持度和自信度，不是绝对支持度，绝对支持度为：$$abs_support=N*support,　N为数据记录数$$　　支持度和自信度越高，说明规则越强，关联规则挖掘就是挖掘出满足一定强度的规则。<br>
-<strong>项集</strong>：属性名称集合。比如，{a,b},{c},{a,d}
-如果一个项集同时满足最小支持度阈值和最小置信度阈值，则认为这个项集的关联规则是有趣的。</p>
+    <content type="html"><![CDATA[<h2 id="关联规则"><a href="#关联规则" class="headerlink" title="关联规则"></a><strong>关联规则</strong></h2><p>　　关联规则就是有关联的规则，形式可以定义为：两个 <strong>不相交</strong> 的非空集合X、Y，如果有X-&gt;Y，就说X-&gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度(confidence)来描述。<br>　　支持度的定义：<script type="math/tex">support(X–>Y) = \frac{|X \cap Y|}{N}</script>集合X与集合Y中的项在一条记录中同时出现的次数/数据记录的个数。<br>　　自信度的定义：<script type="math/tex">confidence(X->Y)=\frac{|X \cap Y|}{|X|}</script>表示集合X与集合Y中的项在一条记录中同时出现的次数/集合X出现的个数。<br>　　上述所讲的支持度和自信度都是相对的支持度和自信度，不是绝对支持度，绝对支持度为：<script type="math/tex">abs\_support=N*support,　N为数据记录数</script>　　支持度和自信度越高，说明规则越强，关联规则挖掘就是挖掘出满足一定强度的规则。<br><strong>项集</strong>：属性名称集合。比如，{a,b},{c},{a,d}<br>如果一个项集同时满足最小支持度阈值和最小置信度阈值，则认为这个项集的关联规则是有趣的。</p>
 <p><strong>频繁项集</strong>：满足最小支持度的项集。</p>
-<p>如果一个项集{a,b}是频繁的，那么它的所有子集{a}也是频繁的。
-如果一个项集{a,b}是不频繁的，那么它的所有超集{a,b,c}也是不频繁的。</p>
-<h4><strong>Apriori是找频繁项集的算法</strong></h4>
-<p>Apriori算法：使用候选项集找频繁项集。Apriori算法是一种最有影响的挖掘布尔关联规则频繁项集的算法。其核心是基于两阶段频集思想的递推算法。该关联规则在分类上属于单维、单层、布尔关联规则。</p>
+<p>如果一个项集{a,b}是频繁的，那么它的所有子集{a}也是频繁的。<br>如果一个项集{a,b}是不频繁的，那么它的所有超集{a,b,c}也是不频繁的。</p>
+<h4 id="Apriori是找频繁项集的算法"><a href="#Apriori是找频繁项集的算法" class="headerlink" title="Apriori是找频繁项集的算法"></a><strong>Apriori是找频繁项集的算法</strong></h4><p>　　Apriori算法：使用候选项集找频繁项集。Apriori算法是一种最有影响的挖掘布尔关联规则频繁项集的算法。其核心是基于两阶段频集思想的递推算法。该关联规则在分类上属于单维、单层、布尔关联规则。</p>
 <ol>
 <li>统计一个元素项集出现的频数，找出不小于最小支持度的项集，得到 频繁1-项集。令k=2</li>
 <li>根据第k-1步生成的 频繁(k-1)-项集 生成 侯选k-项集，然后对数据库进行搜索，得到 侯选k-项集 的支持度，与最小支持度进行比较，从而找到 频繁k-项集，删除 侯选k-项集 中 不频繁k-项集。</li>
-<li>如果没有 频繁k-项集 生成，则停止，返回 频繁(k-1)-项集 作为 最大频繁项集；
-否则，k = k+1，返回步骤2</li>
+<li>如果没有 频繁k-项集 生成，则停止，返回 频繁(k-1)-项集 作为 最大频繁项集；<br>否则，k = k+1，返回步骤2</li>
 </ol>
-<p><strong>优点</strong>：
-简单，易理解，没有复杂的理论推导
-<strong>缺点</strong>：</p>
+<p><strong>优点</strong>：<br>简单，易理解，没有复杂的理论推导<br><strong>缺点</strong>：</p>
 <ol>
 <li>每一步产生侯选项集时循环产生的组合过多，没有排除不应该参与组合的元素</li>
 <li>每次计算项集的支持度时，都会对数据库的全部记录进行扫描比较，I/O开销大</li>
@@ -662,8 +582,7 @@ https://zhengyangcs.github.io/2016/08/19/模型综述/</p>
     
     <summary type="html">
     
-      &lt;h2&gt;&lt;strong&gt;关联规则&lt;/strong&gt;&lt;/h2&gt;
-&lt;p&gt;关联规则就是有关联的规则，形式可以定义为：两个 &lt;strong&gt;不相交&lt;/strong&gt; 的非空集合X、Y，如果有X-&amp;gt;Y，就说X-&amp;gt;Y是一条关联规则。关联规则的强度由支持度(support)和自信度
+      &lt;h2 id=&quot;关联规则&quot;&gt;&lt;a href=&quot;#关联规则&quot; class=&quot;headerlink&quot; title=&quot;关联规则&quot;&gt;&lt;/a&gt;&lt;strong&gt;关联规则&lt;/strong&gt;&lt;/h2&gt;&lt;p&gt;　　关联规则就是有关联的规则，形式可以定义为：两个 &lt;strong&gt;不相交&lt;/strong
     
     </summary>
     
@@ -681,44 +600,11 @@ https://zhengyangcs.github.io/2016/08/19/模型综述/</p>
     <published>2017-02-04T10:32:55.000Z</published>
     <updated>2017-07-25T01:59:58.351Z</updated>
     
-    <content type="html"><![CDATA[<p>hexo写markdown中_与*一样，表示斜体或粗体，但mathjax中_表示下标，因此：<br>
-　　mathjax中换行\，在markdown中写成\\<br>
-　　mathjax中下标_，在markdown改写成_<br>
-　　mathjax中下标{，在markdown改写成\{<br>
-　　mathjax中下标}，在markdown改写成\}<br>
-在markdown的表格中插入|，可以输入 <strong>&amp;#124;</strong> 代替<br>
-<strong>公式右键-Show Math As-Tex Commands可以查看编辑</strong></p>
-<h3>1. 行中公式inline &amp; 独立公式displayed</h3>
-<h4>行中公式 inline</h4>
-<p>This is an example for $x_mu+ y_mu$.<br>
-<strong>mathjax写法</strong>
-This is an example for \$x_mu+ y_mu\$.</p>
-<h4>独立公式 displayed</h4>
-<p>$$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}$$
-mathjax写法
-$$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}$$</p>
-<h3>2. 表格</h3>
-<p>一种表格的生成方式：<br>
-|col1　|col2　|col3　|<br>
-|:-------|:--------|:--------|<br>
-内容行</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">col1</th>
-<th style="text-align:left">col2</th>
-<th style="text-align:left">col3</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">内容</td>
-<td style="text-align:left">内容</td>
-<td style="text-align:left">内容</td>
-</tr>
-</tbody>
-</table>
-<h3>3. 希腊字母</h3>
+    <content type="html"><![CDATA[<p>　　hexo写markdown中<em>与*一样，表示斜体或粗体，但mathjax中</em>表示下标，因此：<br>　　mathjax中换行\，在markdown中写成\\<br>　　mathjax中下标<em>，在markdown改写成\</em><br>　　mathjax中下标{，在markdown改写成\{<br>　　mathjax中下标}，在markdown改写成\}<br>在markdown的表格中插入|，可以输入 <strong>\&#124;</strong> 代替<br><strong>公式右键-Show Math As-Tex Commands可以查看编辑</strong></p>
+<h3 id="1-行中公式inline-amp-独立公式displayed"><a href="#1-行中公式inline-amp-独立公式displayed" class="headerlink" title="1. 行中公式inline &amp; 独立公式displayed"></a>1. 行中公式inline &amp; 独立公式displayed</h3><h4 id="行中公式-inline"><a href="#行中公式-inline" class="headerlink" title="行中公式 inline"></a>行中公式 inline</h4><p>This is an example for $x_mu+ y_mu$.<br><strong>mathjax写法</strong><br>This is an example for \$x_mu+ y_mu\$.</p>
+<h4 id="独立公式-displayed"><a href="#独立公式-displayed" class="headerlink" title="独立公式 displayed"></a>独立公式 displayed</h4><script type="math/tex; mode=display">J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}</script><p>mathjax写法<br>$$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left({ \frac{x}{2} }\right)}^{2m + \alpha}$$</p>
+<h3 id="2-表格"><a href="#2-表格" class="headerlink" title="2. 表格"></a>2. 表格</h3><p>一种表格的生成方式：<br>|col1　|col2　|col3　|<br>|:———-|:————|:————|<br>内容行<br>|col1　|col2　|col3　|<br>|:———-|:————|:————|<br>|内容|内容|内容|</p>
+<h3 id="3-希腊字母"><a href="#3-希腊字母" class="headerlink" title="3. 希腊字母"></a>3. 希腊字母</h3><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -900,7 +786,8 @@ $$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left
 </tr>
 </tbody>
 </table>
-<h3>运算符和数据符号</h3>
+</div>
+<h3 id="运算符和数据符号"><a href="#运算符和数据符号" class="headerlink" title="运算符和数据符号"></a>运算符和数据符号</h3><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1058,12 +945,12 @@ $$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left
 <tr>
 <td style="text-align:left">积分2</td>
 <td style="text-align:left">$\int_0^{+\infty}x^ne^{-x}dx$</td>
-<td style="text-align:left">\int_0^{+\infty}x^ne^{-x}dx</td>
+<td style="text-align:left">\int_0\^{+\infty}x\^ne\^{-x}dx</td>
 </tr>
 <tr>
 <td style="text-align:left">共轭转置</td>
 <td style="text-align:left">$U^{\dagger}U=UU^{\dagger}=I$</td>
-<td style="text-align:left">U^{\dagger}U=UU^{\dagger}=I</td>
+<td style="text-align:left">U\^{\dagger}U=UU^{\dagger}=I</td>
 </tr>
 <tr>
 <td style="text-align:left">连乘</td>
@@ -1117,7 +1004,8 @@ $$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left
 </tr>
 </tbody>
 </table>
-<h3>字体</h3>
+</div>
+<h3 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h3><div class="table-container">
 <table>
 <thead>
 <tr>
@@ -1130,7 +1018,7 @@ $$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left
 <tbody>
 <tr>
 <td style="text-align:left">黑板粗体1</td>
-<td style="text-align:left">$\mathbb{AaBb12} AaBb12	$</td>
+<td style="text-align:left">$\mathbb{AaBb12} AaBb12    $</td>
 <td style="text-align:left">\mathbb{AaBb12} AaBb12</td>
 <td style="text-align:left"></td>
 </tr>
@@ -1148,13 +1036,13 @@ $$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left
 </tr>
 <tr>
 <td style="text-align:left">希腊字母黑体</td>
-<td style="text-align:left">$\boldsymbol{\mu sigma}	$</td>
+<td style="text-align:left">$\boldsymbol{\mu sigma}    $</td>
 <td style="text-align:left">\boldsymbol{\mu sigma}</td>
 <td style="text-align:left"></td>
 </tr>
 <tr>
 <td style="text-align:left">罗马字体</td>
-<td style="text-align:left">$\mathrm{AaBb12}	$</td>
+<td style="text-align:left">$\mathrm{AaBb12}    $</td>
 <td style="text-align:left">\mathrm{AaBb12}</td>
 <td style="text-align:left"></td>
 </tr>
@@ -1172,36 +1060,25 @@ $$J\alpha(x) = \sum{m=0}^\infty \frac{(-1)^m}{m! \Gamma (m + \alpha + 1)} {\left
 </tr>
 </tbody>
 </table>
-<h3>分类表达式</h3>
-<p>$$f(x)= \begin{cases} n=1, if\ x\ is\ even\\
-n=2, if\ x\ is\ odd\\
-n=3, if\ x\ is\ 0
-\end{cases}$$</p>
-<h3>表格</h3>
-<p>$$\begin{array}{c|cccc} n &amp; \text{Left} &amp; \text{Center} &amp; \text{Right} &amp; \text{last}\\    \hline 1 &amp; 0.24 &amp; 1 &amp; 125 &amp; 235 \\
-2 &amp; 0.24 &amp; 1 &amp; 125 &amp; 235 \\<br>
-3 &amp; 0.24 &amp; 1 &amp; 125 &amp; 235 \\<br>
-\end{array}$$</p>
-<h3>矩阵</h3>
-<p>$$\begin{pmatrix}   1 &amp; a_1 &amp; a_1^2 &amp; \cdots &amp; a_1^n \\    1 &amp; a_2 &amp; a_2^2 &amp; \cdots &amp; a_2^n \\     \vdots &amp; \vdots &amp; \vdots &amp; \ddots &amp; \vdots \\     1 &amp; a_n &amp; a_n^2 &amp; \cdots &amp; a_n^n      \end{pmatrix}$$</p>
-<h3>推导1</h3>
-<p>$\begin{align} E&amp;=\sum_{n=1}^{N}exp{-t_nf_{m-1}(\mathbf{x_n})-\frac12t_n\alpha_my_m(\mathbf{x_n})}\\ &amp; =\sum_{n=1}^{N}w_n^{(m)}exp\left\{-\frac12t_n\alpha_my_m(\mathbf{x_n})\right\} \end{align}$</p>
-<h3>推导2</h3>
-<p>$\begin{align} \sqrt{37} &amp; = \sqrt{\frac{73^2-1}{12^2}} \\  &amp; = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\  &amp; = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\  &amp; = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \\  &amp; \approx \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right) \end{align}$</p>
-<h3>Reference</h3>
-<ol>
-<li>http://blog.leanote.com/post/freewalk/Markdown-语法手册</li>
-<li>https://zhengyangcs.github.io/2016/08/17/mathjax/</li>
-<li>http://blog.csdn.net/wx11055/article/details/52694682</li>
+</div>
+<h3 id="分类表达式"><a href="#分类表达式" class="headerlink" title="分类表达式"></a>分类表达式</h3><script type="math/tex; mode=display">f(x)= \begin{cases} n=1, if\ x\ is\ even\\\\
+          n=2, if\ x\ is\ odd\\\\
+          n=3, if\ x\ is\ 0
+          \end{cases}</script><h3 id="表格"><a href="#表格" class="headerlink" title="表格"></a>表格</h3><script type="math/tex; mode=display">\begin{array}{c|cccc} n & \text{Left} & \text{Center} & \text{Right} & \text{last}\\\\    \hline 1 & 0.24 & 1 & 125 & 235 \\\\
+   2 & 0.24 & 1 & 125 & 235 \\\\  
+    3 & 0.24 & 1 & 125 & 235 \\\\  
+     \end{array}</script><h3 id="矩阵"><a href="#矩阵" class="headerlink" title="矩阵"></a>矩阵</h3><script type="math/tex; mode=display">\begin{pmatrix}   1 & a_1 & a_1^2 & \cdots & a_1^n \\\\    1 & a_2 & a_2^2 & \cdots & a_2^n \\\\     \vdots & \vdots & \vdots & \ddots & \vdots \\\\     1 & a_n & a_n^2 & \cdots & a_n^n      \end{pmatrix}</script><h3 id="推导1"><a href="#推导1" class="headerlink" title="推导1"></a>推导1</h3><p>$\begin{align} E&amp;=\sum<em>{n=1}^{N}exp{-t_nf</em>{m-1}(\mathbf{x<em>n})-\frac12t_n\alpha_my_m(\mathbf{x_n})}\\ &amp; =\sum</em>{n=1}^{N}w_n^{(m)}exp\left\{-\frac12t_n\alpha_my_m(\mathbf{x_n})\right\} \end{align}$</p>
+<h3 id="推导2"><a href="#推导2" class="headerlink" title="推导2"></a>推导2</h3><p>$\begin{align} \sqrt{37} &amp; = \sqrt{\frac{73^2-1}{12^2}} \\  &amp; = \sqrt{\frac{73^2}{12^2}\cdot\frac{73^2-1}{73^2}} \\  &amp; = \sqrt{\frac{73^2}{12^2}}\sqrt{\frac{73^2-1}{73^2}} \\  &amp; = \frac{73}{12}\sqrt{1 - \frac{1}{73^2}} \\  &amp; \approx \frac{73}{12}\left(1 - \frac{1}{2\cdot73^2}\right) \end{align}$</p>
+<h3 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h3><ol>
+<li><a href="http://blog.leanote.com/post/freewalk/Markdown-语法手册" target="_blank" rel="external">http://blog.leanote.com/post/freewalk/Markdown-语法手册</a></li>
+<li><a href="https://zhengyangcs.github.io/2016/08/17/mathjax/" target="_blank" rel="external">https://zhengyangcs.github.io/2016/08/17/mathjax/</a></li>
+<li><a href="http://blog.csdn.net/wx11055/article/details/52694682" target="_blank" rel="external">http://blog.csdn.net/wx11055/article/details/52694682</a></li>
 </ol>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;hexo写markdown中_与*一样，表示斜体或粗体，但mathjax中_表示下标，因此：&lt;br&gt;
-　　mathjax中换行\，在markdown中写成\\&lt;br&gt;
-　　mathjax中下标_，在markdown改写成_&lt;br&gt;
-　　mathjax中下标{，在markdo
+      &lt;p&gt;　　hexo写markdown中&lt;em&gt;与*一样，表示斜体或粗体，但mathjax中&lt;/em&gt;表示下标，因此：&lt;br&gt;　　mathjax中换行\，在markdown中写成\\&lt;br&gt;　　mathjax中下标&lt;em&gt;，在markdown改写成\&lt;/em&gt;&lt;br&gt;　　mathj
     
     </summary>
     
@@ -1219,43 +1096,14 @@ n=3, if\ x\ is\ 0
     <published>2017-01-16T11:10:37.000Z</published>
     <updated>2017-07-20T07:14:55.416Z</updated>
     
-    <content type="html"><![CDATA[<p>当U盘文件变成快捷方式时，使用下面的代码解决:<br>
-@echo off
-echo============================================<br>
-echo.<br>
-echo  U盘隐藏文件夹恢复<br>
-echo.<br>
-echo============================================<br>
-pause<br>
-rem echo 列出目录
-dir /a:d /b &gt;yxkmp4dir.txt<br>
-rem echo 列出目录外的所有文件<br>
-rem dir /a:s /a:-d /b<br>
-for /f &quot;tokens=* delims= &quot; %%i in (yxkmp4dir.txt) do call :ss &quot;%%i&quot;</p>
-<p>del yxkmp4dir.txt<br>
-echo.<br>
-echo 全部修复完成,谢谢你的使用!<br>
-echo.<br>
-pause<br>
-goto :eof<br>
-:ss<br>
-set var=%1<br>
-echo 正在修复文件夹 %var%  ...<br>
-attrib -s -h -r  %var%</p>
-<p>goto :eof<br>
-将文件后缀改为bat,双击运行<br>
-除此之外，可以通过在文件夹选项中，选择显示全部隐藏文件，可以显示被隐藏的文件。</p>
+    <content type="html"><![CDATA[<p>当U盘文件变成快捷方式时，使用下面的代码解决:<br>@echo off<br>echo============================================<br>echo.<br>echo  U盘隐藏文件夹恢复<br>echo.<br>echo============================================<br>pause<br>rem echo 列出目录<br>dir /a:d /b &gt;yxkmp4dir.txt<br>rem echo 列出目录外的所有文件<br>rem dir /a:s /a:-d /b<br>for /f “tokens=* delims= “ %%i in (yxkmp4dir.txt) do call :ss “%%i”  </p>
+<p>del yxkmp4dir.txt<br>echo.<br>echo 全部修复完成,谢谢你的使用!<br>echo.<br>pause<br>goto :eof<br>:ss<br>set var=%1<br>echo 正在修复文件夹 %var%  …<br>attrib -s -h -r  %var%  </p>
+<p>goto :eof<br>将文件后缀改为bat,双击运行<br>除此之外，可以通过在文件夹选项中，选择显示全部隐藏文件，可以显示被隐藏的文件。  </p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;当U盘文件变成快捷方式时，使用下面的代码解决:&lt;br&gt;
-@echo off
-echo============================================&lt;br&gt;
-echo.&lt;br&gt;
-echo  U盘隐藏文件夹恢复&lt;br&gt;
-echo.&lt;br&gt;
-echo==
+      &lt;p&gt;当U盘文件变成快捷方式时，使用下面的代码解决:&lt;br&gt;@echo off&lt;br&gt;echo============================================&lt;br&gt;echo.&lt;br&gt;echo  U盘隐藏文件夹恢复&lt;br&gt;echo.&lt;br&gt;echo====
     
     </summary>
     
@@ -1271,19 +1119,14 @@ echo==
     <published>2017-01-12T14:13:00.000Z</published>
     <updated>2017-07-20T07:14:52.860Z</updated>
     
-    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2>Quick Start</h2>
-<h3>Create a new post</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure></p>
+    <content type="html"><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.  </p>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"My New Post"</span></div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3>Run server</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo server</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3>Generate static files</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3>Deploy to remote sites</h3>
-<p><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo deploy</div></pre></td></tr></table></figure>
 <p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
 ]]></content>
     

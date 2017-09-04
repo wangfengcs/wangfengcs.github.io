@@ -113,17 +113,17 @@
 
 
 
-<meta name="description" content="public class Main { 	private int[] aux; 	public static void main(String[] args) { 		// TODO Auto-generated method stub 		int[] input={25,13,5,48,16,9,7,29,36,11}; 		Main res=new Main(); 	    res.Bubbl">
+<meta name="description" content="public class Main {    private int[] aux;    public static void main(String[] args) {        // TODO Auto-generated method stub        int[] input={25,13,5,48,16,9,7,29,36,11};        Main res=new Mai">
 <meta name="keywords" content="算法">
 <meta property="og:type" content="article">
 <meta property="og:title" content="排序算法">
 <meta property="og:url" content="http://wangfengcs.github.io/2017/08/27/排序算法/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="public class Main { 	private int[] aux; 	public static void main(String[] args) { 		// TODO Auto-generated method stub 		int[] input={25,13,5,48,16,9,7,29,36,11}; 		Main res=new Main(); 	    res.Bubbl">
+<meta property="og:description" content="public class Main {    private int[] aux;    public static void main(String[] args) {        // TODO Auto-generated method stub        int[] input={25,13,5,48,16,9,7,29,36,11};        Main res=new Mai">
 <meta property="og:updated_time" content="2017-08-27T14:55:09.175Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="排序算法">
-<meta name="twitter:description" content="public class Main { 	private int[] aux; 	public static void main(String[] args) { 		// TODO Auto-generated method stub 		int[] input={25,13,5,48,16,9,7,29,36,11}; 		Main res=new Main(); 	    res.Bubbl">
+<meta name="twitter:description" content="public class Main {    private int[] aux;    public static void main(String[] args) {        // TODO Auto-generated method stub        int[] input={25,13,5,48,16,9,7,29,36,11};        Main res=new Mai">
 
 
 
@@ -423,39 +423,19 @@
       
 
       
-        <p>public class Main {
-	private int[] aux;
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-		int[] input={25,13,5,48,16,9,7,29,36,11};
-		Main res=new Main();
-	    res.Bubble(input);
-	    res.PrintResult(input);
-	}
-	public void PrintResult(int[] input){
-		for(int i=0;i&lt;input.length;i++){
-			System.out.print(input[i]+&quot; &quot;);
-		}
-	}
-	public void Exchange(int[] input,int a,int b){
-		int temp;
-		if(input[a]&gt;input[b]){
-			temp=input[a]+input[b];
-			input[a]=temp-input[a];
-			input[b]=temp-input[a];
-		}
-	}
-	*****************************************************************************
-	** 堆排序代码段来自：http://blog.csdn.net/apei830/article/details/6584645 **
-	   public static void swap(int[] data, int i, int j) {<br>
-if (i == j) {<br>
-return;<br>
-}<br>
-data[i] = data[i] + data[j];<br>
-data[j] = data[i] - data[j];<br>
-data[i] = data[i] - data[j];<br>
-}</p>
-<pre><code>public static void heapSort(int[] data) {  
+        <p>public class Main {<br>    private int[] aux;<br>    public static void main(String[] args) {<br>        // TODO Auto-generated method stub<br>        int[] input={25,13,5,48,16,9,7,29,36,11};<br>        Main res=new Main();<br>        res.Bubble(input);<br>        res.PrintResult(input);<br>    }<br>    public void PrintResult(int[] input){<br>        for(int i=0;i<input.length;i++){ system.out.print(input[i]+"="" ");="" }="" public="" void="" exchange(int[]="" input,int="" a,int="" b){="" int="" temp;="" if(input[a]="">input[b]){<br>            temp=input[a]+input[b];<br>            input[a]=temp-input[a];<br>            input[b]=temp-input[a];<br>        }<br>    }</input.length;i++){></p>
+<pre><code>*****************************************************************************
+** 堆排序代码段来自：http://blog.csdn.net/apei830/article/details/6584645 **
+   public static void swap(int[] data, int i, int j) {  
+    if (i == j) {  
+        return;  
+    }  
+    data[i] = data[i] + data[j];  
+    data[j] = data[i] - data[j];  
+    data[i] = data[i] - data[j];  
+}  
+
+public static void heapSort(int[] data) {  
     for (int i = 0; i &lt; data.length; i++) {  
         createMaxdHeap(data, data.length - 1 - i);  
         swap(data, 0, data.length - 1 - i);  
@@ -488,169 +468,163 @@ public static void createMaxdHeap(int[] data, int lastIndex) {
         }  
     }  
 }
-</code></pre>
-<hr>
+</code></pre><hr>
 <pre><code>public void QuickSort(int[] input){
-	Quick3Sort(input,0,input.length-1);
+    Quick3Sort(input,0,input.length-1);
 }
 public void Quick3Sort(int[] input,int lo,int hi){
-	if(hi&lt;=lo) return;
-	int lt=lo,i=lo+1,gt=hi;
-	int v=input[lo];
-	while(i&lt;=gt){
-		if(input[i]&lt;v)
-			Exchange(input,lt++,i++);
-		else if(input[i]&gt;v)
-			Exchange(input,i,gt--);
-		else
-			i++;
-	}
-	Quick3Sort(input,lo,lt-1);
-	Quick3Sort(input,gt+1,hi);
+    if(hi&lt;=lo) return;
+    int lt=lo,i=lo+1,gt=hi;
+    int v=input[lo];
+    while(i&lt;=gt){
+        if(input[i]&lt;v)
+            Exchange(input,lt++,i++);
+        else if(input[i]&gt;v)
+            Exchange(input,i,gt--);
+        else
+            i++;
+    }
+    Quick3Sort(input,lo,lt-1);
+    Quick3Sort(input,gt+1,hi);
 
 }
 ******************************************************************
 public void QuickSort(int[] input){
-	QuickSort(input,0,input.length-1);
+    QuickSort(input,0,input.length-1);
 }
 public void QuickSort(int[] input,int lo,int hi){
-	if(hi&lt;=lo)
-		return;
-	int j=partition(input,lo,hi);
-	QuickSort(input,lo,j-1);
-	QuickSort(input,j+1,hi);
+    if(hi&lt;=lo)
+        return;
+    int j=partition(input,lo,hi);
+    QuickSort(input,lo,j-1);
+    QuickSort(input,j+1,hi);
 }
 private int partition(int[] input,int lo,int hi){
-	int i=lo,j=hi+1;
-	int v=input[lo];
-	while(true){
-		while(input[++i]&lt;v)
-			if(i==hi)
-				break;
-		while(v&lt;input[--j])
-			if(j==lo)
-				break;
-		if(i&gt;=j)
-			break;
-		Exchange(input,i,j);
-	}
-	Exchange(input,lo,j);
-	return j;
+    int i=lo,j=hi+1;
+    int v=input[lo];
+    while(true){
+        while(input[++i]&lt;v)
+            if(i==hi)
+                break;
+        while(v&lt;input[--j])
+            if(j==lo)
+                break;
+        if(i&gt;=j)
+            break;
+        Exchange(input,i,j);
+    }
+    Exchange(input,lo,j);
+    return j;
 }
 ****************************************************************
 public void PartitionSortBU(int[] input){
-	int len=input.length;
-	aux=new int[len];
-	for(int sz=1;sz&lt;len;sz=sz+sz){
-		for(int lo=0;lo&lt;len-sz;lo=lo+sz+sz)
-			merge(input,lo,lo+sz-1,Math.min(lo+sz+sz-1, len-1));
-	}
+    int len=input.length;
+    aux=new int[len];
+    for(int sz=1;sz&lt;len;sz=sz+sz){
+        for(int lo=0;lo&lt;len-sz;lo=lo+sz+sz)
+            merge(input,lo,lo+sz-1,Math.min(lo+sz+sz-1, len-1));
+    }
 }
 
 public void merge(int[] input,int lo,int mid,int hi){
-	int i=lo,j=mid+1;
-	for(int k=lo;k&lt;=hi;k++){
-		aux[k]=input[k];
-	}
-	for(int k=lo;k&lt;=hi;k++){
-		if(i&gt;mid)
-			input[k]=aux[j++];
-		else if(j&gt;hi)
-			input[k]=aux[i++];
-		else if(aux[j]&lt;aux[i])
-			input[k]=aux[j++];
-		else
-			input[k]=aux[i++];
-	}  		
+    int i=lo,j=mid+1;
+    for(int k=lo;k&lt;=hi;k++){
+        aux[k]=input[k];
+    }
+    for(int k=lo;k&lt;=hi;k++){
+        if(i&gt;mid)
+            input[k]=aux[j++];
+        else if(j&gt;hi)
+            input[k]=aux[i++];
+        else if(aux[j]&lt;aux[i])
+            input[k]=aux[j++];
+        else
+            input[k]=aux[i++];
+    }          
 }
 ************************************************************
  public void PartitionSort(int[] input){
-	int len=input.length;
-	aux=new int[len];
-	Sort(input,0,len-1);
+    int len=input.length;
+    aux=new int[len];
+    Sort(input,0,len-1);
 }
 public void Sort(int[] input,int lo,int hi){
-	if(lo&gt;=hi)
-		return;
-	int mid=lo+(hi-lo)/2;
-	Sort(input,lo,mid);
-	Sort(input,mid+1,hi);
-	merge(input,lo,mid,hi);
+    if(lo&gt;=hi)
+        return;
+    int mid=lo+(hi-lo)/2;
+    Sort(input,lo,mid);
+    Sort(input,mid+1,hi);
+    merge(input,lo,mid,hi);
 }
 public void merge(int[] input,int lo,int mid,int hi){
-	int i=lo,j=mid+1;
-	for(int k=lo;k&lt;=hi;k++){
-		aux[k]=input[k];
-	}
-	for(int k=lo;k&lt;=hi;k++){
-		if(i&gt;mid)
-			input[k]=aux[j++];
-		else if(j&gt;hi)
-			input[k]=aux[i++];
-		else if(aux[j]&lt;aux[i])
-			input[k]=aux[j++];
-		else
-			input[k]=aux[i++];
-	}  		
+    int i=lo,j=mid+1;
+    for(int k=lo;k&lt;=hi;k++){
+        aux[k]=input[k];
+    }
+    for(int k=lo;k&lt;=hi;k++){
+        if(i&gt;mid)
+            input[k]=aux[j++];
+        else if(j&gt;hi)
+            input[k]=aux[i++];
+        else if(aux[j]&lt;aux[i])
+            input[k]=aux[j++];
+        else
+            input[k]=aux[i++];
+    }          
 }
-</code></pre>
-<hr>
+</code></pre><hr>
 <pre><code>public void ShellSort(int[] input){
-	int len=input.length;
-	int h=1;
-	while(h&lt;len/3)
-		h=h*3+1;
-	while(h&gt;=1){
-		for(int i=h;i&lt;len;i++){
-			for(int j=i;j&gt;=h &amp;&amp; input[j]&lt;input[j-h];j=j-h)
-				Exchange(input,j-h,j);
-		}
-		h=h/3;
-	}
+    int len=input.length;
+    int h=1;
+    while(h&lt;len/3)
+        h=h*3+1;
+    while(h&gt;=1){
+        for(int i=h;i&lt;len;i++){
+            for(int j=i;j&gt;=h &amp;&amp; input[j]&lt;input[j-h];j=j-h)
+                Exchange(input,j-h,j);
+        }
+        h=h/3;
+    }
 }
-</code></pre>
-<hr>
+</code></pre><hr>
 <pre><code>public void InsertionSort(int[] input){
-	int len=input.length;
-	for(int i=1;i&lt;len;i++){
-		for(int j=i;j&gt;0 &amp;&amp; input[j]&lt;input[j-1];j--)
-			Exchange(input,j-1,j);
-	}
+    int len=input.length;
+    for(int i=1;i&lt;len;i++){
+        for(int j=i;j&gt;0 &amp;&amp; input[j]&lt;input[j-1];j--)
+            Exchange(input,j-1,j);
+    }
 }
-</code></pre>
-<hr>
+</code></pre><hr>
 <pre><code>public void SelectionSort(int[] input){
-	int len=input.length;
-	int temp;
-	for(int i=0;i&lt;len;i++){
-		int min=i;
-		for(int j=i+1;j&lt;len;j++){
-			if(input[j]&lt;input[min]){
-				min=j;
-			}
-		}
-		temp=input[i]+input[min];
-		input[i]=temp-input[i];
-		input[min]=temp-input[i];
-	}
+    int len=input.length;
+    int temp;
+    for(int i=0;i&lt;len;i++){
+        int min=i;
+        for(int j=i+1;j&lt;len;j++){
+            if(input[j]&lt;input[min]){
+                min=j;
+            }
+        }
+        temp=input[i]+input[min];
+        input[i]=temp-input[i];
+        input[min]=temp-input[i];
+    }
 }
-</code></pre>
-<hr>
+</code></pre><hr>
 <pre><code>public void BubbleSort(int[] input){
-	int len=input.length;
-	int temp;
-	for(int i=0;i&lt;len;i++){
-		for(int j=i;j&lt;len;j++){
-			if(input[i]&gt;input[j]){
-				temp=input[i]+input[j];
-				input[i]=temp-input[i];
-				input[j]=temp-input[i];
-			}
-		}
-	}
+    int len=input.length;
+    int temp;
+    for(int i=0;i&lt;len;i++){
+        for(int j=i;j&lt;len;j++){
+            if(input[i]&gt;input[j]){
+                temp=input[i]+input[j];
+                input[i]=temp-input[i];
+                input[j]=temp-input[i];
+            }
+        }
+    }
 }
-</code></pre>
-<hr>
+</code></pre><hr>
 <p>}</p>
 
       
@@ -703,6 +677,10 @@ public void merge(int[] input,int lo,int mid,int hi){
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/09/04/顺时针和逆时针打印数组/" rel="prev" title="顺时针和逆时针打印数组">
+                顺时针和逆时针打印数组 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -772,7 +750,7 @@ public void merge(int[] input,int lo,int mid,int hi){
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>

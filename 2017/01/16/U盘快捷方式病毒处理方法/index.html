@@ -113,16 +113,16 @@
 
 
 
-<meta name="description" content="当U盘文件变成快捷方式时，使用下面的代码解决: @echo off echo============================================ echo. echo  U盘隐藏文件夹恢复 echo. echo============================================ pause rem echo 列出目录 dir /a:d /b &amp;gt;yxkm">
+<meta name="description" content="当U盘文件变成快捷方式时，使用下面的代码解决:@echo offecho============================================echo.echo  U盘隐藏文件夹恢复echo.echo============================================pauserem echo 列出目录dir /a:d /b &amp;gt;yxkmp4dir.txt">
 <meta property="og:type" content="article">
 <meta property="og:title" content="U盘快捷方式病毒处理方法">
 <meta property="og:url" content="http://wangfengcs.github.io/2017/01/16/U盘快捷方式病毒处理方法/index.html">
 <meta property="og:site_name" content="我的博客">
-<meta property="og:description" content="当U盘文件变成快捷方式时，使用下面的代码解决: @echo off echo============================================ echo. echo  U盘隐藏文件夹恢复 echo. echo============================================ pause rem echo 列出目录 dir /a:d /b &amp;gt;yxkm">
+<meta property="og:description" content="当U盘文件变成快捷方式时，使用下面的代码解决:@echo offecho============================================echo.echo  U盘隐藏文件夹恢复echo.echo============================================pauserem echo 列出目录dir /a:d /b &amp;gt;yxkmp4dir.txt">
 <meta property="og:updated_time" content="2017-07-20T07:14:55.416Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="U盘快捷方式病毒处理方法">
-<meta name="twitter:description" content="当U盘文件变成快捷方式时，使用下面的代码解决: @echo off echo============================================ echo. echo  U盘隐藏文件夹恢复 echo. echo============================================ pause rem echo 列出目录 dir /a:d /b &amp;gt;yxkm">
+<meta name="twitter:description" content="当U盘文件变成快捷方式时，使用下面的代码解决:@echo offecho============================================echo.echo  U盘隐藏文件夹恢复echo.echo============================================pauserem echo 列出目录dir /a:d /b &amp;gt;yxkmp4dir.txt">
 
 
 
@@ -444,32 +444,9 @@
       
 
       
-        <p>当U盘文件变成快捷方式时，使用下面的代码解决:<br>
-@echo off
-echo============================================<br>
-echo.<br>
-echo  U盘隐藏文件夹恢复<br>
-echo.<br>
-echo============================================<br>
-pause<br>
-rem echo 列出目录
-dir /a:d /b &gt;yxkmp4dir.txt<br>
-rem echo 列出目录外的所有文件<br>
-rem dir /a:s /a:-d /b<br>
-for /f &quot;tokens=* delims= &quot; %%i in (yxkmp4dir.txt) do call :ss &quot;%%i&quot;</p>
-<p>del yxkmp4dir.txt<br>
-echo.<br>
-echo 全部修复完成,谢谢你的使用!<br>
-echo.<br>
-pause<br>
-goto :eof<br>
-:ss<br>
-set var=%1<br>
-echo 正在修复文件夹 %var%  ...<br>
-attrib -s -h -r  %var%</p>
-<p>goto :eof<br>
-将文件后缀改为bat,双击运行<br>
-除此之外，可以通过在文件夹选项中，选择显示全部隐藏文件，可以显示被隐藏的文件。</p>
+        <p>当U盘文件变成快捷方式时，使用下面的代码解决:<br>@echo off<br>echo============================================<br>echo.<br>echo  U盘隐藏文件夹恢复<br>echo.<br>echo============================================<br>pause<br>rem echo 列出目录<br>dir /a:d /b &gt;yxkmp4dir.txt<br>rem echo 列出目录外的所有文件<br>rem dir /a:s /a:-d /b<br>for /f “tokens=* delims= “ %%i in (yxkmp4dir.txt) do call :ss “%%i”  </p>
+<p>del yxkmp4dir.txt<br>echo.<br>echo 全部修复完成,谢谢你的使用!<br>echo.<br>pause<br>goto :eof<br>:ss<br>set var=%1<br>echo 正在修复文件夹 %var%  …<br>attrib -s -h -r  %var%  </p>
+<p>goto :eof<br>将文件后缀改为bat,双击运行<br>除此之外，可以通过在文件夹选项中，选择显示全部隐藏文件，可以显示被隐藏的文件。  </p>
 
       
     </div>
@@ -588,7 +565,7 @@ attrib -s -h -r  %var%</p>
           
             <div class="site-state-item site-state-posts">
               <a href="/archives/">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">10</span>
                 <span class="site-state-item-name">日志</span>
               </a>
             </div>
