@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://wangfengcs.github.io/"/>
-  <updated>2017-09-04T12:00:16.586Z</updated>
+  <updated>2017-09-05T07:55:33.660Z</updated>
   <id>http://wangfengcs.github.io/</id>
   
   <author>
@@ -16,11 +16,34 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
+    <title>旋转数组查找数字k</title>
+    <link href="http://wangfengcs.github.io/2017/09/05/%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E6%9F%A5%E6%89%BE%E6%95%B0%E5%AD%97k/"/>
+    <id>http://wangfengcs.github.io/2017/09/05/旋转数组查找数字k/</id>
+    <published>2017-09-05T07:48:52.000Z</published>
+    <updated>2017-09-05T07:55:33.660Z</updated>
+    
+    <content type="html"><![CDATA[<p>在一个旋转数组中找到一个数字k:<br>public class Main {<br>     int count=1;<br>    public static void main(String[] args) {<br>        // TODO Auto-generated method stub<br>        int[] temp={7,8,9,1,2,3,4,5,6};<br>        int a=Find(temp,2);<br>        System.out.println(a);<br>        }<br>    public static int Find(int[] input,int k){<br>        int index=0;<br>        int lo=0;<br>        int hi=input.length-1;<br>        while(lo<hi){ int="" mid="lo+(hi-lo)/2;" if(input[mid]="=k)" return="" mid;="" if(input[mid]<input[hi]){="" 右侧有序="" if(k="">=input[mid] &amp;&amp; k&lt;=input[hi])<br>                    lo=mid+1;<br>                else<br>                    hi=mid-1;<br>            }else{//左侧有序<br>                if(k<input[mid] &&="" k="">=input[lo])<br>                    hi=mid-1;<br>                else<br>                    lo=mid+1;<br>            }<br>        }<br>        return -1;<br>    }<br>}</input[mid]></hi){></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在一个旋转数组中找到一个数字k:&lt;br&gt;public class Main {&lt;br&gt;     int count=1;&lt;br&gt;    public static void main(String[] args) {&lt;br&gt;        // TODO Auto-gene
+    
+    </summary>
+    
+      <category term="算法" scheme="http://wangfengcs.github.io/categories/%E7%AE%97%E6%B3%95/"/>
+    
+    
+      <category term="算法" scheme="http://wangfengcs.github.io/tags/%E7%AE%97%E6%B3%95/"/>
+    
+  </entry>
+  
+  <entry>
     <title>顺时针和逆时针打印数组</title>
     <link href="http://wangfengcs.github.io/2017/09/04/%E9%A1%BA%E6%97%B6%E9%92%88%E5%92%8C%E9%80%86%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E6%95%B0%E7%BB%84/"/>
     <id>http://wangfengcs.github.io/2017/09/04/顺时针和逆时针打印数组/</id>
     <published>2017-09-04T11:52:37.000Z</published>
-    <updated>2017-09-04T12:00:16.586Z</updated>
+    <updated>2017-09-05T07:52:13.072Z</updated>
     
     <content type="html"><![CDATA[<p>package Test;</p>
 <p>给定一个n，由内向外顺时针打印一个n*n的矩阵，分别为1-n</p>
@@ -124,6 +147,8 @@ public void printMatrix(int[][] matrix,int rows,int cols,int start,ArrayList&lt;
 publ
     
     </summary>
+    
+      <category term="算法" scheme="http://wangfengcs.github.io/categories/%E7%AE%97%E6%B3%95/"/>
     
     
       <category term="算法" scheme="http://wangfengcs.github.io/tags/%E7%AE%97%E6%B3%95/"/>

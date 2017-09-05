@@ -1,9 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[旋转数组查找数字k]]></title>
+    <url>%2F2017%2F09%2F05%2F%E6%97%8B%E8%BD%AC%E6%95%B0%E7%BB%84%E6%9F%A5%E6%89%BE%E6%95%B0%E5%AD%97k%2F</url>
+    <content type="text"><![CDATA[在一个旋转数组中找到一个数字k:public class Main { int count=1; public static void main(String[] args) { // TODO Auto-generated method stub int[] temp={7,8,9,1,2,3,4,5,6}; int a=Find(temp,2); System.out.println(a); } public static int Find(int[] input,int k){ int index=0; int lo=0; int hi=input.length-1; while(lo]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
+      <tags>
+        <tag>算法</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[顺时针和逆时针打印数组]]></title>
     <url>%2F2017%2F09%2F04%2F%E9%A1%BA%E6%97%B6%E9%92%88%E5%92%8C%E9%80%86%E6%97%B6%E9%92%88%E6%89%93%E5%8D%B0%E6%95%B0%E7%BB%84%2F</url>
     <content type="text"><![CDATA[package Test; 给定一个n，由内向外顺时针打印一个n*n的矩阵，分别为1-n import java.util.*;public class Main { int count=1; public static void main(String[] args) { // TODO Auto-generated method stub Scanner in=new Scanner(System.in); int num=in.nextInt(); int[][] res=new int[num][num]; Main m=new Main(); m.printMatrix(res,num); for(int i=0;i&lt;num;i++){ for(int j=0;j&lt;num;j++){ System.out.print(res[i][j]+&quot; &quot;); } System.out.println(&quot;&quot;); } } public int[][] printMatrix(int[][] res,int n){ int cols=n; int rows=n; int start=0; while(cols&gt;start*2 &amp;&amp; rows&gt;start*2){ printMatrix(res,rows,cols,start); start++; } return res; } public void printMatrix(int[][] res,int rows,int cols,int start){ int endX=cols-1-start; int endY=rows-1-start; int n=res.length*res.length; for(int i=endX;i&gt;=start;i--){ res[start][i]=n-count+1; count++; } if(start&lt;endY){ for(int i=start+1;i&lt;=endY;i++){ res[i][start]=n-count+1; count++; } } if(start&lt;endX &amp;&amp; start&lt;endY){ for(int i=start+1;i&lt;=endX;i++){ res[endY][i]=n-count+1; count++; } } if(start&lt;endX &amp;&amp; start&lt;endY-1){ for(int i=endY-1;i&gt;=start+1;i--){ res[i][endY]=n-count+1; count++; } } } }给定一个数组，由外向内打印顺时针遍历数据import java.util.ArrayList;public class Solution { public ArrayList&lt;Integer&gt; printMatrix(int [][] matrix) { int rows=matrix.length; int cols=matrix[0].length; ArrayList&lt;Integer&gt; res=new ArrayList&lt;&gt;(); if(matrix==null || cols&lt;=0 || rows&lt;=0) return res; int start=0; while(cols&gt;start*2 &amp;&amp; rows&gt;start*2){ printMatrix(matrix,rows,cols,start,res); start++; } return res; } public void printMatrix(int[][] matrix,int rows,int cols,int start,ArrayList&lt;Integer&gt; res){ int endX=cols-start-1; int endY=rows-start-1; for(int i=start;i&lt;=endX;i++) res.add(matrix[start][i]); if(start&lt;endY){ for(int i=start+1;i&lt;=endY;i++){ res.add(matrix[i][endX]); } } if(start&lt;endX &amp;&amp; start&lt;endY){ for(int i=endX-1;i&gt;=start;i--) res.add(matrix[endY][i]); } if(start&lt;endY-1 &amp;&amp; start&lt;endX){ for(int i=endY-1;i&gt;=start+1;i--){ res.add(matrix[i][start]); } } } }]]></content>
+      <categories>
+        <category>算法</category>
+      </categories>
       <tags>
         <tag>算法</tag>
       </tags>
